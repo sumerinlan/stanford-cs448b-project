@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+}
+
+.main {
+    padding: 0 24%;
+}
+
+/* basic facts */
+
+#facts-container {
+    min-width: 300px;
+    background-color: #1e3932;
+    color: #f2f0eb;
+}
+
+#facts-keyword {
+    background: #1e3932;
+    outline-style: none;
+    width: 100%;
+    border: none;
+    color: #f2f0eb;
+}
+
+.facts-thumbnail-svg {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.facts-thumbnail-svg g:hover {
+    opacity: 0.5;
+}
+
+#facts-widget {
+    position: absolute;
+    padding: 5px;
+    width: 240px;
+    background-color: #f2f0eb;
+    color: black;
+}
+
+#facts-widget-img-container {
+    width: 100%;
+    background-color: #1e3932;
+}
+
+#facts-widget-img {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: auto;
+}
+
+#facts-widget p {
+    margin: 0.75rem 0.5rem;
+}
+
+#facts-widget-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

@@ -14,8 +14,41 @@
         <div id='test'></div>
     </div>
 
-    <div>
-        <h1>Section 1</h1>
+    <div id='facts-container' class='main'>
+        <h1>Basic Facts</h1>
+        <p>Some random random random random random random random random random random random random random random random random random random random random random random random random random random random random random random text.</p>
+
+        <div>
+            <p>Type keyword to filter</p>
+            <form>
+                <input type='text' id='facts-keyword' onFocus="this.value=''" value='Type a name...' placeholder='Type a name...'>
+            </form>
+        </div>
+
+        <div id='facts'></div>
+
+        <!-- widget displaying important details -->
+        <div id='facts-widget' style='display: none;'>
+            <!-- image -->
+            <div id='facts-widget-img-container'>
+                <img id='facts-widget-img' />
+            </div>
+
+            <!-- header: name -->
+            <div>
+                <p>
+                    <span id='facts-widget-name'></span></br>
+                    <span id='facts-widget-notes'></span>
+                </p>
+            </div>
+            
+            <!-- facts: calories, sugar, caffeine -->
+            <div>
+                <p>Calories: <span id='facts-widget-calories'></span></p>
+                <p>Sugars: <span id='facts-widget-sugars'></span></p>
+                <p>Caffeine: <span id='facts-widget-caffeine'></span></p>
+            </div>
+        </div>
     </div>
 
     <div>
