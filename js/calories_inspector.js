@@ -25,29 +25,81 @@ export default function define(runtime, observer) {
             .attr("x1", d => x(d3.min(d)))
             .attr("x2", d => x(d3.max(d)));
 
-        g.append("g")
-            .selectAll("circle")
-            .data(d => d)
-            .join("circle")
-            .attr("cx", d => x(d))
-            .attr("fill", (d, i) => color(data.keys[i]))
-            .attr("r", 3.5);
 
         g.append("text")
             .attr("dy", "0.35em")
             .attr("x", d => x(d[d.length - 1]) + 40) // [d.length -1] +22
             .text((d, i) => data.names[i]);
 
+
+        
+
+
+
+        g.append("g")
+            .selectAll("circle")
+            .data(d => d)
+            .join("circle")
+            .attr("cx", d => x(d))
+            .attr("fill", (d, i) => color(data.keys[i]))
+            .attr("r", 4.5)
+            .attr("class", "calories-circle")//append class for animation
+            .on('mouseenter', (d, i) => {
+                d3.select('#calories-widget-img').attr('src', data.images[i] );
+                d3.select('#calories-widget-main').style('display', 'block');
+                d3.select('#calories-widget-text').html(d);//entering with text 
+                console.log("mouse entered! " + d +", image source: " + data.images[i]);
+
+            })
+            .on('mouseover', function () {
+                d3.select(this).transition()
+                    .delay(0)
+                    .duration(750)
+                    .attr("r", 8);
+            })
+            .on('mousemove', d =>{
+                let offset = 10;
+                let left = d3.event.pageX + offset;
+                let top = d3.event.pageY + offset;
+                d3.select('#calories-widget-main').style('left', `${left}px`).style('top', `${top}px`);
+            })
+            .on('mouseleave', function() {
+                d3.select(this).transition()
+                    .duration(750)
+                    .attr("r", 4.5);
+                d3.select('#calories-widget-main').style('display', 'none');
+            });
+
+
+
+
+        // slider
+        g.append("g")
+            .selectAll("circle")
+            .data(d => d)
+            .join("circle")
+            .attr("cx", d => x(d / 2))
+            .attr("fill", (d, i) => color("#000000"))
+            .attr("r", 3.5);
+
+
+
+
+
+
+        
+
         svg.append("g")
             .call(legend);
 
         return svg.node();
     });
-    main.variable(observer("data")).define("data", ["values", "keys", "names"], function(values, keys, names) {
+    main.variable(observer("data")).define("data", ["values", "keys", "names", "images"], function(values, keys, names, images) {
         return (
             Object.assign(values, {
                 keys: keys,
-                names: names
+                names: names,
+                images: images
             })
         )
     });
@@ -75,10 +127,18 @@ export default function define(runtime, observer) {
             )
     });
 
+    main.variable(observer("images")).define("images", ["clean_data"], function(clean_data) {
+        return (
+            clean_data.map(d => d.image_src)
+            )
+    });
+
+
+
 
     main.variable(observer("clean_data")).define("clean_data", ["raw_data"], function(raw_data) {
         return raw_data.map(d => {
-            return { name: d["Beverage"], min_calories: +d["min_calories"], max_calories: +d["max_calories"] }
+            return { name: d["Beverage"], min_calories: +d["min_calories"], max_calories: +d["max_calories"], image_src: d["Image"] }
         }).sort((a, b) => +a.max_calories - +b.max_calories)
     });
     main.variable(observer("raw_data")).define("raw_data", ["d3"], async function(d3) {
