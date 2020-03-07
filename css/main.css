@@ -7,8 +7,9 @@ body {
 }
 
 /* basic facts */
-
 #facts-container {
+    padding-top: 10vh;
+    padding-bottom: 5vh;
     min-width: 300px;
     background-color: #1e3932;
     color: #f2f0eb;
@@ -58,4 +59,56 @@ body {
 #facts-widget-name {
     font-weight: bold;
     font-size: 1.2rem;
+}
+
+/* top drinks */
+#top-drinks-container {
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+}
+
+#top-drinks {
+    display: flex;
+    margin: 0 10%;
+    min-width: 800px;
+    flex-wrap: wrap;
+}
+
+#top-drinks-svg {
+    display: inline-flex;
+    background-color: #white;
+}
+
+#top-drinks-details {
+    background-color: #f2f0eb;
+    display: block;
+    flex-grow: 2;
+    /* HARDCODED */
+    min-width: 300px;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.top-drinks-details-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    max-width: 300px;
+}
+
+.top-drinks-details-others {
+    overflow-wrap: break-word;
+    font-size: 0.8rem;
+}
+
+.top-drink-dots {
+    fill: #006241;
+    opacity: 0.5;
+}
+
+.top-drink-dots:hover {
+    opacity: 0.3;
+}
+
+.top-drink-dots-others {
+    fill: #f2f0eb;
 }

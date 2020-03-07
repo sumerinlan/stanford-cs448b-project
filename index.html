@@ -41,12 +41,11 @@
                     <span id='facts-widget-notes'></span>
                 </p>
             </div>
-            
+
             <!-- facts: calories, sugar, caffeine -->
             <div>
                 <p>Calories: <span id='facts-widget-calories'></span></p>
                 <p>Sugars: <span id='facts-widget-sugars'></span></p>
-                <p>Caffeine: <span id='facts-widget-caffeine'></span></p>
             </div>
         </div>
     </div>
@@ -55,8 +54,21 @@
         <h1>Section 2</h1>
     </div>
 
-    <div>
-        <h1>Section 3</h1>
+    <div id='top-drinks-container'>
+        <h1 class='main'>Top Ranked Drinks</h1>
+
+        <p class='main'>
+            What are the most popular drinks on Starbucks' ever-changing menu? Do people go for high calories drinks or healthy is their top concern? We are interested to see how the top-ranked items are distributed by calories and sugars. The ranking is from <a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>.
+        </p>
+
+        <p class='main'>
+            The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Hover the green dots to see nutrition information for top-ranked items.
+        </p>
+
+        <div id='top-drinks'>
+            <svg id='top-drinks-svg'></svg>
+            <div id='top-drinks-details'></div>
+        </div>
     </div>
 
     <script src='js/main.js'></script>
