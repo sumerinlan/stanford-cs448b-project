@@ -92,9 +92,9 @@ function initializeBasicFacts() {
 
 function updateBasicFactsFilter() {
     basicFactsData = allData.filter(d => d.SIZE == sizes.GRANDE || d.SIZE == sizes.DOPPIO);
-    basicFactsData = basicFactsData.filter(d => d.CATEGORY1.toLowerCase().indexOf(prefix) !== -1)
-        .filter(d => d.CATEGORY2.toLowerCase().indexOf(prefix) !== -1)
-        .filter(d => d.NAME.toLowerCase().indexOf(prefix) !== -1);
+    basicFactsData = basicFactsData.filter(d => d.CATEGORY1.toLowerCase().indexOf(prefix) !== -1 ||
+        d.CATEGORY2.toLowerCase().indexOf(prefix) !== -1 ||
+        d.NAME.toLowerCase().indexOf(prefix) !== -1);
     plotBasicFacts();
 }
 
