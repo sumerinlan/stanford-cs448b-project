@@ -67,7 +67,7 @@
     </div>
 
     <div>
-        <h1>Section 2</h1>
+        <h1>Calories of drinks when you choose different preps...</h1>
     </div>
 
     <div id='top-drinks-container'>
@@ -88,6 +88,37 @@
     </div>
 
     <script src='js/main.js'></script>
+    <!-- line and dots -->
+    <script type="module">
+        import define from "./js/index.js";
+        import {Runtime, Library, Inspector} from "./js/runtime.js";
+
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.body));
+
+</script>
+
+<div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">
+
+    <!-- image -->
+    <div id='calories-img-container' >
+        <img id='calories-widget-img' style="width: 96px; height: 96px;" />
+    </div>
+
+    <!-- name -->
+    <div>
+        <p>
+            <span id = 'calories-prod-name'></span></br>
+        </p>
+    </div>
+
+    <!-- information e.g. calories -->
+    <div>
+        <p>Calories: <span id='calories-widget-text'></span> kcal</p>
+        
+    </div>
+    
+</div>
 </body>
 
 </html>

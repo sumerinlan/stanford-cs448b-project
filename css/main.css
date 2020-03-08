@@ -1,3 +1,16 @@
+/*.calories-circle{
+	position: fixed;
+	animation: scaleout 1s ease-in-out infinite alternate;
+}
+@keyframes scaleout {
+	0% {
+		transform: scale(1);
+   	}
+	100% {
+  		transform: scale(1.2);
+  	}		      
+}*/
+
 body {
     margin: 0;
     font-family: Open Sans;
