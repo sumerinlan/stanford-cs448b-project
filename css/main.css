@@ -1,5 +1,27 @@
 body {
     margin: 0;
+    font-family: Open Sans;
+}
+
+/* typeface: Open Sans */
+@font-face {
+   font-family: Open Sans;
+   src: url(../fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: Open Sans;
+  src: url(../fonts/OpenSans-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url(../fonts/OpenSans-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url(../fonts/OpenSans-Light.ttf);
+  font-weight: lighter;
 }
 
 .main {
@@ -8,6 +30,7 @@ body {
 
 /* basic facts */
 #facts-container {
+	font-family: Open Sans;
     padding-top: 10vh;
     padding-bottom: 5vh;
     min-width: 300px;
@@ -90,7 +113,7 @@ body {
 }
 
 .top-drinks-details-name {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: bold;
     max-width: 300px;
 }
@@ -111,4 +134,54 @@ body {
 
 .top-drink-dots-others {
     fill: #f2f0eb;
+}
+
+
+/*bar indicating calories*/
+.calories-bar {
+	margin: 0.75rem 0.5rem;
+    position: relative;
+    width: 200px;
+    /*border: 1px solid #B1D632;*/
+    background-color: #d4e9e2;
+    /*padding: 1px;*/
+}
+
+
+.calories-bar div {
+	margin: 0.75rem 0rem;
+    display: block;
+    position: relative;
+    background: #00754a;
+    color: #333333;
+    height: 10px;
+    /*line-height: 10px;*/
+}
+
+.calories-bar div span {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*bar indicating sugar*/
+.sugar-bar {
+	margin: 0.75rem 0.5rem;
+    position: relative;
+    width: 200px;
+    /*border: 1px solid #B1D632;*/
+    background-color: #d4e9e2;
+    /*padding: 1px;*/
+}
+
+
+.sugar-bar div {
+	margin: 0.75rem 0rem;
+    display: block;
+    position: relative;
+    background: #1e3932;
+    color: #333333;
+    height: 10px;
+    /*line-height: 10px;*/
 }

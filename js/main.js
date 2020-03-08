@@ -156,6 +156,8 @@ function plotBasicFacts() {
                         d3.select('#facts-widget-calories').html(d.CALORIES);
                         d3.select('#facts-widget-sugars').html(d.SUGARS);
                         // d3.select('#facts-widget-caffeine').html(d.CAFFEINE);
+                        d3.select('#facts-widget-cal-bar').attr('style', `width: ${d.CALORIES / 7 }%;`);
+                        d3.select('#facts-widget-sugar-bar').attr('style', `width: ${d.SUGARS}%;`);
                     })
                     .on('mousemove', d => {
                         let margin = 15;
@@ -168,6 +170,13 @@ function plotBasicFacts() {
                     });
 
                 images.exit().remove();
+
+
+
+                // let caption = container2.append('p')
+                //     .html("Cold Brew Coffee")
+                //     .attr('width', imgWidth)
+                //     .attr('height', imgWidth);
             }
         }
     };
