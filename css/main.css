@@ -37,6 +37,14 @@ body {
   font-weight: lighter;
 }
 
+a, a:visited {
+    color: #006241;
+}
+
+a:hover, a:active {
+    color: #d4e9e2;
+}
+
 .main {
     padding: 0 24%;
 }
@@ -49,6 +57,14 @@ body {
     min-width: 300px;
     background-color: #1e3932;
     color: #f2f0eb;
+}
+
+#facts-container a, #facts-container a:visited {
+    color: #d4e9e2;
+}
+
+#facts-container a:hover, #facts-container a:active {
+    color: #006241;
 }
 
 #facts-keyword {
@@ -121,6 +137,7 @@ body {
     flex-grow: 2;
     /* HARDCODED */
     min-width: 300px;
+    min-height: 400px;
     flex-direction: column;
     padding: 10px;
 }

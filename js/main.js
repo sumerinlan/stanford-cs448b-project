@@ -53,7 +53,23 @@ var basicFactsData = [];
 var topDrinksData = [];
 var otherDrinksData = [];
 
-initializeBasicFacts();
+
+// size
+let topDrinksPlotWidth = 600;
+let topDrinksPlotHeight = 400;
+let topDrinksPlotMargin = 50;
+let topDrinksOuterMargin = topDrinksPlotWidth + 2 * topDrinksPlotMargin;
+let topDrinksOuterHeight = topDrinksPlotHeight + 2 * topDrinksPlotMargin;
+
+// scales
+let topDrinksXScale = d3.scaleLinear()
+    .domain([0, 65])
+    .range([0, topDrinksPlotWidth]);
+let topDrinksYScale = d3.scaleLinear()
+    .domain([0, 500])
+    .range([topDrinksPlotHeight, 0]);
+
+setupBasicFacts();
 
 d3.csv('data/starbucks-menu/drink-manual.csv', d => {
     var row = {};
@@ -73,15 +89,15 @@ d3.csv('data/starbucks-menu/drink-manual.csv', d => {
         .key(d => [d.SUGARS, d.CALORIES])
         .entries(topDrinksData);
 
-    otherDrinksData = basicFactsData.filter(d => d.RANK === '');
     otherDrinksData = d3.nest()
         .key(d => [d.SUGARS, d.CALORIES])
-        .entries(otherDrinksData);
+        .entries(basicFactsData);
 
+    setupTopDrinks();
     plotTopDrinks();
 });
 
-function initializeBasicFacts() {
+function setupBasicFacts() {
     // textfields
     // when the input range changes update value
     d3.select('#facts-keyword').on('input', function() {
@@ -153,11 +169,20 @@ function plotBasicFacts() {
                     .on('mouseenter', d => {
                         d3.select('#facts-widget-img').attr('src', d.IMAGE);
                         d3.select('#facts-widget-name').html(d.NAME);
-                        d3.select('#facts-widget-calories').html(d.CALORIES);
-                        d3.select('#facts-widget-sugars').html(d.SUGARS);
-                        // d3.select('#facts-widget-caffeine').html(d.CAFFEINE);
-                        d3.select('#facts-widget-cal-bar').attr('style', `width: ${d.CALORIES / 7 }%;`);
-                        d3.select('#facts-widget-sugar-bar').attr('style', `width: ${d.SUGARS}%;`);
+                        if (d.CALORIES == null) {
+                            d3.select('#facts-widget-calories').html('Not Available');
+                            d3.select('#facts-widget-cal-bar').attr('style', `width: 0%;`);
+                        } else {
+                            d3.select('#facts-widget-calories').html(d.CALORIES);
+                            d3.select('#facts-widget-cal-bar').attr('style', `width: ${d.CALORIES / 5}%;`);
+                        }
+                        if (d.SUGARS == null) {
+                            d3.select('#facts-widget-sugars').html('Not Available');
+                            d3.select('#facts-widget-sugar-bar').attr('style', `width: 0%;`);
+                        } else {
+                            d3.select('#facts-widget-sugars').html(d.SUGARS);
+                            d3.select('#facts-widget-sugar-bar').attr('style', `width: ${d.SUGARS / 65 * 100}%;`);
+                        }
                     })
                     .on('mousemove', d => {
                         let margin = 15;
@@ -182,92 +207,88 @@ function plotBasicFacts() {
     };
 }
 
-function plotTopDrinks() {
-    // size
-    let plotWidth = 600;
-    let plotHeight = 400;
-    let plotMargin = 50;
-    let outerWidth = plotWidth + 2 * plotMargin;
-    let outerHeight = plotHeight + 2 * plotMargin;
+function setupTopDrinks() {
+    d3.select('#top-drinks-svg')
+        .attr('width', topDrinksOuterMargin)
+        .attr('height', topDrinksOuterHeight);
 
-    // scales
-    let xScale = d3.scaleLinear()
-        .domain([0, 65])
-        .range([0, plotWidth]);
-    let yScale = d3.scaleLinear()
-        .domain([0, 500])
-        .range([plotHeight, 0]);
+    d3.select('#top-drinks-svg-plot')
+        .attr('transform', `translate(${topDrinksPlotMargin},${topDrinksPlotMargin})`);
 
-    let details = d3.select('#top-drinks-details');
-
-    let plot = d3.select('#top-drinks-svg')
-        .attr('width', outerWidth)
-        .attr('height', outerHeight)
-        .append('g')
-        .attr('transform', `translate(${plotMargin},${plotMargin})`);
-
-    // inactive
-    plot.append('g').selectAll('circle')
+    d3.select('#top-drinks-svg-other').selectAll('circle')
         .data(otherDrinksData)
         .enter()
         .append('circle')
         .attr('class', 'top-drink-dots-others')
         .attr('r', d => 2 + 2 * d.values.length)
-        .attr('cx', d => xScale(d.key.split(',')[0]))
-        .attr('cy', d => yScale(d.key.split(',')[1]))
+        .attr('cx', d => topDrinksXScale(d.key.split(',')[0]))
+        .attr('cy', d => topDrinksYScale(d.key.split(',')[1]))
         .exit()
         .remove();
 
     // axes
-    let xAxis = plot.append('g')
-        .attr('transform', `translate(0,${plotHeight})`)
-        .call(d3.axisBottom(xScale));
-    let yAxis = plot.append('g')
-        .call(d3.axisLeft(yScale));
 
-    plot.append('text')
-        .attr('transform', `translate(${plotWidth/2}, ${plotHeight + 35})`)
+    let axesPlot = d3.select('#top-drinks-svg-axes');
+
+    axesPlot.append('g')
+        .attr('transform', `translate(0,${topDrinksPlotHeight})`)
+        .call(d3.axisBottom(topDrinksXScale));
+    axesPlot.append('g')
+        .call(d3.axisLeft(topDrinksYScale));
+
+    axesPlot.append('text')
+        .attr('transform', `translate(${topDrinksPlotWidth/2}, ${topDrinksPlotHeight + 35})`)
         .style('text-anchor', 'middle')
         .text('CALORIES');
 
-    plot.append('text')
+    axesPlot.append('text')
         .attr('transform', 'rotate(-90)')
-        .attr('y', 0 - plotMargin)
-        .attr('x', 0 - (plotHeight / 2))
+        .attr('y', 0 - topDrinksPlotMargin)
+        .attr('x', 0 - (topDrinksPlotHeight / 2))
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
         .text('SUGARS');
 
     // TODO Legend
+}
 
-    plot.append('g').selectAll('circle')
-        .data(topDrinksData)
-        .enter()
-        .append('circle')
-        .attr('class', 'top-drink-dots')
-        .attr('r', d => 1 + 2 * d.values.length)
-        .attr('cx', d => xScale(d.key.split(',')[0]))
-        .attr('cy', d => yScale(d.key.split(',')[1]))
-        .on('mouseenter', d => {
-            // sort by ranking
-            const values = d.values;
-            values.sort(function(x, y) {
-                return d3.ascending(x.RANK, y.RANK);
+function plotTopDrinks() {
+    let details = d3.select('#top-drinks-details');
+    let checkBox = document.getElementById('top-drinks-checkbox');
+
+    let axesPlot = d3.select('#top-drinks-svg-top');
+    axesPlot.selectAll('circle').remove();
+
+    if (checkBox.checked) {
+        axesPlot.selectAll('circle')
+            .data(topDrinksData)
+            .enter()
+            .append('circle')
+            .attr('class', 'top-drink-dots')
+            .attr('r', d => 1 + 2 * d.values.length)
+            .attr('cx', d => topDrinksXScale(d.key.split(',')[0]))
+            .attr('cy', d => topDrinksYScale(d.key.split(',')[1]))
+            .on('mouseenter', d => {
+                // sort by ranking
+                const values = d.values;
+                values.sort(function(x, y) {
+                    return d3.ascending(x.RANK, y.RANK);
+                })
+
+                for (const i in values) {
+                    let container = details.append('div');
+                    container.append('p')
+                        .attr('class', 'top-drinks-details-name')
+                        .text(`#${d.values[i].RANK} ${d.values[i].NAME}`);
+                    container.append('p')
+                        .attr('class', 'top-drinks-details-others')
+                        .text(`Calories: ${d.values[i].CALORIES}, Sugars: ${d.values[i].SUGARS}`);
+                }
             })
-
-            for (const i in values) {
-                let container = details.append('div');
-                container.append('p')
-                    .attr('class', 'top-drinks-details-name')
-                    .text(`#${d.values[i].RANK} ${d.values[i].NAME}`);
-                container.append('p')
-                    .attr('class', 'top-drinks-details-others')
-                    .text(`Calories: ${d.values[i].CALORIES}, Sugars: ${d.values[i].SUGARS}`);
-            }
-        })
-        .on('mouseleave', d => {
-            details.selectAll('div').remove();
-        })
-        .exit()
-        .remove();
+            .on('mouseleave', d => {
+                details.selectAll('div').remove();
+            })
+            .exit()
+            .remove();
+    }
 }

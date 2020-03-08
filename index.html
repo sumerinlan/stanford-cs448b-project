@@ -14,14 +14,20 @@
         <div id='test'></div>
     </div>
 
-    
+
 
 
 
 
     <div id='facts-container' class='main'>
         <h1 style="font-weight: 800;">BASIC FACTS</h1>
-        <p>Some random random random random random random random random random random random random random random random random random random random random random random random random random random random random random random text.</p>
+        <p>
+            First we extract nutrition information from <a href='https://www.starbucks.com/menu' target='_blank'>Starbucks's menu</a>. Here we display information that we think people care most: calories and sugars.
+        </p>
+
+        <p>
+            Drinks are categorized based on the menu. Hover drinks to see detailed information, which is calculated based on the standard receipes (grande or doppio size (for espresso), and standard milk for the specific drink). Select a tab or type in the search bar to filter drinks.
+        </p>
 
         <div>
             <p>Type keyword to filter</p>
@@ -74,15 +80,28 @@
         <h1 class='main'>TOP RANKED DRINKS</h1>
 
         <p class='main'>
-            What are the most popular drinks on Starbucks' ever-changing menu? Do people go for high calories drinks or healthy is their top concern? We are interested to see how the top-ranked items are distributed by calories and sugars. The ranking is from <a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>.
+            What are the most popular drinks on Starbucks' ever-changing menu? Do people go for high calories drinks or healthy is their top concern? We are interested to see how the top-ranked items are distributed by calories and sugars. The
+            ranking is from <a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>.
         </p>
 
         <p class='main'>
             The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Hover the green dots to see nutrition information for top-ranked items.
         </p>
 
+        <p class='main'>
+            <label class='container'>Show top drinks in the plot
+                <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked>
+            </label>
+        </p>
+
         <div id='top-drinks'>
-            <svg id='top-drinks-svg'></svg>
+            <svg id='top-drinks-svg'>
+                <g id='top-drinks-svg-plot'>
+                    <g id='top-drinks-svg-other'></g>
+                    <g id='top-drinks-svg-axes'></g>
+                    <g id='top-drinks-svg-top'></g>
+                </g>
+            </svg>
             <div id='top-drinks-details'></div>
         </div>
     </div>
@@ -115,9 +134,9 @@
     <!-- information e.g. calories -->
     <div>
         <p>Calories: <span id='calories-widget-text'></span> kcal</p>
-        
+
     </div>
-    
+
 </div>
 </body>
 
