@@ -21,18 +21,26 @@
 
     <div id='facts-container' class='main'>
         <h1 style="font-weight: 800;">BASIC FACTS</h1>
+
+        <!-- motivation -->
         <p>
-            First we extract nutrition information from <a href='https://www.starbucks.com/menu' target='_blank'>Starbucks's menu</a>. Here we display information that we think people care most: calories and sugars.
+            We leverage the nutrition information a lot when we order drinks, so we have extracted nutrition information from <a href='https://www.starbucks.com/menu' target='_blank'>Starbucks's menu</a> and display the full menu below.
         </p>
 
+        <!-- design rationale -->
         <p>
-            Drinks are categorized based on the menu. Hover drinks to see detailed information, which is calculated based on the standard receipes (grande or doppio size (for espresso), and standard milk for the specific drink). Select a tab or type in the search bar to filter drinks.
+            Drinks are categorized based on the menu to help people better find drinks. We display information that we think people care most: calories and sugars. It is calculated based on the standard receipes: grande size for most drinks or doppio size (for espresso), and default milk for the specific drinks. We added a search bar to aid searching functionality. The full menu is long, so we created tabs to divide the list.
         </p>
 
-        <div>
-            <p>Type keyword to filter</p>
-            <form>
-                <input type='text' id='facts-keyword' onFocus="this.value=''" value='Type a name...' placeholder='Type a name...'>
+        <!-- instruction -->
+        <p class='instruction'>
+            <span class='instruction-action'>Hover</span> drinks to see detailed information. <span class='instruction-action'>Select</span> a tab or <span class='instruction-action'>type</span> in the search bar to filter drinks.
+        </p>
+
+        <div id='facts-nav'>
+            <div id='facts-tabs'></div>
+            <form id='facts-search'>
+                <input type='text' id='facts-keyword' onFocus='' value='' placeholder='Type a name...'>
             </form>
         </div>
 
@@ -79,19 +87,20 @@
     <div id='top-drinks-container'>
         <h1 class='main'>TOP RANKED DRINKS</h1>
 
+        <!-- motivation -->
         <p class='main'>
-            What are the most popular drinks on Starbucks' ever-changing menu? Do people go for high calories drinks or healthy is their top concern? We are interested to see how the top-ranked items are distributed by calories and sugars. The
+            What are the most popular drinks on Starbucks' ever-changing menu? Do people go for high calories drinks or healthy is their top concern? We are interested to see how the top-ranked items are distributed by calories and sugars. Similar as above, the information are of standard preparation. The
             ranking is from <a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>.
         </p>
 
+        <!-- design rational -->
         <p class='main'>
-            The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Hover the green dots to see nutrition information for top-ranked items.
+            To better compare the calories and sugar data betweem top drinks and other drinks, we put all drinks in the plot. The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Users can toggle on and off the top drinks to better see the full data.
         </p>
 
-        <p class='main'>
-            <label class='container'>Show top drinks in the plot
-                <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked>
-            </label>
+        <!-- instruction -->
+        <p class='main instruction'>
+            <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked> <span class='instruction-action'>Toggle</span> to show or hide top-ranked items. <span class='instruction-action'>Hover</span> the green dots to see nutrition information.
         </p>
 
         <div id='top-drinks'>
@@ -104,6 +113,11 @@
             </svg>
             <div id='top-drinks-details'></div>
         </div>
+
+        <!-- finding -->
+        <p class='main'>
+            From the chart, we reason three patterns of people visiting Starbucks: (1) Some people are in favor of low-calorie and low-sugar products like cold brew, roast coffee and pure tea. (2) Some standard recipes including Caffe Latte and Flat White, around ~20g sugars and ~200 calories, are popular as well. (3) There are big fans of high-calories products such as   Frappuccino, as shown in a cluster at the top-right corner.
+        </p>
     </div>
 
     <script src='js/main.js'></script>

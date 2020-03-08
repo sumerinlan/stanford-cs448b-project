@@ -53,6 +53,8 @@ var basicFactsData = [];
 var topDrinksData = [];
 var otherDrinksData = [];
 
+var basicFactsTabActive = 'Hot Coffees';
+var prefix = '';
 
 // size
 let topDrinksPlotWidth = 600;
@@ -98,12 +100,51 @@ d3.csv('data/starbucks-menu/drink-manual.csv', d => {
 });
 
 function setupBasicFacts() {
+    let basicFactsTabs = d3.select('#facts-tabs');
+    basicFactsTabs.selectAll('div').remove();
+
+    for (const i in CATEGORIES) {
+        let category1 = CATEGORIES[i][0];
+        basicFactsTabs.append('div')
+            // don't display full name for Frappuccino
+            .text(category1.indexOf('Frappuccino') !== -1 ? 'Frappuccino' : category1)
+            .attr('class', category1 == basicFactsTabActive ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
+            .on('click', function() {
+                basicFactsTabs.selectAll('div').attr('class', 'basic-facts-tabs');
+                basicFactsTabActive = category1;
+                d3.select(this).attr('class', 'basic-facts-tabs-active');
+                updateBasicFactsTabs();
+            });
+    }
+
+    basicFactsTabs.append('div')
+        .text('All Drinks')
+        .attr('class', basicFactsTabActive == null ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
+        .on('click', function() {
+            basicFactsTabs.selectAll('div').attr('class', 'basic-facts-tabs');
+            basicFactsTabActive = null;
+            d3.select(this).attr('class', 'basic-facts-tabs-active');
+            updateBasicFactsTabs();
+        });
+
     // textfields
     // when the input range changes update value
     d3.select('#facts-keyword').on('input', function() {
         prefix = this.value.toLowerCase();
         updateBasicFactsFilter();
     });
+}
+
+function updateBasicFactsTabs() {
+    // to prevent reloading data too many times
+    d3.selectAll('.facts-category1')
+        .each(function() {
+            if (basicFactsTabActive == null) {
+                d3.select(this).style('display', 'block');
+            } else {
+                d3.select(this).style('display', d3.select(this).attr('id') == basicFactsTabActive ? 'block' : 'none');
+            }
+        })
 }
 
 function updateBasicFactsFilter() {
@@ -127,7 +168,9 @@ function plotBasicFacts() {
             continue;
         }
 
-        let container1 = basicFacts.append('div');
+        let container1 = basicFacts.append('div')
+            .attr('class', 'facts-category1')
+            .attr('id', category1);
         // append header
         container1.append('h2').text(category1);
 
@@ -205,6 +248,8 @@ function plotBasicFacts() {
             }
         }
     };
+
+    updateBasicFactsTabs();
 }
 
 function setupTopDrinks() {

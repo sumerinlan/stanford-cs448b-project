@@ -1,3 +1,10 @@
+:root {
+    --starbucks-green: #006241;
+    --light-green: #d4e9e2;
+    --house-green: #1e3932;
+    --warm-neutral: #f2f0eb;
+}
+
 /*.calories-circle{
 	position: fixed;
 	animation: scaleout 1s ease-in-out infinite alternate;
@@ -38,11 +45,20 @@ body {
 }
 
 a, a:visited {
-    color: #006241;
+    color: var(--starbucks-green);
 }
 
 a:hover, a:active {
-    color: #d4e9e2;
+    color: var(--light-green);
+}
+
+.instruction {
+    font-size: 0.9rem;
+}
+
+.instruction-action {
+    font-weight: bold;
+    color: var(--starbucks-green);
 }
 
 .main {
@@ -55,24 +71,28 @@ a:hover, a:active {
     padding-top: 10vh;
     padding-bottom: 5vh;
     min-width: 300px;
-    background-color: #1e3932;
-    color: #f2f0eb;
+    background-color: var(--house-green);
+    color: white;
 }
 
 #facts-container a, #facts-container a:visited {
-    color: #d4e9e2;
+    color: var(--light-green);
 }
 
 #facts-container a:hover, #facts-container a:active {
-    color: #006241;
+    color: var(--starbucks-green);
+}
+
+#facts-container .instruction-action {
+    color: var(--light-green);
 }
 
 #facts-keyword {
-    background: #1e3932;
+    background-color: var(--house-green);
     outline-style: none;
     width: 100%;
     border: none;
-    color: #f2f0eb;
+    color: var(--warm-neutral);
 }
 
 .facts-thumbnail-svg {
@@ -113,6 +133,42 @@ a:hover, a:active {
     font-size: 1.2rem;
 }
 
+/* basic facts: nav */
+#facts-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basic-facts-tabs-active, .basic-facts-tabs {
+    display: inline-block;
+    font-size: 0.7rem;
+    margin: 0px;
+    padding: 3px 6px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--light-green);
+    border-bottom: 2px solid var(--house-green);
+}
+
+.basic-facts-tabs:hover {
+    border-bottom-color: var(--light-green);
+}
+
+.basic-facts-tabs-active {
+    font-weight: bold;
+    border-bottom-color: var(--light-green);
+}
+
+.basic-facts-tabs-active:hover, .basic-facts-tabs:hover {
+    cursor: default;
+}
+
+#facts-search {
+    flex-grow: 2;
+    max-width: 150px;
+    margin-left: 3px;
+}
+
 /* top drinks */
 #top-drinks-container {
     padding-top: 10vh;
@@ -132,7 +188,7 @@ a:hover, a:active {
 }
 
 #top-drinks-details {
-    background-color: #f2f0eb;
+    background-color: var(--warm-neutral);
     display: block;
     flex-grow: 2;
     /* HARDCODED */
@@ -173,7 +229,7 @@ a:hover, a:active {
     position: relative;
     width: 200px;
     /*border: 1px solid #B1D632;*/
-    background-color: #d4e9e2;
+    background-color: var(--light-green);
     /*padding: 1px;*/
 }
 
@@ -201,7 +257,7 @@ a:hover, a:active {
     position: relative;
     width: 200px;
     /*border: 1px solid #B1D632;*/
-    background-color: #d4e9e2;
+    background-color: var(--light-green);
     /*padding: 1px;*/
 }
 
