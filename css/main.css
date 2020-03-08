@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    font-family: Open Sans;
+}
+
+/* typeface: Open Sans */
+@font-face {
+   font-family: Open Sans;
+   src: url(../fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: Open Sans;
+  src: url(../fonts/OpenSans-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url(../fonts/OpenSans-ExtraBold.ttf);
+  font-weight: 800;
+}
+@font-face {
+  font-family: Open Sans;
+  src: url(../fonts/OpenSans-Light.ttf);
+  font-weight: lighter;
+}
+
+.main {
+    padding: 0 24%;
+}
+
+/* basic facts */
+#facts-container {
+	font-family: Open Sans;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+    min-width: 300px;
+    background-color: #1e3932;
+    color: #f2f0eb;
+}
+
+#facts-keyword {
+    background: #1e3932;
+    outline-style: none;
+    width: 100%;
+    border: none;
+    color: #f2f0eb;
+}
+
+.facts-thumbnail-svg {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.facts-thumbnail-svg g:hover {
+    opacity: 0.5;
+}
+
+#facts-widget {
+    position: absolute;
+    padding: 5px;
+    width: 240px;
+    background-color: #f2f0eb;
+    color: black;
+}
+
+#facts-widget-img-container {
+    width: 100%;
+    background-color: #1e3932;
+}
+
+#facts-widget-img {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: auto;
+}
+
+#facts-widget p {
+    margin: 0.75rem 0.5rem;
+}
+
+#facts-widget-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* top drinks */
+#top-drinks-container {
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+}
+
+#top-drinks {
+    display: flex;
+    margin: 0 10%;
+    min-width: 800px;
+    flex-wrap: wrap;
+}
+
+#top-drinks-svg {
+    display: inline-flex;
+    background-color: #white;
+}
+
+#top-drinks-details {
+    background-color: #f2f0eb;
+    display: block;
+    flex-grow: 2;
+    /* HARDCODED */
+    min-width: 300px;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.top-drinks-details-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    max-width: 300px;
+}
+
+.top-drinks-details-others {
+    overflow-wrap: break-word;
+    font-size: 0.8rem;
+}
+
+.top-drink-dots {
+    fill: #006241;
+    opacity: 0.5;
+}
+
+.top-drink-dots:hover {
+    opacity: 0.3;
+}
+
+.top-drink-dots-others {
+    fill: #f2f0eb;
+}
+
+
+/*bar indicating calories*/
+.calories-bar {
+	margin: 0.75rem 0.5rem;
+    position: relative;
+    width: 200px;
+    /*border: 1px solid #B1D632;*/
+    background-color: #d4e9e2;
+    /*padding: 1px;*/
+}
+
+
+.calories-bar div {
+	margin: 0.75rem 0rem;
+    display: block;
+    position: relative;
+    background: #00754a;
+    color: #333333;
+    height: 10px;
+    /*line-height: 10px;*/
+}
+
+.calories-bar div span {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*bar indicating sugar*/
+.sugar-bar {
+	margin: 0.75rem 0.5rem;
+    position: relative;
+    width: 200px;
+    /*border: 1px solid #B1D632;*/
+    background-color: #d4e9e2;
+    /*padding: 1px;*/
+}
+
+
+.sugar-bar div {
+	margin: 0.75rem 0rem;
+    display: block;
+    position: relative;
+    background: #1e3932;
+    color: #333333;
+    height: 10px;
+    /*line-height: 10px;*/
+}
