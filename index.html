@@ -9,32 +9,47 @@
 </head>
 
 <body>
-    <div>
-        <h1>Section 0</h1>
-        <div id='test'></div>
+    <div id='intro-container' class='main'>
+
+        <h1>You Don't Know About Starbucks</h1>
+
+        <p>
+            People love Starbucks. Highly ranked in drink industry, it has became part of our daily life.
+        </p>
+
+        <p>
+            Nutrition facts of Starbucks' products are available in its <a href='https://www.starbucks.com/menu' target='_blank'>official website</a> or mobile app. The menu is organized by Starbucks' official categories, which makes it hard to
+            search for a specific item. It is also time-consuming to browse the nutrition information because the website and mobile app also require users to click the drink to read the content. Moreover, it is hard to do comparisons between
+            different products, as you have to switch drinks back and forth and memorize the numberes.
+        </p>
+
+        <p>
+            To better display and analyze Starbucks' drinks, we have pulled out all the menu data on the table, which contains 148 unique drinks, each coming various sizes and nutrition information.
+        </p>
     </div>
 
-
-
-
-
-
     <div id='facts-container' class='main'>
-        <h1 style="font-weight: 800;">BASIC FACTS</h1>
 
         <!-- motivation -->
         <p>
-            We leverage the nutrition information a lot when we order drinks, so we have extracted nutrition information from <a href='https://www.starbucks.com/menu' target='_blank'>Starbucks's menu</a> and display the full menu below.
+            We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span>
+        </p>
+
+        <h1>BASIC FACTS</h1>
+
+        <p>
+            Here we displayed the full menu using an image-based visualizer, where you can easily hover to see a drink's calories and sugars data.
         </p>
 
         <!-- design rationale -->
         <p>
-            Drinks are categorized based on the menu to help people better find drinks. We display information that we think people care most: calories and sugars. It is calculated based on the standard receipes: grande size for most drinks or doppio size (for espresso), and default milk for the specific drinks. We added a search bar to aid searching functionality. The full menu is long, so we created tabs to divide the list.
+            Drinks are categorized based on the menu to help people better find drinks. We selected those that we think people care most: calories and sugars. It is calculated based on the standard receipes: grande size for most drinks or doppio size
+            (for espresso), and default milk for the specific drinks. We added a search bar to aid searching functionality. The full menu is long, so we created tabs to divide the list.
         </p>
 
         <!-- instruction -->
         <p class='instruction'>
-            <span class='instruction-action'>Hover</span> drinks to see detailed information. <span class='instruction-action'>Select</span> a tab or <span class='instruction-action'>type</span> in the search bar to filter drinks.
+            <span class='emphasize'>Hover</span> drinks to see detailed information. <span class='emphasize'>Select</span> a tab or <span class='emphasize'>type</span> in the search bar to filter drinks.
         </p>
 
         <div id='facts-nav'>
@@ -81,26 +96,44 @@
     </div>
 
     <div>
-        <h1>Calories of drinks when you choose different preps...</h1>
+        <!-- motivation -->
+        <p class='main'>
+            Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span>
+        </p>
+
+        <h1 class='main'>Calories of drinks when you choose different preps...</h1>
+
+        <!-- design rational -->
+
+        <!-- finding -->
+        <p class='main'>
+            We can easily see general trend for type of drinks. Coffees like Espresso and Americano and tea have low calories, and Frappuccinos are high-calorie drinks. The widths, ranges of calories based on different preparation (size and milk),
+            varies from drinks to drinks. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti size with whole milk, but if I care about my weight, I can have a healthier
+            choice with the same flavor. However, this is not true for other drinks.
+            <!-- 这个最终图还没出来所以很多感觉还说不清楚 -->
+        </p>
     </div>
 
     <div id='top-drinks-container'>
-        <h1 class='main'>TOP RANKED DRINKS</h1>
 
         <!-- motivation -->
         <p class='main'>
-            What are the most popular drinks on Starbucks' ever-changing menu? Do people go for high calories drinks or healthy is their top concern? We are interested to see how the top-ranked items are distributed by calories and sugars. Similar as above, the information are of standard preparation. The
-            ranking is from <a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>.
+            What are the most popular drinks on Starbucks' ever-changing menu? <span class='emphasize'>Do people go for high calories drinks or healthy is their top concern?</span> With the ranking data from <a
+                href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar as above, the information are
+            of standard preparation.
         </p>
+
+        <h1 class='main'>TOP RANKED DRINKS</h1>
 
         <!-- design rational -->
         <p class='main'>
-            To better compare the calories and sugar data betweem top drinks and other drinks, we put all drinks in the plot. The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Users can toggle on and off the top drinks to better see the full data.
+            To better compare the calories and sugar data betweem top drinks and other drinks, we put all drinks in the plot. The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Users can toggle on and off the top drinks
+            to better see the full data.
         </p>
 
         <!-- instruction -->
         <p class='main instruction'>
-            <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked> <span class='instruction-action'>Toggle</span> to show or hide top-ranked items. <span class='instruction-action'>Hover</span> the green dots to see nutrition information.
+            <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked> <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see nutrition information.
         </p>
 
         <div id='top-drinks'>
@@ -116,8 +149,25 @@
 
         <!-- finding -->
         <p class='main'>
-            From the chart, we reason three patterns of people visiting Starbucks: (1) Some people are in favor of low-calorie and low-sugar products like cold brew, roast coffee and pure tea. (2) Some standard recipes including Caffe Latte and Flat White, around ~20g sugars and ~200 calories, are popular as well. (3) There are big fans of high-calories products such as   Frappuccino, as shown in a cluster at the top-right corner.
+            From the chart we can see the positive correlation between calories and sugars. We guessed the most popular drinks are among those high-calorie high-sugar sections, but it turns out to be quite evenly distributed at the first glance.
+            There are three weak clusters from the chart, and we reason three patterns of people visiting Starbucks:
         </p>
+
+        <ul class='main'>
+            <!-- 😯 这个 unordered list 写出来真丑呜呜呜 -->
+            <li>Some people are in favor of low-calorie and low-sugar products like cold brew, roast coffee and pure tea, for their healthy.</li>
+            <li>Some standard recipes including Caffe Latte and Flat White, around ~20g sugars and ~200 calories, are popular as well. People ordering them leverage the taste and healthiness of the drinks.</li>
+            <li>There are big fans of high-calories products such as Frappuccino, as shown in a cluster at the top-right corner.</li>
+        </ul>
+    </div>
+
+    <div class='main'>
+        <!-- motivation -->
+        <p>
+            Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span>
+        </p>
+
+        <h1>Food Recommender</h1>
     </div>
 
     <script src='js/main.js'></script>
