@@ -7,7 +7,9 @@ export default function define(runtime, observer) {
         )
     });
     main.variable(observer("chart")).define("chart", ["d3", "DOM", "width", "height", "xAxis", "data", "y", "x", "color", "legend"], function(d3, DOM, width, height, xAxis, data, y, x, color, legend) {
-        const svg = d3.select(DOM.svg(width, height));
+        // const svg = d3.select(DOM.svg(width, height));
+        const svg = d3.select('#extreme-calories-svg');
+
 
         svg.append("g")
             .call(xAxis);
