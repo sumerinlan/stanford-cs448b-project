@@ -15,7 +15,7 @@
    	}
 	100% {
   		transform: scale(1.2);
-  	}		      
+  	}
 }*/
 
 body {
@@ -44,6 +44,11 @@ body {
   font-weight: lighter;
 }
 
+h1 {
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
 a, a:visited {
     color: var(--starbucks-green);
 }
@@ -56,7 +61,7 @@ a:hover, a:active {
     font-size: 0.9rem;
 }
 
-.instruction-action {
+.emphasize {
     font-weight: bold;
     color: var(--starbucks-green);
 }
@@ -83,7 +88,7 @@ a:hover, a:active {
     color: var(--starbucks-green);
 }
 
-#facts-container .instruction-action {
+#facts-container .emphasize {
     color: var(--light-green);
 }
 
