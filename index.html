@@ -32,7 +32,7 @@
 
         <!-- motivation -->
         <p>
-            We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span>
+            We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span> <br><br><br>
         </p>
 
         <h1>BASIC FACTS</h1>
@@ -49,7 +49,7 @@
 
         <!-- instruction -->
         <p class='instruction'>
-            <span class='emphasize'>Hover</span> drinks to see detailed information. <span class='emphasize'>Select</span> a tab or <span class='emphasize'>type</span> in the search bar to filter drinks.
+            <span class='emphasize'>Hover</span> drinks to see detailed information. <span class='emphasize'>Select</span> a tab or <span class='emphasize'>type</span> in the search bar to filter drinks. <br><br><br>
         </p>
 
         <div id='facts-nav'>
@@ -97,32 +97,30 @@
 
     <div>
 
-        <h1>Calories of drinks when you choose different preps...</h1>
-
-        <!-- section 2: calories inspector-->
-
-        <svg id='extreme-calories-svg' style="width: 100%; height: 600">
-
-
-        </svg>
-
 
         <!-- motivation -->
         <p class='main'>
-            Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span>
+            Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span> <br><br><br>
         </p>
 
-        <h1 class='main'>Calories of drinks when you choose different preps...</h1>
+        <h1 class='main'>Calories of drinks when you choose different preps</h1>
+
+
+        <!-- section 2: calories inspector-->
 
         <!-- design rational -->
 
         <!-- finding -->
         <p class='main'>
             We can easily see general trend for type of drinks. Coffees like Espresso and Americano and tea have low calories, and Frappuccinos are high-calorie drinks. The widths, ranges of calories based on different preparation (size and milk),
-            varies from drinks to drinks. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti size with whole milk, but if I care about my weight, I can have a healthier
-            choice with the same flavor. However, this is not true for other drinks.
+            vary from drinks to drinks. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti size with whole milk, but if I care about my weight, I can have a healthier
+            choice with the same flavor. However, this is not true for other drinks. <br><br><br><br>
             <!-- 这个最终图还没出来所以很多感觉还说不清楚 -->
         </p>
+
+
+        <svg id='extreme-calories-svg' style="width: 100%; height: 600">
+        </svg>
 
     </div>
 
@@ -132,7 +130,7 @@
         <p class='main'>
             What are the most popular drinks on Starbucks' ever-changing menu? <span class='emphasize'>Do people go for high calories drinks or healthy is their top concern?</span> With the ranking data from <a
                 href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar as above, the information are
-            of standard preparation.
+            of standard preparation. <br><br><br>
         </p>
 
         <h1 class='main'>TOP RANKED DRINKS</h1>
@@ -176,11 +174,30 @@
     <div class='main'>
         <!-- motivation -->
         <p>
-            Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span>
+            Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span> <br><br><br>
         </p>
 
         <h1>Food Recommender</h1>
     </div>
+
+    <div style="text-align:center; background-color: #1E3933;">
+        <img src="images/recommender.001.jpeg" align="center" style="width: 70%; height: 45%;">
+
+
+    </div>
+
+
+
+    <div class="main" style="padding-top: 30px;">
+        <h1>Inspecting by Catrgories</h1>
+    </div>
+
+
+    <div style="text-align:center; padding-top: 30px;">
+
+        <img src="images/categories.png" align="center" style="width: 55%; height: 35%;">
+    </div>
+
 
     <script src='js/main.js'></script>
     <!-- line and dots -->
@@ -197,7 +214,7 @@
 
     <!-- image -->
     <div id='calories-img-container' >
-        <img id='calories-widget-img' style="width: 96px; height: 96px;" />
+        <img id='calories-widget-img' />
     </div>
 
     <!-- name -->

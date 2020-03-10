@@ -48,6 +48,7 @@ export default function define(runtime, observer) {
             .attr("class", "calories-circle")//append class for animation
             .on('mouseenter', (d, i) => {
                 d3.select('#calories-widget-img').attr('src', data.images[i] );
+                d3.select('#calories-prod-name').html(data.names[i]);
                 d3.select('#calories-widget-main').style('display', 'block');
                 d3.select('#calories-widget-text').html(d);//entering with text 
                 console.log("mouse entered! " + d +", image source: " + data.images[i]);
