@@ -1,11 +1,14 @@
 const columns = {
+    TEMPERATURE: 'Temperature',
     RANK: 'Rank',
     CATEGORY1: 'Category1',
     CATEGORY2: 'Category2',
     NAME: 'Name',
+    SHORT_NAME: 'Short Name',
     SIZE: 'Size',
     IMAGE: 'Image',
     CALORIES: 'Calories',
+    CALORIES_MODIFIED: 'Calories_Modified',
     TOTAL_FAT: 'Total Fat (g)',
     TRANS_FAT: 'Trans Fat (g)',
     SATURATED_FAT: 'Saturated Fat (g)',
@@ -35,14 +38,41 @@ const milks = {
     SOYMILK: 'Soymilk',
 }
 
-const CATEGORIES = [
-    ['Hot Coffees', ['Americanos', 'Brewed Coffees', 'Cappuccinos', 'Espresso Shots', 'Flat Whites', 'Lattes', 'Macchiatos', 'Mochas', 'Clover® Brewed Coffees', 'Coffee Travelers']],
-    ['Hot Teas', ['Chai Teas', 'Black Teas', 'Green Teas', 'Herbal Teas', 'White Teas']],
-    ['Hot Drinks', ['Hot Chocolates', 'Juice', 'Steamers', ]],
-    ['Frappuccino\xAE Blended Beverages', ['Coffee Frappuccino\xAE', 'Creme Frappuccino\xAE']],
-    ['Cold Coffees', ['Cold Brews', 'Iced Americano', 'Iced Coffees', 'Iced Espresso Shots', 'Iced Flat Whites', 'Iced Lattes', 'Iced Macchiatos', 'Iced Mochas', 'Iced Clover® Brewed Coffees']],
-    ['Iced Teas', ['Iced Chai Teas', 'Iced Black Teas', 'Iced Green Teas', 'Iced Herbal Teas', 'Iced White Teas', 'Bottled Teas']],
-    ['Cold Drinks', ['Iced Coconutmilk Drinks', 'Starbucks Refreshers\u2122', 'Juice', 'Milk', 'Sparkling Water', 'Water']],
+const CATEGORIES_COLORS = {
+    // spring
+    'Hot Coffees': '#c89543',
+    'Hot Teas': '#eed350',
+    'Hot Drinks': '#edc4c9',
+    'Frappuccino\xAE Blended Beverages': '#b6cbd5',
+    'Cold Coffees': '#c0d48b',
+    'Iced Teas': '#4c9f87',
+    'Cold Drinks': '#005e66'
+}
+
+const CATEGORIES_1 = ['Hot Coffees', 'Hot Teas', 'Hot Drinks', 'Frappuccino\xAE Blended Beverages', 'Cold Coffees', 'Iced Teas', 'Cold Drinks'];
+
+const CATEGORIES_2 = [
+    [
+        ['Americanos', 'Brewed Coffees', 'Cappuccinos', 'Espresso Shots', 'Flat Whites', 'Lattes', 'Macchiatos', 'Mochas', 'Clover® Brewed Coffees', 'Coffee Travelers']
+    ],
+    [
+        ['Chai Teas', 'Black Teas', 'Green Teas', 'Herbal Teas', 'White Teas']
+    ],
+    [
+        ['Hot Chocolates', 'Juice', 'Steamers', ]
+    ],
+    [
+        ['Coffee Frappuccino\xAE', 'Creme Frappuccino\xAE']
+    ],
+    [
+        ['Cold Brews', 'Iced Americano', 'Iced Coffees', 'Iced Espresso Shots', 'Iced Flat Whites', 'Iced Lattes', 'Iced Macchiatos', 'Iced Mochas', 'Iced Clover® Brewed Coffees']
+    ],
+    [
+        ['Iced Chai Teas', 'Iced Black Teas', 'Iced Green Teas', 'Iced Herbal Teas', 'Iced White Teas', 'Bottled Teas']
+    ],
+    [
+        ['Iced Coconutmilk Drinks', 'Starbucks Refreshers\u2122', 'Juice', 'Milk', 'Sparkling Water', 'Water']
+    ],
 ];
 
 // Data
@@ -60,7 +90,7 @@ var prefix = '';
 let topDrinksPlotWidth = 600;
 let topDrinksPlotHeight = 400;
 let topDrinksPlotMargin = 50;
-let topDrinksOuterMargin = topDrinksPlotWidth + 2 * topDrinksPlotMargin;
+let topDrinksOuterWidth = topDrinksPlotWidth + 2 * topDrinksPlotMargin;
 let topDrinksOuterHeight = topDrinksPlotHeight + 2 * topDrinksPlotMargin;
 
 // scales
@@ -73,7 +103,7 @@ let topDrinksYScale = d3.scaleLinear()
 
 setupBasicFacts();
 
-d3.csv('data/starbucks-menu/drink-manual.csv', d => {
+d3.csv('data/starbucks-menu/drink_manual_grande_only.csv', d => {
     var row = {};
     for (elem in columns) {
         row[elem] = d[columns[elem]];
@@ -83,7 +113,7 @@ d3.csv('data/starbucks-menu/drink-manual.csv', d => {
     allData = data;
 
     // size: grande or doppio (for espresso)
-    basicFactsData = allData.filter(d => d.SIZE == sizes.GRANDE || d.SIZE == sizes.DOPPIO);
+    basicFactsData = allData;
     plotBasicFacts();
 
     topDrinksData = basicFactsData.filter(d => d.RANK !== '');
@@ -97,14 +127,15 @@ d3.csv('data/starbucks-menu/drink-manual.csv', d => {
 
     setupTopDrinks();
     plotTopDrinks();
+    plotTemperature();
 });
 
 function setupBasicFacts() {
     let basicFactsTabs = d3.select('#facts-tabs');
     basicFactsTabs.selectAll('div').remove();
 
-    for (const i in CATEGORIES) {
-        let category1 = CATEGORIES[i][0];
+    for (const i in CATEGORIES_1) {
+        let category1 = CATEGORIES_1[i];
         basicFactsTabs.append('div')
             // don't display full name for Frappuccino
             .text(category1.indexOf('Frappuccino') !== -1 ? 'Frappuccino' : category1)
@@ -148,8 +179,7 @@ function updateBasicFactsTabs() {
 }
 
 function updateBasicFactsFilter() {
-    basicFactsData = allData.filter(d => d.SIZE == sizes.GRANDE || d.SIZE == sizes.DOPPIO);
-    basicFactsData = basicFactsData.filter(d => d.CATEGORY1.toLowerCase().indexOf(prefix) !== -1 ||
+    basicFactsData = allData.filter(d => d.CATEGORY1.toLowerCase().indexOf(prefix) !== -1 ||
         d.CATEGORY2.toLowerCase().indexOf(prefix) !== -1 ||
         d.NAME.toLowerCase().indexOf(prefix) !== -1);
     plotBasicFacts();
@@ -161,8 +191,8 @@ function plotBasicFacts() {
 
     let widget = d3.select('#facts-widget');
 
-    for (const i in CATEGORIES) {
-        let category1 = CATEGORIES[i][0];
+    for (const i in CATEGORIES_1) {
+        let category1 = CATEGORIES_1[i];
         const data = basicFactsData.filter(d => d.CATEGORY1 == category1);
         if (data.length == 0) {
             continue;
@@ -174,8 +204,8 @@ function plotBasicFacts() {
         // append header
         container1.append('h2').text(category1);
 
-        for (const j in CATEGORIES[i][1]) {
-            let category2 = CATEGORIES[i][1][j];
+        for (const j in CATEGORIES_2[i][0]) {
+            let category2 = CATEGORIES_2[i][0][j];
             const data2 = data.filter(d => d.CATEGORY2 == category2);
             if (data2.length == 0) {
                 continue;
@@ -254,7 +284,7 @@ function plotBasicFacts() {
 
 function setupTopDrinks() {
     d3.select('#top-drinks-svg')
-        .attr('width', topDrinksOuterMargin)
+        .attr('width', topDrinksOuterWidth)
         .attr('height', topDrinksOuterHeight);
 
     d3.select('#top-drinks-svg-plot')
@@ -301,11 +331,11 @@ function plotTopDrinks() {
     let details = d3.select('#top-drinks-details');
     let checkBox = document.getElementById('top-drinks-checkbox');
 
-    let axesPlot = d3.select('#top-drinks-svg-top');
-    axesPlot.selectAll('circle').remove();
+    let topPlot = d3.select('#top-drinks-svg-top');
+    topPlot.selectAll('circle').remove();
 
     if (checkBox.checked) {
-        axesPlot.selectAll('circle')
+        topPlot.selectAll('circle')
             .data(topDrinksData)
             .enter()
             .append('circle')
@@ -336,4 +366,175 @@ function plotTopDrinks() {
             .exit()
             .remove();
     }
+}
+
+function plotTemperature() {
+    let plotWidth = 560;
+    let plotHeight = 600;
+    let plotMargin = 40;
+    let barMargin = 10;
+    let barHeight = 3;
+    let sideWidth = 400;
+    let outerWidth = plotWidth + sideWidth + 2.5 * plotMargin;
+    let outerHeight = plotHeight + 2 * plotMargin;
+    let legendHeight = 24;
+
+    let tempYScale = d3.scaleLinear()
+        .domain([0, 500])
+        .range([plotHeight, 0]);
+
+    let tempXScale = d3.scaleOrdinal()
+        .range([0, plotWidth]);
+
+    d3.select('#temp-svg')
+        .attr('width', outerWidth)
+        .attr('height', outerHeight);
+
+    d3.select('#temp-svg-plot')
+        .attr('transform', `translate(${plotMargin}, ${plotMargin})`);
+
+    d3.select('#temp-svg-text-container')
+        .attr('transform', `translate(${plotMargin * 1.5 + plotWidth}, ${plotMargin})`);
+
+    let widget = d3.select('#temp-widget');
+
+    let legendPlot = d3.select('#temp-svg-legend')
+        .attr('transform', `translate(0, 0)`);
+
+    let axesPlot = d3.select('#temp-svg-axes');
+
+    // axes
+
+    // y-axis
+    // Reference: https://observablehq.com/@d3/styled-axes
+    axesPlot.append('g')
+        .attr('class', 'temp-svg-axes')
+        .call(d3.axisRight(tempYScale)
+            .tickSize(plotWidth))
+        .call(g => g.select('.domain')
+            .remove())
+        .call(g => g.selectAll('.tick:not(:first-of-type) line')
+            .attr('stroke-dasharray', '2,2'))
+        .call(g => g.selectAll('.tick text')
+            .attr('class', 'temp-svg-axes-text-small')
+            .attr('x', -4)
+            .attr('dy', -4));
+
+    axesPlot.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - plotMargin)
+        .attr('x', 0 - (plotHeight / 2))
+        .attr('dy', '1rem')
+        .attr('class', 'temp-svg-axes-text')
+        .text('CALORIES');
+
+    for (const i in CATEGORIES_1) {
+        let category1 = CATEGORIES_1[i];
+
+        axesPlot.append('text')
+            .attr('transform', `translate(${plotWidth / 14 + i * plotWidth / 7}, ${plotHeight + 20})`)
+            .attr('class', 'temp-svg-axes-text-small')
+            .text(category1.indexOf('Frappuccino') !== -1 ? 'Frappuccino' : category1);
+
+        // legends
+        legendPlot.append('rect')
+            .attr('x', 0)
+            .attr('y', plotHeight - legendHeight * (7 - i))
+            .attr('width', legendHeight * 0.8)
+            .attr('height', legendHeight * 0.8)
+            .style('fill', CATEGORIES_COLORS[category1]);
+
+        legendPlot.append('text')
+            .text(category1)
+            .attr('x', legendHeight * 1.2)
+            .attr('y', plotHeight - legendHeight * (7 - i) + legendHeight * 0.6)
+            .attr('class', 'temp-svg-axes-text-small')
+            .style('text-anchor', 'start');
+    }
+
+    axesPlot.append('line')
+        .attr('x1', plotWidth / 7 * 3)
+        .attr('y1', - plotMargin / 2)
+        .attr('x2', plotWidth / 7 * 3)
+        .attr('y2', plotHeight)
+        .attr('class', 'temp-svg-axes')
+        .style('stroke-width', 1);
+
+    axesPlot.append('text')
+        .attr('transform', `translate(${plotWidth / 14 * 3}, -10)`)
+        .attr('class', 'temp-svg-axes-text')
+        .text('Hot');
+
+    axesPlot.append('text')
+        .attr('transform', `translate(${plotWidth / 7 * 5}, -10)`)
+        .attr('class', 'temp-svg-axes-text')
+        .text('Cold');
+
+    // text info
+
+    d3.select('#temp-svg-text-this');
+    d3.select('#temp-svg-text-small-this')
+        .attr('transform', `translate(0, 20)`);
+    d3.select('#temp-svg-text-other')
+        .attr('transform', `translate(0, 60)`);
+    d3.select('#temp-svg-text-small-other')
+        .attr('transform', `translate(0, 80)`);
+
+    // plot
+    let mainPlot = d3.select('#temp-svg-main');
+    mainPlot.selectAll('rect')
+        .data(allData)
+        .enter()
+        .append('rect')
+        .attr('class', 'temp-dot')
+        .attr('x', d => CATEGORIES_1.indexOf(d.CATEGORY1) * plotWidth / 7 + barMargin)
+        .attr('y', d => tempYScale(d.CALORIES_MODIFIED) - barMargin)
+        .attr('width', plotWidth / 7 - 2 * barMargin)
+        .attr('height', barHeight)
+        .style('fill', d => CATEGORIES_COLORS[d.CATEGORY1])
+        .on('mouseenter', d => {
+            let margin = 15;
+            let left = d3.event.pageX + margin;
+            let top = d3.event.pageY + margin;
+            // TODO: fix position
+            widget.style('left', `${left}px`).style('top', `${top}px`);
+            widget.style('display', 'block');
+            d3.select('#temp-widget-img').attr('src', d.IMAGE);
+            d3.select('#temp-widget-name').html(d.NAME);
+        })
+        .on('mouseleave', d => {
+            widget.style('display', 'none');
+        })
+        .on('click', d => {
+            let hasPair = d.SHORT_NAME !== '';
+            if (hasPair) {
+                d3.select('#temp-svg-text-this').text(`(${d.TEMPERATURE}) ${d.SHORT_NAME}`);
+                d3.select('#temp-svg-text-small-this').text(`Calories: ${d.CALORIES}`);
+
+                d3.select('#temp-svg-main').selectAll('.temp-dot')
+                    .each(function() {
+                        if (d3.select(this).data()[0].SHORT_NAME == d.SHORT_NAME) {
+                            d3.select(this).classed('temp-dot-highlight', true);
+                            if (d3.select(this).data()[0].TEMPERATURE != d.TEMPERATURE) {
+                                d3.select('#temp-svg-text-other').text(`(${d3.select(this).data()[0].TEMPERATURE}) ${d3.select(this).data()[0].SHORT_NAME}`);
+                                d3.select('#temp-svg-text-small-other').text(`Calories: ${d3.select(this).data()[0].CALORIES}`);
+                            }
+                        } else {
+                            d3.select(this).classed('temp-dot-highlight', false);
+                        }
+                    })
+            } else {
+                d3.select('#temp-svg-text-this').text(d.NAME);
+                d3.select('#temp-svg-text-small-this').text(`Calories: ${d.CALORIES}`);
+
+                let tempOther = d.TEMPERATURE === 'Hot' ? 'cold' : 'hot';
+                d3.select('#temp-svg-text-other').text(`Corresponding ${tempOther} option not available`);
+                d3.select('#temp-svg-text-small-other').text('');
+
+                d3.select('#temp-svg-main').selectAll('.temp-dot')
+                    .each(function() {
+                        d3.select(this).classed('temp-dot-highlight', d3.select(this).data()[0].NAME == d.NAME);
+                    });
+            }
+        });
 }

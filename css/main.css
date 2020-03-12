@@ -47,6 +47,7 @@ body {
 h1 {
     text-transform: uppercase;
     font-weight: 800;
+    padding-top: 30px;
 }
 
 a, a:visited {
@@ -298,4 +299,73 @@ a:hover, a:active {
     color: #333333;
     height: 10px;
     /*line-height: 10px;*/
+}
+
+/* temperature */
+
+.temp-svg-axes {
+    stroke: black;
+    stroke-opacity: 0.5;
+}
+
+.temp-svg-axes-text {
+    font-weight: lighter;
+    text-anchor: middle;
+    font-size: 0.9rem;
+}
+
+.temp-svg-axes-text-small {
+    font-weight: lighter;
+    font-size: 0.7rem;
+    text-anchor: middle;
+}
+
+.temp-svg-text {
+    font-size: 0.9rem;
+}
+
+.temp-svg-text-small {
+    font-size: 0.8rem;
+}
+
+#temp-svg-text-this {
+    font-weight: bold;
+}
+
+.temp-dot-highlight {
+    opacity: 0.5;
+}
+
+#temp-widget {
+    position: absolute;
+    padding: 5px;
+    width: 240px;
+    background-color: var(--warm-neutral);
+    color: black;
+}
+
+#temp-widget-img-container {
+    width: 100%;
+    background-color: #1e3932;
+}
+
+#temp-widget-img {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: auto;
+}
+
+#temp-widget p {
+    margin: 0.75rem 0.5rem;
+}
+
+#temp-widget-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#temp-svg {
+    display: block;
+    margin: auto;
 }
