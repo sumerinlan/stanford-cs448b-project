@@ -31,7 +31,10 @@ export default function define(runtime, observer) {
         g.append("text")
             .attr("dy", "0.35em")
             .attr("x", d => x(d[d.length - 1]) + 40) // [d.length -1] +22
-            .text((d, i) => data.names[i]);
+            .text((d, i) => data.names[i])
+            .on('mouseenter', (d,i) => {
+                console.log("text i:" + i);
+            });
 
 
         
@@ -50,7 +53,7 @@ export default function define(runtime, observer) {
                 d3.select('#calories-widget-img').attr('src', data.images[i] );
                 d3.select('#calories-widget-main').style('display', 'block');
                 d3.select('#calories-widget-text').html(d);//entering with text 
-                console.log("mouse entered! " + d +", image source: " + data.images[i]);
+                console.log("mouse entered! " + i +", image source: " + data.images[i]);
 
             })
             .on('mouseover', function () {
@@ -75,7 +78,7 @@ export default function define(runtime, observer) {
 
 
 
-        // slider
+        // grey slider
         g.append("g")
             .selectAll("circle")
             .data(d => d)
