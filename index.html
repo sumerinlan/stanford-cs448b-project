@@ -119,8 +119,13 @@
         </p>
 
 
-        <svg id='extreme-calories-svg' style="width: 100%; height: 600">
-        </svg>
+        <!-- <svg id='extreme-calories-svg' style="width: 100%; height: 600">
+        </svg> -->
+
+        <div id = 'm_tooltip'></div>
+
+        <div id='calories-sort-container'>
+        </div>
 
     </div>
 
@@ -199,18 +204,8 @@
     </div>
 
 
-    <script src='js/main.js'></script>
-    <!-- line and dots -->
-    <script type="module">
-        import define from "./js/index.js";
-        import {Runtime, Library, Inspector} from "./js/runtime.js";
 
-        const runtime = new Runtime();
-        const main = runtime.module(define, Inspector.into(document.body));
-
-</script>
-
-<div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">
+    <div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">
 
     <!-- image -->
     <div id='calories-img-container' >
@@ -231,6 +226,36 @@
     </div>
 
 </div>
+
+
+<script src='js/main.js'></script>
+<!-- line and dots -->
+
+<script type="module">
+    import {Runtime, Library, Inspector} from "./js/runtime.js";
+    import define from "./js/index.js";
+    const inspect = Inspector.into("#calories-sort-container");
+    const runtime = new Runtime();
+    runtime.module(define, name => (name === "viewof sorting") && inspect());
+    runtime.module(define, name => (name === "chart") && inspect());
+
+
+
+
+
+
+    (new Runtime).module(define, name => (name === "chart") && inspect());
+
+
+    
+    
+    
+    // const main = runtime.module(define, Inspector.into("#calories-sort-container"));
+
+</script>
+
+
+
 </body>
 
 </html>

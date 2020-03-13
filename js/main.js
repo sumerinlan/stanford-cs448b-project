@@ -73,7 +73,7 @@ let topDrinksYScale = d3.scaleLinear()
 
 setupBasicFacts();
 
-d3.csv('data/starbucks-menu/drink-manual.csv', d => {
+d3.csv('data/starbucks-menu/drink_manual.csv', d => {
     var row = {};
     for (elem in columns) {
         row[elem] = d[columns[elem]];

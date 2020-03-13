@@ -1,20 +1,20 @@
-Category1,Category2,Name,Image,Size_Min,Calories_Min,Size_Max,Calories_Max
-Cold Coffees,Cold Brews,Cold Brew Coffee,https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg,Tall,5,Trenta,5
+Category1,Category2,Name,Image,Size_Min,start,Size_Max,end
+Cold Coffees,Cold Brews,Cold Brew Coffee,https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg,Tall,5,Trenta,6
 Cold Coffees,Cold Brews,Cold Brew Coffee with Milk,https://globalassets.starbucks.com/assets/de574746527d4960a7d838f271e3491c.jpg,Tall,25,Trenta,70
 Cold Coffees,Cold Brews,Cold Brew with Salted Cream Cold Foam,https://globalassets.starbucks.com/assets/6ffca0a4b4ec4af98d07c4e860baca45.jpg,Tall,160,Trenta,340
 Cold Coffees,Cold Brews,Cold Brew with Salted Honey Cold Foam,https://globalassets.starbucks.com/assets/1f3d15ed2b534aaab4cbc8fbf2b8cccb.jpg,Tall,30,Trenta,45
-Cold Coffees,Cold Brews,Nitro Cold Brew,https://globalassets.starbucks.com/assets/85ae42ce9eb5423d83c4410f7b561882.jpg,Tall,5,Grande,5
+Cold Coffees,Cold Brews,Nitro Cold Brew,https://globalassets.starbucks.com/assets/85ae42ce9eb5423d83c4410f7b561882.jpg,Tall,5,Grande,6
 Cold Coffees,Cold Brews,Nitro Cold Brew with Salted Cream Cold Foam,https://globalassets.starbucks.com/assets/1791fd99e33248be844d360c90429bcd.jpg,Tall,160,Grande,230
 Cold Coffees,Cold Brews,Nitro Cold Brew with Salted Honey Cold Foam,https://globalassets.starbucks.com/assets/1697f7c55887448684fed85ecdd98e44.jpg,Tall,30,Grande,40
 Cold Coffees,Cold Brews,Nitro Cold Brew with Sweet Cream,https://globalassets.starbucks.com/assets/31d2824c896147fbaad4a1eac1ab1174.jpg,Tall,70,Grande,70
 Cold Coffees,Cold Brews,Reserve® Cold Brew,https://globalassets.starbucks.com/assets/65fc074f721f41afb23db6981c600ce7.jpg,Tall,0,Venti,5
-Cold Coffees,Cold Brews,Reserve® Nitro Cold Brew,https://globalassets.starbucks.com/assets/55525cd1303a4b18958b05f0705b4cbb.jpg,Tall,5,Grande,5
+Cold Coffees,Cold Brews,Reserve® Nitro Cold Brew,https://globalassets.starbucks.com/assets/55525cd1303a4b18958b05f0705b4cbb.jpg,Tall,5,Grande,6
 Cold Coffees,Cold Brews,Vanilla Sweet Cream Cold Brew,https://globalassets.starbucks.com/assets/3ee242d417904e7aa8f859fc1b07873c.jpg,Tall,90,Trenta,210
 Cold Coffees,Iced Americano,Iced Blonde Caffè Americano,https://globalassets.starbucks.com/assets/84ede138768e42ebb2e0366c2f09960a.jpg,Tall,10,Venti,15
 Cold Coffees,Iced Americano,Iced Caffè Americano,https://globalassets.starbucks.com/assets/84ede138768e42ebb2e0366c2f09960a.jpg,Tall,10,Venti,15
 Cold Coffees,Iced Coffees,Iced Coffee,https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg,Tall,60,Trenta,160
 Cold Coffees,Iced Coffees,Iced Coffee with Milk,https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg,Tall,80,Trenta,230
-Cold Coffees,Iced Espresso Shots,Blonde Doubleshot® On Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,,Venti,
+Cold Coffees,Iced Espresso Shots,Blonde Doubleshot® On Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,0,Venti,1
 Cold Coffees,Iced Espresso Shots,Doubleshot® on Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,80,Venti,170
 Cold Coffees,Iced Espresso Shots,Iced Espresso,https://globalassets.starbucks.com/assets/6a320073ec4b47e7bb9e6eb9e5e74e96.jpg,Solo,5,Quad,25
 Cold Coffees,Iced Flat Whites,Iced Almondmilk Honey Flat White,https://globalassets.starbucks.com/assets/278a67a4f04948748626b3e0a2582182.jpg,Tall,100,Venti,200
@@ -73,11 +73,11 @@ Frappuccino® Blended Beverages,Creme Frappuccino®,Vanilla Bean Crème Frappucc
 Frappuccino® Blended Beverages,Creme Frappuccino®,White Chocolate Crème Frappuccino®,https://globalassets.starbucks.com/assets/b29b977606704ff9a0238600231faf9c.jpg,Tall,250,Venti,450
 Hot Coffees,Americanos,Blonde Caffè Americano,https://globalassets.starbucks.com/assets/ae11e1ff43824e95982e7300f35f44c3.jpg,Short,5,Venti,15
 Hot Coffees,Americanos,Caffè Americano,https://globalassets.starbucks.com/assets/f12bc8af498d45ed92c5d6f1dac64062.jpg,Short,5,Venti,15
-Hot Coffees,Brewed Coffees,Blonde Roast,https://globalassets.starbucks.com/assets/abb4f97948c948c28ea2dcaf933c4f6b.jpg,Short,5,Venti,5
+Hot Coffees,Brewed Coffees,Blonde Roast,https://globalassets.starbucks.com/assets/abb4f97948c948c28ea2dcaf933c4f6b.jpg,Short,5,Venti,6
 Hot Coffees,Brewed Coffees,Caffè Misto,https://globalassets.starbucks.com/assets/d668acbc691b47249548a3eeac449916.jpg,Short,50,Venti,130
-Hot Coffees,Brewed Coffees,Decaf Pike Place® Roast,https://globalassets.starbucks.com/assets/51bf549cd8e9434da941fec33b820d39.jpg,Short,5,Venti,5
-Hot Coffees,Brewed Coffees,Featured Dark Roast Coffee,https://globalassets.starbucks.com/assets/0279f9c5fa5941d2a65dd183d7a0b386.jpg,Short,5,Venti,5
-Hot Coffees,Brewed Coffees,Pike Place® Roast,https://globalassets.starbucks.com/assets/bffaf0f27e124801abcabe09f05b0fb2.jpg,Short,5,Venti,5
+Hot Coffees,Brewed Coffees,Decaf Pike Place® Roast,https://globalassets.starbucks.com/assets/51bf549cd8e9434da941fec33b820d39.jpg,Short,5,Venti,6
+Hot Coffees,Brewed Coffees,Featured Dark Roast Coffee,https://globalassets.starbucks.com/assets/0279f9c5fa5941d2a65dd183d7a0b386.jpg,Short,5,Venti,6
+Hot Coffees,Brewed Coffees,Pike Place® Roast,https://globalassets.starbucks.com/assets/bffaf0f27e124801abcabe09f05b0fb2.jpg,Short,5,Venti,6
 Hot Coffees,Cappuccinos,Blonde Cappuccino,https://globalassets.starbucks.com/assets/5c515339667943ce84dc56effdf5fc1b.jpg,Short,80,Venti,150
 Hot Coffees,Cappuccinos,Cappuccino,https://globalassets.starbucks.com/assets/5c515339667943ce84dc56effdf5fc1b.jpg,Short,80,Venti,150
 Hot Coffees,Espresso Shots,Espresso,https://globalassets.starbucks.com/assets/ec519dd5642c41629194192cce582135.jpg,Solo,5,Quad,20
@@ -115,20 +115,20 @@ Hot Drinks,Steamers,Cinnamon Dolce Crème,https://globalassets.starbucks.com/ass
 Hot Drinks,Steamers,Smoked Butterscotch Crème,https://globalassets.starbucks.com/assets/29bfcdc5f9854ac19809b471fe1154c9.jpg,Short,180,Venti,460
 Hot Drinks,Steamers,Steamed Milk,https://globalassets.starbucks.com/assets/8b656cabb99344269543833b7e787bbd.jpg,Short,100,Venti,260
 Hot Drinks,Steamers,Vanilla Crème,https://globalassets.starbucks.com/assets/08cbcc04c487480d9587414ea1977ce7.jpg,Short,180,Venti,400
-Hot Teas,Black Teas,Earl Grey Tea,https://globalassets.starbucks.com/assets/6f780d5d392542c6b9b1a4412881cecc.jpg,Short,0,Venti,0
+Hot Teas,Black Teas,Earl Grey Tea,https://globalassets.starbucks.com/assets/6f780d5d392542c6b9b1a4412881cecc.jpg,Short,0,Venti,1
 Hot Teas,Black Teas,London Fog Tea Latte,https://globalassets.starbucks.com/assets/180da7ecb6fa4d2686babe5619fa7b84.jpg,Short,90,Venti,230
-Hot Teas,Black Teas,Rev Up Brewed Wellness Tea,https://globalassets.starbucks.com/assets/67a499b71ba54597af1e69a83438082b.jpg,Short,0,Venti,0
-Hot Teas,Black Teas,Royal English Breakfast Black Tea,https://globalassets.starbucks.com/assets/e3554d07d1394ee79cfad80a383ba163.jpg,Short,0,Venti,0
+Hot Teas,Black Teas,Rev Up Brewed Wellness Tea,https://globalassets.starbucks.com/assets/67a499b71ba54597af1e69a83438082b.jpg,Short,0,Venti,1
+Hot Teas,Black Teas,Royal English Breakfast Black Tea,https://globalassets.starbucks.com/assets/e3554d07d1394ee79cfad80a383ba163.jpg,Short,0,Venti,1
 Hot Teas,Black Teas,Royal English Breakfast Tea Latte,https://globalassets.starbucks.com/assets/919eb07194f44a0b842c0260c3a286d8.jpg,Short,80,Venti,190
 Hot Teas,Chai Teas,Chai Latte,https://globalassets.starbucks.com/assets/2d52f16a22fb40ff898be1815ecc952e.jpg,Short,120,Venti,310
-Hot Teas,Chai Teas,Teavana® Chai Tea,https://globalassets.starbucks.com/assets/49bf4333e9d048498a59a5a2b958165f.jpg,Short,0,Venti,0
-Hot Teas,Green Teas,Emperor’s Clouds & Mist®,https://globalassets.starbucks.com/assets/1a84d455abd84ac3b356c6523fce9ac8.jpg,Short,0,Venti,0
+Hot Teas,Chai Teas,Teavana® Chai Tea,https://globalassets.starbucks.com/assets/49bf4333e9d048498a59a5a2b958165f.jpg,Short,0,Venti,1
+Hot Teas,Green Teas,Emperor’s Clouds & Mist®,https://globalassets.starbucks.com/assets/1a84d455abd84ac3b356c6523fce9ac8.jpg,Short,0,Venti,1
 Hot Teas,Green Teas,Honey Citrus Mint Tea,https://globalassets.starbucks.com/assets/a5e64777b3cc412e9239b8a37328cb37.jpg,Short,60,Venti,150
-Hot Teas,Green Teas,Jade Citrus Mint® Brewed Tea,https://globalassets.starbucks.com/assets/6a59c09bb55c42f8a6a970e73c22caeb.jpg,Short,0,Venti,0
+Hot Teas,Green Teas,Jade Citrus Mint® Brewed Tea,https://globalassets.starbucks.com/assets/6a59c09bb55c42f8a6a970e73c22caeb.jpg,Short,0,Venti,1
 Hot Teas,Green Teas,Matcha Green Tea Latte,https://globalassets.starbucks.com/assets/8b1b6d808cca4787afd2b30cf8dd5676.jpg,Short,110,Venti,320
-Hot Teas,Herbal Teas,Comfort Brewed Wellness Tea,https://globalassets.starbucks.com/assets/74588adfe54a410997948fb219f1352f.jpg,Short,0,Venti,0
-Hot Teas,Herbal Teas,Mint Majesty®,https://globalassets.starbucks.com/assets/cf7469c84a444e4f9a341f8023558c77.jpg,Short,0,Venti,0
-Hot Teas,Herbal Teas,Peach Tranquility®,https://globalassets.starbucks.com/assets/f3ecda7d7510434c9ed2b3167dcb4466.jpg,Short,0,Venti,0
+Hot Teas,Herbal Teas,Comfort Brewed Wellness Tea,https://globalassets.starbucks.com/assets/74588adfe54a410997948fb219f1352f.jpg,Short,0,Venti,1
+Hot Teas,Herbal Teas,Mint Majesty®,https://globalassets.starbucks.com/assets/cf7469c84a444e4f9a341f8023558c77.jpg,Short,0,Venti,1
+Hot Teas,Herbal Teas,Peach Tranquility®,https://globalassets.starbucks.com/assets/f3ecda7d7510434c9ed2b3167dcb4466.jpg,Short,0,Venti,1
 Hot Teas,White Teas,Defense Brewed Wellness Tea,https://globalassets.starbucks.com/assets/c2b479d17ec04635bdd0cf80ff7754e1.jpg,Short,5,Venti,10
 Iced Teas,Iced Black Teas,Iced Black Tea,https://globalassets.starbucks.com/assets/b87b4ec73da2443d9e505319ac46168b.jpg,Tall,30,Trenta,70
 Iced Teas,Iced Black Teas,Iced Black Tea Lemonade,https://globalassets.starbucks.com/assets/818612edc424442d956c81343f6a00d0.jpg,Tall,70,Trenta,170
