@@ -322,18 +322,15 @@ a:hover, a:active {
 
 .temp-svg-text {
     font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .temp-svg-text-small {
     font-size: 0.8rem;
 }
 
-#temp-svg-text-this {
-    font-weight: bold;
-}
-
-.temp-dot-highlight {
-    opacity: 0.5;
+.temp-dot-muted {
+    opacity: 0.3;
 }
 
 #temp-widget {

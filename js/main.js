@@ -396,8 +396,6 @@ function plotTemperature() {
     d3.select('#temp-svg-text-container')
         .attr('transform', `translate(${plotMargin * 1.5 + plotWidth}, ${plotMargin})`);
 
-    let widget = d3.select('#temp-widget');
-
     let legendPlot = d3.select('#temp-svg-legend')
         .attr('transform', `translate(0, 0)`);
 
@@ -473,10 +471,18 @@ function plotTemperature() {
     // text info
 
     d3.select('#temp-svg-text-this');
+    d3.select('#temp-svg-rect-this')
+        .attr('transform', `translate(0, 10)`)
+        .attr('height', 10)
+        .style('fill', '#006241');
     d3.select('#temp-svg-text-small-this')
         .attr('transform', `translate(0, 20)`);
     d3.select('#temp-svg-text-other')
         .attr('transform', `translate(0, 60)`);
+    d3.select('#temp-svg-rect-other')
+        .attr('transform', `translate(0, 70)`)
+        .attr('height', 10)
+        .style('fill', '#d4e9e2');
     d3.select('#temp-svg-text-small-other')
         .attr('transform', `translate(0, 80)`);
 
@@ -488,53 +494,66 @@ function plotTemperature() {
         .append('rect')
         .attr('class', 'temp-dot')
         .attr('x', d => CATEGORIES_1.indexOf(d.CATEGORY1) * plotWidth / 7 + barMargin)
-        .attr('y', d => tempYScale(d.CALORIES_MODIFIED) - barMargin)
+        .attr('y', d => tempYScale(d.CALORIES_MODIFIED) - barHeight)
         .attr('width', plotWidth / 7 - 2 * barMargin)
         .attr('height', barHeight)
         .style('fill', d => CATEGORIES_COLORS[d.CATEGORY1])
-        .on('mouseenter', d => {
-            let margin = 15;
-            let left = d3.event.pageX + margin;
-            let top = d3.event.pageY + margin;
-            // TODO: fix position
-            widget.style('left', `${left}px`).style('top', `${top}px`);
-            widget.style('display', 'block');
-            d3.select('#temp-widget-img').attr('src', d.IMAGE);
-            d3.select('#temp-widget-name').html(d.NAME);
-        })
-        .on('mouseleave', d => {
-            widget.style('display', 'none');
+        .on('mouseover', d => {
+            // display text information
+            let tempOther = d.TEMPERATURE === 'Hot' ? 'cold' : 'hot';
+            d3.select('#temp-svg-text-this').text(d.NAME);
+
+            d3.select('#temp-svg-text-other').text(`Corresponding ${tempOther} option${d.SHORT_NAME === '' ? ' not' : ''} available`);
+
+            // reset information
+            d3.select('#temp-svg-text-small-this').text('').attr('x', 0);
+            d3.select('#temp-svg-text-small-other').text('').attr('x', 0);
+            d3.select('#temp-svg-rect-this').attr('width', 0);
+            d3.select('#temp-svg-rect-other').attr('width', 0);
+
+            // highlight
+            setTempDotsActive(d.SHORT_NAME);
         })
         .on('click', d => {
-            let hasPair = d.SHORT_NAME !== '';
-            if (hasPair) {
-                d3.select('#temp-svg-text-this').text(`(${d.TEMPERATURE}) ${d.SHORT_NAME}`);
-                d3.select('#temp-svg-text-small-this').text(`Calories: ${d.CALORIES}`);
+            let rectTransition = d3.transition().duration(750);
+            let textTransition = d3.transition().duration(750);
 
+            var width = d.CALORIES / 500 * sideWidth * 0.8;
+            d3.select('#temp-svg-rect-this')
+                .transition(rectTransition)
+                .attr('width', width);
+            d3.select('#temp-svg-text-small-this')
+                .transition(textTransition)
+                .attr('x', width + 10)
+                .text(`${d.CALORIES}`);
+            if (d.SHORT_NAME !== '') {
                 d3.select('#temp-svg-main').selectAll('.temp-dot')
                     .each(function() {
-                        if (d3.select(this).data()[0].SHORT_NAME == d.SHORT_NAME) {
-                            d3.select(this).classed('temp-dot-highlight', true);
-                            if (d3.select(this).data()[0].TEMPERATURE != d.TEMPERATURE) {
-                                d3.select('#temp-svg-text-other').text(`(${d3.select(this).data()[0].TEMPERATURE}) ${d3.select(this).data()[0].SHORT_NAME}`);
-                                d3.select('#temp-svg-text-small-other').text(`Calories: ${d3.select(this).data()[0].CALORIES}`);
-                            }
-                        } else {
-                            d3.select(this).classed('temp-dot-highlight', false);
+                        if (d3.select(this).data()[0].SHORT_NAME == d.SHORT_NAME && d3.select(this).data()[0].TEMPERATURE != d.TEMPERATURE) {
+                            width = d3.select(this).data()[0].CALORIES / 500 * sideWidth * 0.8;
+                            d3.select('#temp-svg-rect-other')
+                                .transition(rectTransition)
+                                .attr('width', width);
+                            d3.select('#temp-svg-text-small-other')
+                                .transition(textTransition)
+                                .attr('x', width + 10)
+                                .text(`${d3.select(this).data()[0].CALORIES}`);
                         }
                     })
-            } else {
-                d3.select('#temp-svg-text-this').text(d.NAME);
-                d3.select('#temp-svg-text-small-this').text(`Calories: ${d.CALORIES}`);
-
-                let tempOther = d.TEMPERATURE === 'Hot' ? 'cold' : 'hot';
-                d3.select('#temp-svg-text-other').text(`Corresponding ${tempOther} option not available`);
-                d3.select('#temp-svg-text-small-other').text('');
-
-                d3.select('#temp-svg-main').selectAll('.temp-dot')
-                    .each(function() {
-                        d3.select(this).classed('temp-dot-highlight', d3.select(this).data()[0].NAME == d.NAME);
-                    });
             }
         });
+}
+
+function setTempDotsActive(shortName = '') {
+    if (shortName == '') {
+        d3.select('#temp-svg-main').selectAll('.temp-dot')
+            .each(function() {
+                d3.select(this).classed('temp-dot-muted', false);
+            });
+    } else {
+        d3.select('#temp-svg-main').selectAll('.temp-dot')
+            .each(function() {
+                d3.select(this).classed('temp-dot-muted', d3.select(this).data()[0].SHORT_NAME != shortName);
+            });
+    }
 }
