@@ -1,1 +1,1 @@
-export {default} from "./calories_inspector.js";
+export {default} from "./calories_sort.js";
