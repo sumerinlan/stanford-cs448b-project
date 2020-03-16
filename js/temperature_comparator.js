@@ -129,6 +129,26 @@ export function setup() {
         .attr('height', sidebarTextHeight);
     d3.select('#temp-svg-text-small-other')
         .attr('transform', `translate(0, ${8 * sidebarTextHeight})`);
+
+    d3.select('#temp-svg-bg')
+        .append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', plotWidth)
+        .attr('height', plotHeight)
+        .style('fill', 'white')
+        .on('click', function() {
+
+            // reset information
+            d3.select('#temp-svg-text-this').text('');
+            d3.select('#temp-svg-text-other').text('');
+            d3.select('#temp-svg-text-small-this').text('').attr('x', 0);
+            d3.select('#temp-svg-text-small-other').text('').attr('x', 0);
+            d3.select('#temp-svg-rect-this').attr('width', 0);
+            d3.select('#temp-svg-rect-other').attr('width', 0);
+
+            setBarActive('', '');
+        });
 }
 
 function plot(data) {
@@ -160,7 +180,7 @@ function plot(data) {
             d3.select('#temp-svg-rect-other').attr('width', 0);
 
             // highlight
-            setActive(d.SHORT_NAME);
+            setBarActive(d.SHORT_NAME, d.NAME);
         })
         .on('click', d => {
             plotCalories('#temp-svg-rect-this', '#temp-svg-text-small-this', d.CALORIES);
@@ -176,12 +196,25 @@ function plot(data) {
         });
 }
 
-function setActive(shortName = '') {
-    d3.select('#temp-svg-main').selectAll('.temp-dot')
-        .each(function() {
-            d3.select(this)
-                .classed('temp-dot-muted', shortName == '' ? false : d3.select(this).data()[0].SHORT_NAME != shortName);
-        });
+function setBarActive(shortName, name) {
+    if (shortName === '') {
+        if (name === '') {
+            d3.select('#temp-svg-main').selectAll('.temp-dot')
+                .each(function() {
+                    d3.select(this).classed('temp-dot-muted', false);
+                });
+        } else {
+            d3.select('#temp-svg-main').selectAll('.temp-dot')
+                .each(function() {
+                    d3.select(this).classed('temp-dot-muted', d3.select(this).data()[0].NAME != name);
+                });
+        }
+    } else {
+        d3.select('#temp-svg-main').selectAll('.temp-dot')
+            .each(function() {
+                d3.select(this).classed('temp-dot-muted', d3.select(this).data()[0].SHORT_NAME != shortName);
+            });
+    }
 }
 
 function plotCalories(rectId, textId, calories) {

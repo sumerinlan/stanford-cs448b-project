@@ -17,7 +17,6 @@
   		transform: scale(1.2);
   	}
 }*/
-
 body {
     margin: 0;
     font-family: Open Sans;
@@ -25,29 +24,32 @@ body {
 
 /* typeface: Open Sans */
 @font-face {
-   font-family: Open Sans;
-   src: url(../fonts/OpenSans-Regular.ttf);
+    font-family: Open Sans;
+    src: url(../fonts/OpenSans-Regular.ttf);
 }
+
 @font-face {
-  font-family: Open Sans;
-  src: url(../fonts/OpenSans-Bold.ttf);
-  font-weight: bold;
+    font-family: Open Sans;
+    src: url(../fonts/OpenSans-Bold.ttf);
+    font-weight: bold;
 }
+
 @font-face {
-  font-family: Open Sans;
-  src: url(../fonts/OpenSans-ExtraBold.ttf);
-  font-weight: 800;
+    font-family: Open Sans;
+    src: url(../fonts/OpenSans-ExtraBold.ttf);
+    font-weight: 800;
 }
+
 @font-face {
-  font-family: Open Sans;
-  src: url(../fonts/OpenSans-Light.ttf);
-  font-weight: lighter;
+    font-family: Open Sans;
+    src: url(../fonts/OpenSans-Light.ttf);
+    font-weight: lighter;
 }
 
 h1 {
     text-transform: uppercase;
     font-weight: 800;
-    padding-top: 30px;
+    margin-top: 5vh;
 }
 
 a, a:visited {
@@ -68,14 +70,21 @@ a:hover, a:active {
 }
 
 .main {
-    padding: 0 24%;
+    padding: 0 24vw;
+}
+
+.section {
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+}
+
+.plot {
+    margin: 5vh auto;
 }
 
 /* basic facts */
 #facts-container {
-	font-family: Open Sans;
-    padding-top: 10vh;
-    padding-bottom: 5vh;
+    font-family: Open Sans;
     min-width: 300px;
     background-color: var(--house-green);
     color: white;
@@ -130,7 +139,6 @@ a:hover, a:active {
     margin: auto;
 }
 
-
 #facts-widget p {
     margin: 0.75rem 0.5rem;
 }
@@ -157,9 +165,6 @@ a:hover, a:active {
     font-weight: bold;
     font-size: 1.2rem;
 }
-
-
-
 
 /* basic facts: nav */
 #facts-nav {
@@ -199,11 +204,6 @@ a:hover, a:active {
 }
 
 /* top drinks */
-#top-drinks-container {
-    padding-top: 10vh;
-    padding-bottom: 5vh;
-}
-
 #top-drinks {
     display: flex;
     margin: 0 10%;
@@ -251,6 +251,10 @@ a:hover, a:active {
     fill: var(--warm-neutral);
 }
 
+#top-drinks-container ul {
+    margin-left: 20px;
+}
+
 /* legends */
 .top-drink-legend {
     dominant-baseline: middle;
@@ -260,7 +264,7 @@ a:hover, a:active {
 
 /*bar indicating calories*/
 .calories-bar {
-	margin: 0.75rem 0.5rem;
+    margin: 0.75rem 0.5rem;
     position: relative;
     width: 200px;
     /*border: 1px solid #B1D632;*/
@@ -268,9 +272,8 @@ a:hover, a:active {
     /*padding: 1px;*/
 }
 
-
 .calories-bar div {
-	margin: 0.75rem 0rem;
+    margin: 0.75rem 0rem;
     display: block;
     position: relative;
     background: #00754a;
@@ -288,7 +291,7 @@ a:hover, a:active {
 
 /*bar indicating sugar*/
 .sugar-bar {
-	margin: 0.75rem 0.5rem;
+    margin: 0.75rem 0.5rem;
     position: relative;
     width: 200px;
     /*border: 1px solid #B1D632;*/
@@ -296,9 +299,8 @@ a:hover, a:active {
     /*padding: 1px;*/
 }
 
-
 .sugar-bar div {
-	margin: 0.75rem 0rem;
+    margin: 0.75rem 0rem;
     display: block;
     position: relative;
     background: var(--house-green);
@@ -310,8 +312,7 @@ a:hover, a:active {
 /* temperature */
 /* svg */
 #temp-svg {
-    display: block;
-    margin: auto;
+    margin-left: 24vw;
 }
 
 .temp-dot-muted {

@@ -132,8 +132,6 @@ function plot(data) {
 
                 images.exit().remove();
 
-
-
                 // let caption = container2.append('p')
                 //     .html("Cold Brew Coffee")
                 //     .attr('width', imgWidth)
