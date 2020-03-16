@@ -114,13 +114,13 @@ a:hover, a:active {
     position: absolute;
     padding: 5px;
     width: 240px;
-    background-color: #f2f0eb;
+    background-color: var(--warm-neutral);
     color: black;
 }
 
 #facts-widget-img-container {
     width: 100%;
-    background-color: #1e3932;
+    background-color: var(--house-green);
 }
 
 #facts-widget-img {
@@ -143,7 +143,7 @@ a:hover, a:active {
 /* calories */
 #calories-img-container {
     width: 100%;
-    background-color: #1e3932;
+    background-color: var(--house-green);
 }
 
 #calories-widget-img {
@@ -239,7 +239,7 @@ a:hover, a:active {
 }
 
 .top-drink-dots {
-    fill: #006241;
+    fill: var(--starbucks-green);
     opacity: 0.5;
 }
 
@@ -248,9 +248,15 @@ a:hover, a:active {
 }
 
 .top-drink-dots-others {
-    fill: #f2f0eb;
+    fill: var(--warm-neutral);
 }
 
+/* legends */
+.top-drink-legend {
+    dominant-baseline: middle;
+    font-size: 0.8rem;
+    text-anchor: middle;
+}
 
 /*bar indicating calories*/
 .calories-bar {
@@ -295,14 +301,24 @@ a:hover, a:active {
 	margin: 0.75rem 0rem;
     display: block;
     position: relative;
-    background: #1e3932;
+    background: var(--house-green);
     color: #333333;
     height: 10px;
     /*line-height: 10px;*/
 }
 
 /* temperature */
+/* svg */
+#temp-svg {
+    display: block;
+    margin: auto;
+}
 
+.temp-dot-muted {
+    opacity: 0.3;
+}
+
+/* axis */
 .temp-svg-axes {
     stroke: black;
     stroke-opacity: 0.5;
@@ -320,6 +336,7 @@ a:hover, a:active {
     text-anchor: middle;
 }
 
+/* side bar */
 .temp-svg-text {
     font-size: 0.9rem;
     font-weight: bold;
@@ -329,40 +346,10 @@ a:hover, a:active {
     font-size: 0.8rem;
 }
 
-.temp-dot-muted {
-    opacity: 0.3;
+#temp-svg-rect-this {
+    fill: var(--starbucks-green);
 }
 
-#temp-widget {
-    position: absolute;
-    padding: 5px;
-    width: 240px;
-    background-color: var(--warm-neutral);
-    color: black;
-}
-
-#temp-widget-img-container {
-    width: 100%;
-    background-color: #1e3932;
-}
-
-#temp-widget-img {
-    width: 120px;
-    height: 120px;
-    display: block;
-    margin: auto;
-}
-
-#temp-widget p {
-    margin: 0.75rem 0.5rem;
-}
-
-#temp-widget-name {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-#temp-svg {
-    display: block;
-    margin: auto;
+#temp-svg-rect-other {
+    fill: var(--light-green);
 }

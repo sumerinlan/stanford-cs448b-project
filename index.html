@@ -143,7 +143,7 @@
 
         <!-- instruction -->
         <p class='main instruction'>
-            <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked> <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see nutrition information.
+            <input type='checkbox' id='top-drinks-checkbox' checked> <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see nutrition information.
         </p>
 
         <div id='top-drinks'>
@@ -151,6 +151,7 @@
                 <g id='top-drinks-svg-plot'>
                     <g id='top-drinks-svg-other'></g>
                     <g id='top-drinks-svg-axes'></g>
+                    <g id='top-drinks-svg-legend'></g>
                     <g id='top-drinks-svg-top'></g>
                 </g>
             </svg>
@@ -190,16 +191,26 @@
         <h1 class='main'>Inspecting by Catrgories</h1>
 
         <svg id='temp-svg'>
-            <g id='temp-svg-text-container'>
+
+            <g id='temp-svg-side'>
+                <!-- name -->
                 <text class='temp-svg-text' id='temp-svg-text-this'></text>
+                <!-- calories bar -->
                 <rect id='temp-svg-rect-this'></rect>
+                <!-- calories data -->
                 <text class='temp-svg-text-small' id='temp-svg-text-small-this'></text>
 
+                <!-- name -->
                 <text class='temp-svg-text-small' id='temp-svg-text-other'></text>
+                <!-- calories bar -->
                 <rect id='temp-svg-rect-other'></rect>
+                <!-- calories data -->
                 <text class='temp-svg-text-small' id='temp-svg-text-small-other'></text>
+
+                <!-- legend -->
                 <g id='temp-svg-legend'></g>
             </g>
+
             <g id='temp-svg-plot'>
                 <g id='temp-svg-main'></g>
                 <g id='temp-svg-axes'></g>
@@ -208,7 +219,7 @@
     </div>
 
 
-    <script src='js/main.js'></script>
+    <script src='js/main.js' type='module'></script>
     <!-- line and dots -->
     <script type="module">
         import define from "./js/index.js";
