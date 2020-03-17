@@ -3,47 +3,47 @@ import {
     CATEGORIES_2
 } from './constants.js'
 
-var basicFactsTabActive = 'Hot Coffees';
+var activeTab = 'Hot Coffees';
 
 function setup() {
-    let basicFactsTabs = d3.select('#facts-tabs');
-    basicFactsTabs.selectAll('div').remove();
+    let tabs = d3.select('#facts-tabs');
+    tabs.selectAll('div').remove();
 
     for (const i in CATEGORIES_1) {
         let category1 = CATEGORIES_1[i];
         // tab for one category
-        basicFactsTabs.append('div')
+        tabs.append('div')
             // don't display full name for Frappuccino
             .text(category1.indexOf('Frappuccino') !== -1 ? 'Frappuccino' : category1)
-            .attr('class', category1 == basicFactsTabActive ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
+            .attr('class', category1 == activeTab ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
             .on('click', function() {
-                basicFactsTabs.selectAll('div').attr('class', 'basic-facts-tabs');
-                basicFactsTabActive = category1;
+                tabs.selectAll('div').attr('class', 'basic-facts-tabs');
+                activeTab = category1;
                 d3.select(this).attr('class', 'basic-facts-tabs-active');
-                updateBasicFactsTabs();
+                updateTabs();
             });
     }
 
     // tab for all categories
-    basicFactsTabs.append('div')
+    tabs.append('div')
         .text('All Drinks')
-        .attr('class', basicFactsTabActive == null ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
+        .attr('class', activeTab == null ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
         .on('click', function() {
-            basicFactsTabs.selectAll('div').attr('class', 'basic-facts-tabs');
-            basicFactsTabActive = null;
+            tabs.selectAll('div').attr('class', 'basic-facts-tabs');
+            activeTab = null;
             d3.select(this).attr('class', 'basic-facts-tabs-active');
-            updateBasicFactsTabs();
+            updateTabs();
         });
 }
 
-function updateBasicFactsTabs() {
+function updateTabs() {
     // change 'display' to prevent reloading data too many times
     d3.selectAll('.facts-category1')
         .each(function() {
-            if (basicFactsTabActive == null) {
+            if (activeTab == null) {
                 d3.select(this).style('display', 'block');
             } else {
-                d3.select(this).style('display', d3.select(this).attr('id') == basicFactsTabActive ? 'block' : 'none');
+                d3.select(this).style('display', d3.select(this).attr('id') == activeTab ? 'block' : 'none');
             }
         })
 }
@@ -140,7 +140,7 @@ function plot(data) {
         }
     };
 
-    updateBasicFactsTabs();
+    updateTabs();
 }
 
 export default {

@@ -148,24 +148,6 @@ a:hover, a:active {
     font-size: 1.2rem;
 }
 
-/* calories */
-#calories-img-container {
-    width: 100%;
-    background-color: var(--house-green);
-}
-
-#calories-widget-img {
-    width: 120px;
-    height: 120px;
-    display: block;
-    margin: auto;
-}
-
-#calories-prod-name {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
 /* basic facts: nav */
 #facts-nav {
     display: flex;
@@ -201,6 +183,24 @@ a:hover, a:active {
     flex-grow: 2;
     max-width: 150px;
     margin-left: 3px;
+}
+
+/* calories */
+#calories-img-container {
+    width: 100%;
+    background-color: var(--house-green);
+}
+
+#calories-widget-img {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: auto;
+}
+
+#calories-prod-name {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* top drinks */
