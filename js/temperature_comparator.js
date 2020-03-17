@@ -26,7 +26,7 @@ let yScale = d3.scaleLinear()
 let xScale = d3.scaleOrdinal()
     .range([0, plotWidth]);
 
-export function setup() {
+function setup() {
 
     // setups
 
@@ -137,7 +137,7 @@ export function setup() {
         .attr('width', plotWidth)
         .attr('height', plotHeight)
         .style('fill', 'white')
-        .on('click', function() {
+        .on('mouseover', function() {
 
             // reset information
             d3.select('#temp-svg-text-this').text('');
@@ -169,30 +169,30 @@ function plot(data) {
             // display text information
             let tempOther = d.TEMPERATURE === 'Hot' ? 'cold' : 'hot';
             d3.select('#temp-svg-text-this').text(d.NAME);
-            d3.select('#temp-svg-text-other')
-                .text(`Corresponding ${tempOther} option${d.SHORT_NAME === '' ? ' not' : ''} available`)
-                .style('fill', d.SHORT_NAME === '' ? '#999999' : '#000000');
-
-            // reset information
-            d3.select('#temp-svg-text-small-this').text('').attr('x', 0);
-            d3.select('#temp-svg-text-small-other').text('').attr('x', 0);
-            d3.select('#temp-svg-rect-this').attr('width', 0);
-            d3.select('#temp-svg-rect-other').attr('width', 0);
-
-            // highlight
-            setBarActive(d.SHORT_NAME, d.NAME);
-        })
-        .on('click', d => {
             plotCalories('#temp-svg-rect-this', '#temp-svg-text-small-this', d.CALORIES);
 
             if (d.SHORT_NAME !== '') {
+                d3.select('#temp-svg-text-other')
+                    .text(`Corresponding ${tempOther} option:`)
+                    .style('fill', '#000000');
+
                 d3.select('#temp-svg-main').selectAll('.temp-dot')
                     .each(function() {
                         if (d3.select(this).data()[0].SHORT_NAME == d.SHORT_NAME && d3.select(this).data()[0].TEMPERATURE != d.TEMPERATURE) {
                             plotCalories('#temp-svg-rect-other', '#temp-svg-text-small-other', d3.select(this).data()[0].CALORIES);
                         }
                     })
+            } else {
+                d3.select('#temp-svg-text-other')
+                    .text(`Corresponding ${tempOther} option not available`)
+                    .style('fill', '#999999');
+                // reset information
+                d3.select('#temp-svg-text-small-other').text('').attr('x', 0);
+                d3.select('#temp-svg-rect-other').attr('width', 0);
             }
+
+            // highlight
+            setBarActive(d.SHORT_NAME, d.NAME);
         });
 }
 
@@ -220,10 +220,10 @@ function setBarActive(shortName, name) {
 function plotCalories(rectId, textId, calories) {
     let width = calories / 500 * sideWidth * 0.8;
     d3.select(rectId)
-        .transition(d3.transition().duration(750))
+        .transition(d3.transition().duration(0))
         .attr('width', width);
     d3.select(textId)
-        .transition(d3.transition().duration(750))
+        .transition(d3.transition().duration(0))
         .attr('x', width + 10)
         .text(`${calories}`);
 }
