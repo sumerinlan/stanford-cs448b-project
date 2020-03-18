@@ -7,10 +7,12 @@ import {
 import basicFacts from './basic_facts.js'
 import topDrinks from './top_drinks.js'
 import temperatureComparator from './temperature_comparator.js'
+import foodRecommender from './recommender.js'
 
 basicFacts.setup();
 topDrinks.setup();
 temperatureComparator.setup();
+foodRecommender.setup();
 
 d3.csv('data/starbucks-menu/drink_manual_grande_only.csv', d => {
     var row = {};
@@ -34,6 +36,7 @@ d3.csv('data/starbucks-menu/drink_manual_grande_only.csv', d => {
     topDrinks.plotAllDrinks(otherDrinksData);
     topDrinks.plotTopDrinks(topDrinksData);
     temperatureComparator.plot(grandeData);
+    foodRecommender.plot(grandeData);
 
     // actions
 

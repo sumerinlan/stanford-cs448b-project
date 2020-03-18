@@ -161,7 +161,7 @@ a:hover, a:active {
     padding-bottom: 40px;
 }
 
-.basic-facts-tabs-active, .basic-facts-tabs {
+#facts-tabs > div {
     display: inline-block;
     font-size: 0.7rem;
     margin: 0px;
@@ -172,17 +172,14 @@ a:hover, a:active {
     border-bottom: 2px solid var(--house-green);
 }
 
-.basic-facts-tabs:hover {
+#facts-tabs > div:hover {
     border-bottom-color: var(--light-green);
+    cursor: default;
 }
 
-.basic-facts-tabs-active {
+#facts-tabs > .active {
     font-weight: bold;
     border-bottom-color: var(--light-green);
-}
-
-.basic-facts-tabs-active:hover, .basic-facts-tabs:hover {
-    cursor: default;
 }
 
 #facts-search {
@@ -359,4 +356,75 @@ a:hover, a:active {
 
 #temp-svg-rect-other {
     fill: var(--light-green);
+}
+
+/* food recommender */
+#food-recommender .plot {
+    background-color: var(--house-green);
+    display: flex;
+    width: 80%;
+    padding: 0 10%;
+    flex-direction: row;
+}
+
+#recommender-drink-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#recommender-drink-category > div {
+    font-size: 0.7rem;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--light-green);
+}
+
+#recommender-drink-category > div:hover {
+    background-color: var(--light-green);
+    color: var(--house-green);
+    cursor: default;
+}
+
+#recommender-drink-category > .active {
+    background-color: var(--light-green);
+    color: var(--house-green)
+}
+
+#recommender-drink-center {
+    flex-grow: 2;
+    display: flex;
+}
+
+.recommender-single-info {
+    color: var(--warm-neutral);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: center;
+}
+
+#recommender-drink-size {
+    display: flex;
+    flex-direction: row;
+}
+
+#recommender-drink-size > div {
+    font-size: 0.7rem;
+    text-align: center;
+    border-bottom: 1px solid var(--house-green);
+    width: 50px;
+}
+
+#recommender-drink-size > div:hover {
+    border-bottom-color: var(--warm-neutral);
+    cursor: default;
+}
+
+#recommender-drink-size > .active {
+    border-bottom-color: var(--warm-neutral);
 }
