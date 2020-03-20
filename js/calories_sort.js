@@ -5,7 +5,7 @@ export default function define(runtime, observer) {
     const main = runtime.module();
 
     // new autoselect from category 1
-    main.variable(observer("viewof as")).define("viewof as", ["autoSelect", "dataByCalories", "data"], function(autoSelect, dataByCalories, data) {
+    main.variable(observer("viewof as")).define("viewof as", ["autoSelect", "dataByCalories"], function(autoSelect, dataByCalories) {
         return (
             autoSelect({
                 title: 'Search from Category 1',
@@ -15,9 +15,10 @@ export default function define(runtime, observer) {
         )
     });
     main.variable(observer("as")).define("as", ["Generators", "viewof as"], (G, _) => G.input(_));
-    main.variable(observer()).define(["as"], function(as) {
+    // compute filteredData first and use its length to calculate height
+    main.variable(observer("filteredData")).define("filteredData", ["data", "as"], function(data, as) {
         return (
-            as
+            as === '' ? data.sort((a, b) => a.end - b.end) : data.filter(d => d.Category1 === as)
         )
     });
 
@@ -28,54 +29,9 @@ export default function define(runtime, observer) {
         )
     });
     main.variable(observer("sorting")).define("sorting", ["Generators", "viewof sorting"], (G, _) => G.input(_));
+
     // define chart
-    main.variable(observer("chart")).define("chart", ["sorting", "as", "dataByCategory", "dataByOutside", "data", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, dataByCategory, dataByOutside, data, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
-
-        let filteredData;
-        switch(as){
-            case "Cold Coffees":
-                // filteredData = dataByCalories.map(d => d.key === "Cold Coffees");
-                filteredData = dataByOutside.map(d => d);
-                // filteredData = [].concat.apply([], data.filter(d => d.Category1 === "Cold Coffees"));
-                break;
-
-            case "Cold Drinks":
-                // filteredData = data.filter(d => d.Category1 === "Cold Drinks");
-                filteredData = dataByOutside.map(d => d.values);
-                break;
-
-            case "Frappuccino¬Æ Blended Beverages":
-                // filteredData = data.filter(d => d.Category1 === "Frappuccino¬Æ Blended Beverages");
-                filteredData = dataByOutside.map(d => d.values);
-                break;
-
-            case "Hot Coffees":
-                // filteredData = data.filter(d => d.Category1 === "Hot Coffees");
-                filteredData = dataByOutside.map(d => d.values);
-                break;
-
-            case "Hot Drinks":
-                // filteredData = data.filter(d => d.Category1 === "Hot Drinks");
-                filteredData = dataByOutside.map(d => d.values);
-                break;
-
-            case "Hot Teas":
-                // filteredData = data.filter(d => d.Category1 === "Hot Teas");
-                filteredData = dataByOutside.map(d => d.values);
-                break;
-
-            case "Iced Teas":
-                // filteredData = data.filter(d => d.Category1 === "Iced Teas");
-                filteredData = dataByOutside.map(d => d.values);
-                break;
-
-            default:
-                filteredData = data.sort((a, b) => a.end - b.end);
-                break;
-        }
-
-
-
+    main.variable(observer("chart")).define("chart", ["sorting", "as", "dataByCategory", "dataByOutside", "data", "filteredData", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, dataByCategory, dataByOutside, data, filteredData, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
 
         // if (sorting !== "calories") {
         //     filteredData = [].concat.apply([], dataByCategory.map(d => d.values));
@@ -83,25 +39,19 @@ export default function define(runtime, observer) {
         //     filteredData = data.sort((a, b) => a.end - b.end);
         // }
 
+        let otherData = as === '' ? [] : data.filter(d => d.Category1 != as);
+
         filteredData.forEach(d => d.color = d3.color(color(d.Category2)))
 
-
-
-
-        
-
-
-
         let parent = this;
+        let tooltip;
+        let svg;
+
         if (!parent) {
             parent = document.createElement("div");
-            // parent = d3.select('#calories-sort-container');
 
-
-            const tooltip = d3.select(document.createElement("div")).call(createTooltip);
-            const svg = d3.select(DOM.svg(width * 4, height));
-            // const svg = d3.select('#extreme-calories-svg');
-
+            tooltip = d3.select(document.createElement("div")).attr("id", "#m_tooltip").call(createTooltip);
+            svg = d3.select(DOM.svg(width, height)).attr("id", "extreme-calories-svg");
 
             const g = svg.append("g").attr("transform", (d, i) => `translate(${margin.left} ${margin.top})`);
 
@@ -112,13 +62,9 @@ export default function define(runtime, observer) {
                 .append("g")
                 .attr("class", "civ")
 
-
-            
-            
-            // const tooltip = d3.select("#m_tooltip").call(createTooltip);
-
-
-            const line = svg.append("line").attr("y1", margin.top - 10).attr("y2", height - margin.bottom).attr("stroke", "rgba(0,0,0,0.2)").style("pointer-events", "none");
+            // original position, used for starting point of the transition when reset
+            // 这个 transition 怎么搞还可以再想想~
+            filteredData.forEach((d, i) => d.origPos = y(i));
 
             groups.attr("transform", (d, i) => `translate(0 ${y(i)})`)
 
@@ -135,19 +81,6 @@ export default function define(runtime, observer) {
                     d3.select(this).select("rect").attr("fill", d.color)
                     tooltip.style("opacity", 0)
                 })
-
-
-            svg
-                .append("g")
-                .attr("transform", (d, i) => `translate(${margin.left} ${margin.top-10})`)
-                .call(axisTop)
-
-            svg
-                .append("g")
-                .attr("transform", (d, i) => `translate(${margin.left} ${height-margin.bottom})`)
-                .call(axisBottom)
-
-
 
             svg.on("mousemove", function(d) {
 
@@ -166,22 +99,56 @@ export default function define(runtime, observer) {
 
             parent.appendChild(tooltip.node());
             parent.appendChild(svg.node());
-            
+
             parent.groups = groups;
 
         } else {
 
+            tooltip = d3.select("#m_tooltip");
+            svg = d3.select('#extreme-calories-svg')
+                .attr("width", width)
+                .attr("height", height)
+                .attr("viewBox", `0 0 ${width} ${height}`);
 
             const civs = d3.selectAll(".civ")
 
             civs.data(filteredData, d => d.Name)
+                .style("opacity", 1)
                 .transition()
                 // .delay((d,i)=>i*10)
                 .ease(d3.easeCubic)
                 .attr("transform", (d, i) => `translate(0 ${y(i)})`)
 
 
+            // hack: make other data invisible
+            civs.data(otherData, d => d.Name)
+                .style("opacity", 0)
+                .attr("transform", d => `translate(0 ${d.origPos})`)
         }
+
+        // reset axis based on new height
+
+        svg.selectAll(".extreme-value-axis").remove();
+
+        const line = svg.append("line")
+            .attr("class", "extreme-value-axis")
+            .attr("y1", margin.top - 10)
+            .attr("y2", height - margin.bottom)
+            .attr("stroke", "rgba(0,0,0,0.2)")
+            .style("pointer-events", "none");
+
+        svg
+            .append("g")
+            .attr("class", "extreme-value-axis")
+            .attr("transform", (d, i) => `translate(${margin.left} ${margin.top-10})`)
+            .call(axisTop)
+
+        svg
+            .append("g")
+            .attr("class", "extreme-value-axis")
+            .attr("transform", (d, i) => `translate(${margin.left} ${height-margin.bottom})`)
+            .call(axisBottom)
+
         return parent
 
     });
@@ -197,15 +164,20 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
             }
         )
     });
-    main.variable(observer("height")).define("height", function() {
+    main.variable(observer("singleHeight")).define("singleHeight", function() {
         return (
-            3047 //original setting for 34 drinks: 700
+            20 // dyhamically set height
         )
     });
-    main.variable(observer("y")).define("y", ["d3", "data", "height", "margin"], function(d3, data, height, margin) {
+    main.variable(observer("height")).define("height", ["filteredData", "singleHeight"], function(filteredData, singleHeight) {
+        return (
+            filteredData.length * singleHeight //original setting for 34 drinks: 700
+        )
+    });
+    main.variable(observer("y")).define("y", ["d3", "filteredData", "height", "margin"], function(d3, filteredData, height, margin) {
         return (
             d3.scaleBand()
-            .domain(d3.range(data.length))
+            .domain(d3.range(filteredData.length))
             .range([0, height - margin.bottom - margin.top])
             .padding(0.2)
         )
@@ -291,7 +263,7 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
             data.filter(d => d.Category1 === "Cold Coffees")
         )
     });
-    
+
 
     main.variable(observer("axisBottom")).define("axisBottom", ["d3", "x", "formatCalories"], function(d3, x, formatCalories) {
         return (
@@ -349,7 +321,7 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
     });
     main.variable(observer("color")).define("color", ["d3", "regions"], function(d3, regions) {
         return (
-            d3.scaleOrdinal(["#006241", "#1e3932", "#00754a", "#d4e9e2", "#9d5116", "#a17700", "#ebcabc"]).domain(regions)  // , "#d3705a", "#c0d48b" 
+            d3.scaleOrdinal(["#006241", "#1e3932", "#00754a", "#d4e9e2", "#9d5116", "#a17700", "#ebcabc"]).domain(regions)  // , "#d3705a", "#c0d48b"
         )
     });
     const child1 = runtime.module(define1);
