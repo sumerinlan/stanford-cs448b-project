@@ -4,22 +4,95 @@ import define1 from "./e93997d5089d7165@2227.js";
 export default function define(runtime, observer) {
     const main = runtime.module();
 
+
+    /*
+    main.variable(observer("viewof f1")).define("viewof f1", ["text"], function(text) {
+        return (
+            text({ title: "A Text Input", placeholder: "Placeholder text", description: "Note that text inputs don’t show output on the right" })
+        )
+    });
+    main.variable(observer("f1")).define("f1", ["Generators", "viewof f1"], (G, _) => G.input(_));
+    main.variable(observer()).define(["f1"], function(f1) {
+        return (
+            f1
+        )
+    });
+    */
+
+    main.variable(observer("viewof as")).define("viewof as", ["autoSelect", "dataByCalories", "data"], function(autoSelect, dataByCalories, data) {
+        return (
+            autoSelect({
+                title: 'Search from Category 1',
+                options: dataByCalories.map(d => d.key),
+                placeholder: "Type..."
+            })
+        )
+    });
+    main.variable(observer("as")).define("as", ["Generators", "viewof as"], (G, _) => G.input(_));
+    main.variable(observer()).define(["as"], function(as) {
+        return (
+            as
+        )
+    });
+
+
+
+
+
     main.variable(observer("viewof sorting")).define("viewof sorting", ["select"], function(select) {
         return (
             select({ title: 'Sorted by', options: ["category", "calories"], value: "calories" })
         )
     });
     main.variable(observer("sorting")).define("sorting", ["Generators", "viewof sorting"], (G, _) => G.input(_));
-    main.variable(observer("chart")).define("chart", ["sorting", "dataByCategory", "data", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, dataByCategory, data, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
+    main.variable(observer("chart")).define("chart", ["sorting", "as", "dataByCategory", "data", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, dataByCategory, data, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
 
         let filteredData;
         if (sorting !== "calories") {
             filteredData = [].concat.apply([], dataByCategory.map(d => d.values));
-        } else {
+        } else{
             filteredData = data.sort((a, b) => a.end - b.end);
         }
 
         filteredData.forEach(d => d.color = d3.color(color(d.Category2)))
+
+
+
+
+        switch(as){
+            case "Cold Coffees":
+                // filteredData = dataByCalories.map(d => d.key === "Cold Coffees");
+                filteredData = data.filter(d => d.Category1 === "Cold Coffees");
+                break;
+
+            case "Cold Drinks":
+                filteredData = data.filter(d => d.Category1 === "Cold Drinks");
+                break;
+
+            case "Frappuccino¬Æ Blended Beverages":
+                filteredData = data.filter(d => d.Category1 === "Frappuccino¬Æ Blended Beverages");
+                break;
+
+            case "Hot Coffees":
+                filteredData = data.filter(d => d.Category1 === "Hot Coffees");
+                break;
+
+            case "Hot Drinks":
+                filteredData = data.filter(d => d.Category1 === "Hot Drinks");
+                break;
+
+            case "Hot Teas":
+                filteredData = data.filter(d => d.Category1 === "Hot Teas");
+                break;
+
+            case "Iced Teas":
+                filteredData = data.filter(d => d.Category1 === "Iced Teas");
+                break;
+
+            default:
+                break;
+        }
+
 
 
         let parent = this;
@@ -184,9 +257,9 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
 
                 el
                     .append("rect")
-                    .attr("x", sx)
+                    .attr("x", sx - y.bandwidth()/2)
                     .attr("height", y.bandwidth()/2)  //y.bandwidth()
-                    .attr("width", w)
+                    .attr("width", w + y.bandwidth() /2)
                     .attr("fill", d.color)
                     .attr("rx", 4);
 
@@ -273,8 +346,11 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
         )
     });
     const child1 = runtime.module(define1);
+    const child2 = runtime.module(define1);
     main.import("checkbox", child1);
     main.import("select", child1);
+    main.import("text", child2);
+    main.import("autoSelect", child2);
     main.variable(observer()).define(["html"], function(html) {
         return (
             html `CSS<style> svg{font: 11px sans-serif;}</style>`
