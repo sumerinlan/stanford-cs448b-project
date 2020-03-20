@@ -6,10 +6,11 @@
     <link rel='stylesheet' href='css/main.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <title></title>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
 <body>
-    <div id='intro-container' class='main'>
+    <div id='intro-container' class='main section'>
 
         <h1>You Don't Know About Starbucks</h1>
 
@@ -28,11 +29,11 @@
         </p>
     </div>
 
-    <div id='facts-container' class='main'>
+    <div id='facts-container' class='main section'>
 
         <!-- motivation -->
         <p>
-            We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span> <br><br><br>
+            We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span>
         </p>
 
         <h1>BASIC FACTS</h1>
@@ -49,17 +50,19 @@
 
         <!-- instruction -->
         <p class='instruction'>
-            <span class='emphasize'>Hover</span> drinks to see detailed information. <span class='emphasize'>Select</span> a tab or <span class='emphasize'>type</span> in the search bar to filter drinks. <br><br><br>
+            <span class='emphasize'>Hover</span> drinks to see detailed information. <span class='emphasize'>Select</span> a tab or <span class='emphasize'>type</span> in the search bar to filter drinks.
         </p>
 
-        <div id='facts-nav'>
-            <div id='facts-tabs'></div>
-            <form id='facts-search'>
-                <input type='text' id='facts-keyword' onFocus='' value='' placeholder='Type a name...'>
-            </form>
-        </div>
+        <div class='plot'>
+            <div id='facts-nav'>
+                <div id='facts-tabs'></div>
+                <form id='facts-search'>
+                    <input type='text' id='facts-keyword' onFocus='' value='' placeholder='Type a name...'>
+                </form>
+            </div>
 
-        <div id='facts'></div>
+            <div id='facts'></div>
+        </div>
 
         <!-- widget displaying important details -->
         <div id='facts-widget' style='display: none;'>
@@ -82,70 +85,59 @@
                 <!-- bar indicating calories and sugar -->
                 <div class="calories-bar">
                     <div id="facts-widget-cal-bar" style="width:70%;">
-                        <!-- <span>70%</span> -->
                     </div>
                 </div>
                 <p>Sugar: <span id='facts-widget-sugars'></span></p>
                 <div class="sugar-bar">
                     <div id="facts-widget-sugar-bar" style="width:70%;">
-                        <!-- <span>70%</span> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div>
-
+    <div class='section'>
 
         <!-- motivation -->
         <p class='main'>
-            Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span> <br><br><br>
+            Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span>
         </p>
 
-        <h1 class='main'>Calories of drinks when you choose different preps</h1>
+        <h1 class='main'>Calories of drinks when you choose different sizes</h1>
 
-
-        <!-- section 2: calories inspector-->
-
-        <!-- design rational -->
+        <!-- design rationale -->
 
         <!-- finding -->
         <p class='main'>
-            We can easily see general trend for type of drinks. Coffees like Espresso and Americano and tea have low calories, and Frappuccinos are high-calorie drinks. The widths, ranges of calories based on different preparation (size and milk),
-            vary from drinks to drinks. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti size with whole milk, but if I care about my weight, I can have a healthier
-            choice with the same flavor. However, this is not true for other drinks. <br><br><br><br>
+            We can easily see general trend for type of drinks. Coffees like Espresso and Americano and tea have low calories, and Frappuccinos are high-calorie drinks. The widths, ranges of calories based on different sizes,
+            vary from drinks to drinks. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti or even trente size, but if I care about my weight, I can have a healthier
+            choice with the same flavor. However, this is not true for other drinks.
             <!-- 这个最终图还没出来所以很多感觉还说不清楚 -->
         </p>
 
-
-        <div id = 'm_tooltip'></div>
-
-        <div id='calories-sort-container'>
-        </div>
+        <div id='calories-sort-container'></div>
 
     </div>
 
-    <div id='top-drinks-container'>
+    <div id='top-drinks-container' class='section'>
 
         <!-- motivation -->
         <p class='main'>
             What are the most popular drinks on Starbucks' ever-changing menu? <span class='emphasize'>Do people go for high calories drinks or healthy is their top concern?</span> With the ranking data from <a
                 href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar as above, the information are
-            of standard preparation. <br><br><br>
+            of standard sizes.
         </p>
 
         <h1 class='main'>TOP RANKED DRINKS</h1>
 
-        <!-- design rational -->
+        <!-- design rationale -->
         <p class='main'>
-            To better compare the calories and sugar data betweem top drinks and other drinks, we put all drinks in the plot. The green dots are top-ranked drinks, and the light-yellow dots are other drinks. Users can toggle on and off the top drinks
-            to better see the full data.
+            To better compare the calories and sugar data betweem top drinks and other drinks, we put all drinks in the plot in light-yellow dots. The green dots are top-ranked drinks. Users can toggle them on and off to better see the full data.
         </p>
 
         <!-- instruction -->
         <p class='main instruction'>
-            <input type='checkbox' id='top-drinks-checkbox' onclick='plotTopDrinks()' checked> <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see nutrition information.
+            <input type='checkbox' id='top-drinks-checkbox' checked> <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see drinks and their nutrition information.
         </p>
 
         <div id='top-drinks'>
@@ -153,6 +145,7 @@
                 <g id='top-drinks-svg-plot'>
                     <g id='top-drinks-svg-other'></g>
                     <g id='top-drinks-svg-axes'></g>
+                    <g id='top-drinks-svg-legend'></g>
                     <g id='top-drinks-svg-top'></g>
                 </g>
             </svg>
@@ -166,66 +159,102 @@
         </p>
 
         <ul class='main'>
-            <!-- 😯 这个 unordered list 写出来真丑呜呜呜 -->
             <li>Some people are in favor of low-calorie and low-sugar products like cold brew, roast coffee and pure tea, for their healthy.</li>
             <li>Some standard recipes including Caffe Latte and Flat White, around ~20g sugars and ~200 calories, are popular as well. People ordering them leverage the taste and healthiness of the drinks.</li>
             <li>There are big fans of high-calories products such as Frappuccino, as shown in a cluster at the top-right corner.</li>
         </ul>
     </div>
 
-    <div class='main'>
+    <div id='temperature-container' class='section'>
+
         <!-- motivation -->
-        <p>
-            Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span> <br><br><br>
+        <p class='main'>
+            I know Matcha Green Tea Latte is my favorite! But every time I still need to choose whether I want to have a hot or  a cold one. I wonder if there is any difference between those two, and <span class='emphasize'>in general, does hot drinks have higher calories than cold drinks?</span>
         </p>
 
-        <h1>Food Recommender</h1>
+        <h1 class='main'>Calories of drinks under hot / cold categories</h1>
+
+        <!-- design rationale -->
+        <p class='main'>
+            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. We used x-axis and colors to represent different categories. We highlighted the chosen (hovered / clicked) drink and its corresponding hot / cold option, if there is any, by muting the colors of other drinks.
+        </p>
+
+        <!-- instruction -->
+        <p class='main instruction'>
+            <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot / cold option. <span class='emphasize'>Hover</span> to any empty space to reset the graph.
+        </p>
+
+        <svg id='temp-svg' class='plot'>
+
+            <g id='temp-svg-side'>
+                <!-- name -->
+                <text class='temp-svg-text' id='temp-svg-text-this'></text>
+                <!-- calories bar -->
+                <rect id='temp-svg-rect-this'></rect>
+                <!-- calories data -->
+                <text class='temp-svg-text-small' id='temp-svg-text-small-this'></text>
+
+                <!-- name -->
+                <text class='temp-svg-text-small' id='temp-svg-text-other'></text>
+                <!-- calories bar -->
+                <rect id='temp-svg-rect-other'></rect>
+                <!-- calories data -->
+                <text class='temp-svg-text-small' id='temp-svg-text-small-other'></text>
+
+                <!-- legend -->
+                <g id='temp-svg-legend'></g>
+            </g>
+
+            <g id='temp-svg-plot'>
+                <g id='temp-svg-bg'></g>
+                <g id='temp-svg-main'></g>
+                <g id='temp-svg-axes'></g>
+            </g>
+        </svg>
+
+        <!-- finding -->
+        <p class='main'>
+            In general, hot drinks contain higher calories than cold drinks. They are equal for some drinks with low calories already, like americano and espresso.
+        </p>
     </div>
 
-    <div style="text-align:center; background-color: #1E3933;">
-        <img src="images/recommender.001.jpeg" align="center" style="width: 70%; height: 45%;">
+    <!-- <div id='food-recommender' class='section'>
+        <p class='main'>
+            Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span>
+        </p>
 
+        <h1 class='main'>Food Recommender</h1>
 
-    </div>
-
-
-
-    <div class="main" style="padding-top: 30px;">
-        <h1>Inspecting by Catrgories</h1>
-    </div>
-
-
-    <div style="text-align:center; padding-top: 30px;">
-
-        <img src="images/categories.png" align="center" style="width: 55%; height: 35%;">
-    </div>
-
+        <div style="text-align:center; background-color: #1E3933;" class='plot'>
+            <img src="images/recommender.001.jpeg" align="center" style="width: 70%; height: 45%;">
+        </div>
+    </div> -->
 
 
     <div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">
 
-    <!-- image -->
-    <div id='calories-img-container' >
-        <img id='calories-widget-img' />
-    </div>
+        <!-- image -->
+        <div id='calories-img-container'>
+            <img id='calories-widget-img' />
+        </div>
 
-    <!-- name -->
-    <div>
-        <p>
-            <span id = 'calories-prod-name'></span></br>
-        </p>
-    </div>
+        <!-- name -->
+        <div>
+            <p>
+                <span id='calories-prod-name'></span></br>
+            </p>
+        </div>
 
-    <!-- information e.g. calories -->
-    <div>
-        <p>Calories: <span id='calories-widget-text'></span> kcal</p>
+        <!-- information e.g. calories -->
+        <div>
+            <p>Calories: <span id='calories-widget-text'></span> kcal</p>
 
-    </div>
+        </div>
 
 </div>
 
 
-<script src='js/main.js'></script>
+<script src='js/main.js' type='module'></script>
 <!-- line and dots -->
 
 <script type="module">
@@ -242,12 +271,9 @@
 
     (new Runtime).module(define, name => (name === "chart") && inspect());
 
-    
     // const main = runtime.module(define, Inspector.into("#calories-sort-container"));
 
 </script>
-
-
 
 </body>
 
