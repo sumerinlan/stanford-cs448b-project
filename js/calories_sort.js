@@ -4,21 +4,7 @@ import define1 from "./e93997d5089d7165@2227.js";
 export default function define(runtime, observer) {
     const main = runtime.module();
 
-
-    /*
-    main.variable(observer("viewof f1")).define("viewof f1", ["text"], function(text) {
-        return (
-            text({ title: "A Text Input", placeholder: "Placeholder text", description: "Note that text inputs don’t show output on the right" })
-        )
-    });
-    main.variable(observer("f1")).define("f1", ["Generators", "viewof f1"], (G, _) => G.input(_));
-    main.variable(observer()).define(["f1"], function(f1) {
-        return (
-            f1
-        )
-    });
-    */
-
+    // new autoselect from category 1
     main.variable(observer("viewof as")).define("viewof as", ["autoSelect", "dataByCalories", "data"], function(autoSelect, dataByCalories, data) {
         return (
             autoSelect({
@@ -35,63 +21,74 @@ export default function define(runtime, observer) {
         )
     });
 
-
-
-
-
+    // sorting
     main.variable(observer("viewof sorting")).define("viewof sorting", ["select"], function(select) {
         return (
             select({ title: 'Sorted by', options: ["category", "calories"], value: "calories" })
         )
     });
     main.variable(observer("sorting")).define("sorting", ["Generators", "viewof sorting"], (G, _) => G.input(_));
-    main.variable(observer("chart")).define("chart", ["sorting", "as", "dataByCategory", "data", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, dataByCategory, data, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
+    // define chart
+    main.variable(observer("chart")).define("chart", ["sorting", "as", "dataByCategory", "dataByOutside", "data", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, dataByCategory, dataByOutside, data, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
 
         let filteredData;
-        if (sorting !== "calories") {
-            filteredData = [].concat.apply([], dataByCategory.map(d => d.values));
-        } else{
-            filteredData = data.sort((a, b) => a.end - b.end);
+        switch(as){
+            case "Cold Coffees":
+                // filteredData = dataByCalories.map(d => d.key === "Cold Coffees");
+                filteredData = dataByOutside.map(d => d);
+                // filteredData = [].concat.apply([], data.filter(d => d.Category1 === "Cold Coffees"));
+                break;
+
+            case "Cold Drinks":
+                // filteredData = data.filter(d => d.Category1 === "Cold Drinks");
+                filteredData = dataByOutside.map(d => d.values);
+                break;
+
+            case "Frappuccino¬Æ Blended Beverages":
+                // filteredData = data.filter(d => d.Category1 === "Frappuccino¬Æ Blended Beverages");
+                filteredData = dataByOutside.map(d => d.values);
+                break;
+
+            case "Hot Coffees":
+                // filteredData = data.filter(d => d.Category1 === "Hot Coffees");
+                filteredData = dataByOutside.map(d => d.values);
+                break;
+
+            case "Hot Drinks":
+                // filteredData = data.filter(d => d.Category1 === "Hot Drinks");
+                filteredData = dataByOutside.map(d => d.values);
+                break;
+
+            case "Hot Teas":
+                // filteredData = data.filter(d => d.Category1 === "Hot Teas");
+                filteredData = dataByOutside.map(d => d.values);
+                break;
+
+            case "Iced Teas":
+                // filteredData = data.filter(d => d.Category1 === "Iced Teas");
+                filteredData = dataByOutside.map(d => d.values);
+                break;
+
+            default:
+                filteredData = data.sort((a, b) => a.end - b.end);
+                break;
         }
+
+
+
+
+        // if (sorting !== "calories") {
+        //     filteredData = [].concat.apply([], dataByCategory.map(d => d.values));
+        // } else {
+        //     filteredData = data.sort((a, b) => a.end - b.end);
+        // }
 
         filteredData.forEach(d => d.color = d3.color(color(d.Category2)))
 
 
 
 
-        switch(as){
-            case "Cold Coffees":
-                // filteredData = dataByCalories.map(d => d.key === "Cold Coffees");
-                filteredData = data.filter(d => d.Category1 === "Cold Coffees");
-                break;
-
-            case "Cold Drinks":
-                filteredData = data.filter(d => d.Category1 === "Cold Drinks");
-                break;
-
-            case "Frappuccino¬Æ Blended Beverages":
-                filteredData = data.filter(d => d.Category1 === "Frappuccino¬Æ Blended Beverages");
-                break;
-
-            case "Hot Coffees":
-                filteredData = data.filter(d => d.Category1 === "Hot Coffees");
-                break;
-
-            case "Hot Drinks":
-                filteredData = data.filter(d => d.Category1 === "Hot Drinks");
-                break;
-
-            case "Hot Teas":
-                filteredData = data.filter(d => d.Category1 === "Hot Teas");
-                break;
-
-            case "Iced Teas":
-                filteredData = data.filter(d => d.Category1 === "Iced Teas");
-                break;
-
-            default:
-                break;
-        }
+        
 
 
 
@@ -286,6 +283,16 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
             d3.nest().key(d => d.Category2).entries(data)
         )
     });
+
+    // read by main category
+    main.variable(observer("dataByOutside")).define("dataByOutside", ["d3", "data"], function(d3, data) {
+        return (
+            // d3.nest().key(d => d.region).entries(data)
+            data.filter(d => d.Category1 === "Cold Coffees")
+        )
+    });
+    
+
     main.variable(observer("axisBottom")).define("axisBottom", ["d3", "x", "formatCalories"], function(d3, x, formatCalories) {
         return (
             d3.axisBottom(x)
