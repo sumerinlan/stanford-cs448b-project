@@ -52,7 +52,7 @@ body {
     font-weight: lighter;
 }
 
-h1 {
+h1, h2 {
     text-transform: uppercase;
     font-weight: 800;
     margin-top: 5vh;
@@ -207,19 +207,19 @@ a:hover, a:active {
 }
 
 /* top drinks */
-#top-drinks {
+#top-drinks, #caffeine {
     display: flex;
     margin: 0 10%;
     min-width: 800px;
     flex-wrap: wrap;
 }
 
-#top-drinks-svg {
+#top-drinks-svg, #caffeine-svg {
     display: inline-flex;
-    background-color: #white;
+    background-color: white;
 }
 
-#top-drinks-details {
+#top-drinks-details, #caffeine-details {
     background-color: var(--warm-neutral);
     display: block;
     flex-grow: 2;
@@ -230,28 +230,19 @@ a:hover, a:active {
     padding: 10px;
 }
 
-.top-drinks-details-name {
+.scatter-plot-details-name {
     font-size: 1.2rem;
     font-weight: bold;
     max-width: 300px;
 }
 
-.top-drinks-details-others {
+.scatter-plot-details-others {
     overflow-wrap: break-word;
     font-size: 0.8rem;
 }
 
-.top-drink-dots {
-    fill: var(--starbucks-green);
-    opacity: 0.5;
-}
-
-.top-drink-dots:hover {
+.scatter-plot-dots:hover {
     opacity: 0.3;
-}
-
-.top-drink-dots-others {
-    fill: var(--warm-neutral);
 }
 
 #top-drinks-container ul {
@@ -259,7 +250,7 @@ a:hover, a:active {
 }
 
 /* legends */
-.top-drink-legend {
+.scatter-legend {
     dominant-baseline: middle;
     font-size: 0.8rem;
     text-anchor: middle;

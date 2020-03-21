@@ -29,6 +29,10 @@
         </p>
     </div>
 
+    <div class='main section'>
+        <h1>Calories & Sugars</h1>
+    </div>
+
     <div id='facts-container' class='main section'>
 
         <!-- motivation -->
@@ -36,7 +40,7 @@
             We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span>
         </p>
 
-        <h1>BASIC FACTS</h1>
+        <h2>BASIC FACTS</h2>
 
         <p>
             Here we displayed the full menu using an image-based visualizer, where you can easily hover to see a drink's calories and sugars data.
@@ -103,7 +107,7 @@
             Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span>
         </p>
 
-        <h1 class='main'>Calories of drinks when you choose different sizes</h1>
+        <h2 class='main'>Calories of drinks when you choose different sizes</h2>
 
         <!-- design rationale -->
 
@@ -128,7 +132,7 @@
             of standard sizes.
         </p>
 
-        <h1 class='main'>TOP RANKED DRINKS</h1>
+        <h2 class='main'>TOP RANKED DRINKS</h2>
 
         <!-- design rationale -->
         <p class='main'>
@@ -139,11 +143,6 @@
         <p class='main instruction'>
             <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see drinks and their nutrition information.
         </p>
-
-        <form class='main'>
-            <input type='radio' name='top-drinks-y' value='sugars' checked>Calories v.s. Sugars<br>
-            <input type='radio' name='top-drinks-y' value='caffeine'>Calories v.s. Caffeine
-        </form>
 
         <form class='main'>
             <input type='checkbox' id='top-drinks-checkbox' checked> Show top-ranked drinks
@@ -185,7 +184,7 @@
                 have higher calories than cold drinks?</span>
         </p>
 
-        <h1 class='main'>Calories of drinks under hot / cold categories</h1>
+        <h2 class='main'>Calories of drinks under hot / cold categories</h2>
 
         <!-- design rationale -->
         <p class='main'>
@@ -238,7 +237,7 @@
             Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span>
         </p>
 
-        <h1 class='main'>Food Recommender</h1>
+        <h2 class='main'>Food Recommender</h2>
 
         <div class='plot'>
             <div id='recommender-drink-category'></div>
@@ -263,6 +262,27 @@
         </div>
     </div>
 
+    <div class='main section'>
+        <h1>Calories & Caffeine</h1>
+    </div>
+
+    <div id='caffeine-container' class='section'>
+        <h2 class='main'>Caffeine</h2>
+        <div id='caffeine'>
+            <svg id='caffeine-svg'>
+                <g id='caffeine-svg-plot'>
+                    <g id='caffeine-svg-other'></g>
+                    <g id='caffeine-svg-axes'></g>
+                    <g id='caffeine-svg-legend'>
+                        <g id='caffeine-svg-legend-color'></g>
+                        <g id='caffeine-svg-legend-size'></g>
+                    </g>
+                    <g id='caffeine-svg-top'></g>
+                </g>
+            </svg>
+            <div id='caffeine-details'></div>
+        </div>
+    </div>
 
     <div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">
 
