@@ -7,10 +7,12 @@ import {
 import basicFacts from './basic_facts.js'
 import topDrinks from './top_drinks.js'
 import temperatureComparator from './temperature_comparator.js'
+import foodRecommender from './recommender.js'
 
 basicFacts.setup();
 topDrinks.setup();
 temperatureComparator.setup();
+foodRecommender.setup();
 
 d3.csv('data/starbucks-menu/drink_manual_grande_only.csv', d => {
     var row = {};
@@ -22,24 +24,11 @@ d3.csv('data/starbucks-menu/drink_manual_grande_only.csv', d => {
     var grandeData = data;
     basicFacts.plot(grandeData);
 
-    var topDrinksData = grandeData.filter(d => d.RANK !== '');
-    var topDrinksData = d3.nest()
-        .key(d => [d.SUGARS, d.CALORIES])
-        .entries(topDrinksData);
-
-    var otherDrinksData = d3.nest()
-        .key(d => [d.SUGARS, d.CALORIES])
-        .entries(grandeData);
-
-    topDrinks.plotAllDrinks(otherDrinksData);
-    topDrinks.plotTopDrinks(topDrinksData);
+    topDrinks.passData(grandeData);
     temperatureComparator.plot(grandeData);
+    foodRecommender.passData(grandeData);
 
     // actions
-
-    d3.select('#top-drinks-checkbox').on('click', function() {
-        topDrinks.plotTopDrinks(topDrinksData);
-    });
 
     // when the input range changes update value
     d3.select('#facts-keyword').on('input', function() {

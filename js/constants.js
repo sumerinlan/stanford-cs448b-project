@@ -38,6 +38,17 @@ export const milks = {
     SOYMILK: 'Soymilk',
 }
 
+export const CATEGORIES_COLORS_FOUR = {
+    // spring
+    'Hot Coffees': '#c89543',
+    'Hot Teas': '#eed350',
+    'Hot Drinks': '#edc4c9',
+    'Frappuccino\xAE Blended Beverages': '#b6cbd5',
+    'Cold Coffees': '#c89543',
+    'Iced Teas': '#eed350',
+    'Cold Drinks': '#edc4c9'
+}
+
 export const CATEGORIES_COLORS = {
     // spring
     'Hot Coffees': '#c89543',

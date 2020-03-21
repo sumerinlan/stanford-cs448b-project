@@ -5,7 +5,7 @@
     <script src='https://d3js.org/d3.v5.min.js'></script>
     <link rel='stylesheet' href='css/main.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <title></title>
+    <title>You Don't Know About Starbucks</title>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
@@ -137,15 +137,27 @@
 
         <!-- instruction -->
         <p class='main instruction'>
-            <input type='checkbox' id='top-drinks-checkbox' checked> <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see drinks and their nutrition information.
+            <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see drinks and their nutrition information.
         </p>
+
+        <form class='main'>
+            <input type='radio' name='top-drinks-y' value='sugars' checked>Calories v.s. Sugars<br>
+            <input type='radio' name='top-drinks-y' value='caffeine'>Calories v.s. Caffeine
+        </form>
+
+        <form class='main'>
+            <input type='checkbox' id='top-drinks-checkbox' checked> Show top-ranked drinks
+        </form>
 
         <div id='top-drinks'>
             <svg id='top-drinks-svg'>
                 <g id='top-drinks-svg-plot'>
                     <g id='top-drinks-svg-other'></g>
                     <g id='top-drinks-svg-axes'></g>
-                    <g id='top-drinks-svg-legend'></g>
+                    <g id='top-drinks-svg-legend'>
+                        <g id='top-drinks-svg-legend-color'></g>
+                        <g id='top-drinks-svg-legend-size'></g>
+                    </g>
                     <g id='top-drinks-svg-top'></g>
                 </g>
             </svg>
@@ -169,19 +181,22 @@
 
         <!-- motivation -->
         <p class='main'>
-            I know Matcha Green Tea Latte is my favorite! But every time I still need to choose whether I want to have a hot or  a cold one. I wonder if there is any difference between those two, and <span class='emphasize'>in general, does hot drinks have higher calories than cold drinks?</span>
+            I know Matcha Green Tea Latte is my favorite! But every time I still need to choose whether I want to have a hot or a cold one. I wonder if there is any difference between those two, and <span class='emphasize'>in general, does hot drinks
+                have higher calories than cold drinks?</span>
         </p>
 
         <h1 class='main'>Calories of drinks under hot / cold categories</h1>
 
         <!-- design rationale -->
         <p class='main'>
-            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. We used x-axis and colors to represent different categories. We highlighted the chosen (hovered / clicked) drink and its corresponding hot / cold option, if there is any, by muting the colors of other drinks.
+            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. We used x-axis and colors to represent different categories. We highlighted the chosen (hovered / clicked) drink and its corresponding
+            hot / cold option, if there is any, by muting the colors of other drinks.
         </p>
 
         <!-- instruction -->
         <p class='main instruction'>
-            <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot / cold option. <span class='emphasize'>Hover</span> to any empty space to reset the graph.
+            <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot / cold option. <span class='emphasize'>Click</span> the bar to view calories information. <span class='emphasize'>Click</span> any empty space
+            to set the graph.
         </p>
 
         <svg id='temp-svg' class='plot'>
@@ -218,17 +233,35 @@
         </p>
     </div>
 
-    <!-- <div id='food-recommender' class='section'>
+    <div id='food-recommender' class='section'>
         <p class='main'>
             Now we know what to drink. I started to wonder: <span class='emphasize'>What food can I choose to keep total calories intaked below 500 calories?</span>
         </p>
 
         <h1 class='main'>Food Recommender</h1>
 
-        <div style="text-align:center; background-color: #1E3933;" class='plot'>
-            <img src="images/recommender.001.jpeg" align="center" style="width: 70%; height: 45%;">
+        <div class='plot'>
+            <div id='recommender-drink-category'></div>
+            <svg id='recommender-drink-svg'>
+                <g id='recommender-drink-plot'>
+            </svg>
+            </svg>
+            <div id='recommender-drink-center'>
+                <div class='recommender-single-info'>
+                    <div id='recommender-drink-text'></div>
+                    <div id='recommender-drink-size'></div>
+                    <div id='recommender-drink-calories'></div>
+                </div>
+                <div class='recommender-single-info'>
+                    <div id='recommender-food-text'></div>
+                    <div id='recommender-food-calories'></div>
+                </div>
+            </div>
+            <svg id='recommender-food-svg'>
+                <g id='recommender-food-plot'>
+            </svg>
         </div>
-    </div> -->
+    </div>
 
 
     <div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">

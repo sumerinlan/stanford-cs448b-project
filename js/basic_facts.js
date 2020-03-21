@@ -15,11 +15,11 @@ function setup() {
         tabs.append('div')
             // don't display full name for Frappuccino
             .text(category1.indexOf('Frappuccino') !== -1 ? 'Frappuccino' : category1)
-            .attr('class', category1 == activeTab ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
+            .classed('active', category1 == activeTab)
             .on('click', function() {
-                tabs.selectAll('div').attr('class', 'basic-facts-tabs');
+                tabs.selectAll('div').classed('active', false);
                 activeTab = category1;
-                d3.select(this).attr('class', 'basic-facts-tabs-active');
+                d3.select(this).classed('active', true);
                 updateTabs();
             });
     }
@@ -27,11 +27,11 @@ function setup() {
     // tab for all categories
     tabs.append('div')
         .text('All Drinks')
-        .attr('class', activeTab == null ? 'basic-facts-tabs-active' : 'basic-facts-tabs')
+        .classed('active', activeTab == null)
         .on('click', function() {
-            tabs.selectAll('div').attr('class', 'basic-facts-tabs');
+            tabs.selectAll('div').classed('active', false);
             activeTab = null;
-            d3.select(this).attr('class', 'basic-facts-tabs-active');
+            d3.select(this).classed('active', true);
             updateTabs();
         });
 }
