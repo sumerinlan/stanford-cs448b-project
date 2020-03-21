@@ -76,7 +76,7 @@ function setup() {
     });
 }
 
-function plot(allData) {
+function passData(allData) {
     drinkData = allData;
     setDrinkData();
 }
@@ -224,5 +224,5 @@ function setDrinkSize() {
 
 export default {
     setup,
-    plot
+    passData
 }
