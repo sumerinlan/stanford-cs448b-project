@@ -3,6 +3,9 @@ import {
     CATEGORIES_1,
     CATEGORIES_2
 } from './constants.js'
+import {
+    drinkSize
+} from './drink_size.js'
 
 var currentCategory = 'Hot Coffees'; // active categories
 var currentSize = ''; //
@@ -27,9 +30,18 @@ var drinkData = []; // all drink data
 var drinkCurrent = []; // drink data for current category
 var foodAll = []; // all food data
 var foodCurrent = []; // food data based on current drink
-var drinkSize = []; // size information for drinks
 
 function setup() {
+    d3.csv('data/starbucks-menu/food_manual.csv', d => {
+        var row = {};
+        for (const elem in columns) {
+            row[elem] = d[columns[elem]];
+        }
+        return row;
+    }).then(data => {
+        foodAll = data;
+    });
+
     let tabs = d3.select('#recommender-drink-category');
     tabs.selectAll('div').remove();
 
@@ -60,20 +72,6 @@ function setup() {
         drinkImages.push(d3.select('#recommender-drink-plot').append('image'));
         foodImages.push(d3.select('#recommender-food-plot').append('image'));
     }
-
-    d3.json('data/starbucks-menu/drink_manual_by_size.json').then(data => {
-        drinkSize = data;
-    });
-
-    d3.csv('data/starbucks-menu/food_manual.csv', d => {
-        var row = {};
-        for (const elem in columns) {
-            row[elem] = d[columns[elem]];
-        }
-        return row;
-    }).then(data => {
-        foodAll = data;
-    });
 }
 
 function passData(allData) {
