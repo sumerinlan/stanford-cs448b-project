@@ -1,4 +1,4 @@
-Category1,Category2,Name,Image,Size_Min,Calories_Min,Size_Max,Calories_Max
+Category1,Category2,Name,Image,Size_Min,start,Size_Max,end
 Cold Coffees,Cold Brews,Cold Brew Coffee,https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg,Tall,5,Trenta,5
 Cold Coffees,Cold Brews,Cold Brew Coffee with Milk,https://globalassets.starbucks.com/assets/de574746527d4960a7d838f271e3491c.jpg,Tall,25,Trenta,70
 Cold Coffees,Cold Brews,Cold Brew with Salted Cream Cold Foam,https://globalassets.starbucks.com/assets/6ffca0a4b4ec4af98d07c4e860baca45.jpg,Tall,160,Trenta,340
@@ -14,7 +14,7 @@ Cold Coffees,Iced Americano,Iced Blonde Caffè Americano,https://globalassets.st
 Cold Coffees,Iced Americano,Iced Caffè Americano,https://globalassets.starbucks.com/assets/84ede138768e42ebb2e0366c2f09960a.jpg,Tall,10,Venti,15
 Cold Coffees,Iced Coffees,Iced Coffee,https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg,Tall,60,Trenta,160
 Cold Coffees,Iced Coffees,Iced Coffee with Milk,https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg,Tall,80,Trenta,230
-Cold Coffees,Iced Espresso Shots,Blonde Doubleshot® On Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,70,Venti,140
+Cold Coffees,Iced Espresso Shots,Blonde Doubleshot® On Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,0,Venti,0
 Cold Coffees,Iced Espresso Shots,Doubleshot® on Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,80,Venti,170
 Cold Coffees,Iced Espresso Shots,Iced Espresso,https://globalassets.starbucks.com/assets/6a320073ec4b47e7bb9e6eb9e5e74e96.jpg,Solo,5,Quad,25
 Cold Coffees,Iced Flat Whites,Iced Almondmilk Honey Flat White,https://globalassets.starbucks.com/assets/278a67a4f04948748626b3e0a2582182.jpg,Tall,100,Venti,200

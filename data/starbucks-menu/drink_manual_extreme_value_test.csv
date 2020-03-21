@@ -1,0 +1,34 @@
+Category1,Category2,Name,Image,Size_Min,Calories_Min,Size_Max,Calories_Max
+Cold Coffees,Cold Brews,Cold Brew Coffee,https://globalassets.starbucks.com/assets/83617bbfa2264197b745a1c2db04fa92.jpg,Tall,5,Trenta,5
+Cold Coffees,Cold Brews,Cold Brew Coffee with Milk,https://globalassets.starbucks.com/assets/de574746527d4960a7d838f271e3491c.jpg,Tall,25,Trenta,70
+Cold Coffees,Cold Brews,Cold Brew with Salted Cream Cold Foam,https://globalassets.starbucks.com/assets/6ffca0a4b4ec4af98d07c4e860baca45.jpg,Tall,160,Trenta,340
+Cold Coffees,Cold Brews,Cold Brew with Salted Honey Cold Foam,https://globalassets.starbucks.com/assets/1f3d15ed2b534aaab4cbc8fbf2b8cccb.jpg,Tall,30,Trenta,45
+Cold Coffees,Cold Brews,Nitro Cold Brew,https://globalassets.starbucks.com/assets/85ae42ce9eb5423d83c4410f7b561882.jpg,Tall,5,Grande,5
+Cold Coffees,Cold Brews,Nitro Cold Brew with Salted Cream Cold Foam,https://globalassets.starbucks.com/assets/1791fd99e33248be844d360c90429bcd.jpg,Tall,160,Grande,230
+Cold Coffees,Cold Brews,Nitro Cold Brew with Salted Honey Cold Foam,https://globalassets.starbucks.com/assets/1697f7c55887448684fed85ecdd98e44.jpg,Tall,30,Grande,40
+Cold Coffees,Cold Brews,Nitro Cold Brew with Sweet Cream,https://globalassets.starbucks.com/assets/31d2824c896147fbaad4a1eac1ab1174.jpg,Tall,70,Grande,70
+Cold Coffees,Cold Brews,Reserve® Cold Brew,https://globalassets.starbucks.com/assets/65fc074f721f41afb23db6981c600ce7.jpg,Tall,0,Venti,5
+Cold Coffees,Cold Brews,Reserve® Nitro Cold Brew,https://globalassets.starbucks.com/assets/55525cd1303a4b18958b05f0705b4cbb.jpg,Tall,5,Grande,5
+Cold Coffees,Cold Brews,Vanilla Sweet Cream Cold Brew,https://globalassets.starbucks.com/assets/3ee242d417904e7aa8f859fc1b07873c.jpg,Tall,90,Trenta,210
+Cold Coffees,Iced Americano,Iced Blonde Caffè Americano,https://globalassets.starbucks.com/assets/84ede138768e42ebb2e0366c2f09960a.jpg,Tall,10,Venti,15
+Cold Coffees,Iced Americano,Iced Caffè Americano,https://globalassets.starbucks.com/assets/84ede138768e42ebb2e0366c2f09960a.jpg,Tall,10,Venti,15
+Cold Coffees,Iced Coffees,Iced Coffee,https://globalassets.starbucks.com/assets/2c626225a4804e5abd8e93e7fd59a0a2.jpg,Tall,60,Trenta,160
+Cold Coffees,Iced Coffees,Iced Coffee with Milk,https://globalassets.starbucks.com/assets/cc9b573f8c1b43cd89cdab08ae5b9ec7.jpg,Tall,80,Trenta,230
+Cold Coffees,Iced Espresso Shots,Blonde Doubleshot® On Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,,Venti,
+Cold Coffees,Iced Espresso Shots,Doubleshot® on Ice,https://globalassets.starbucks.com/assets/c8d2c8fa22ee4f4c864dee6dac5a1868.jpg,Tall,80,Venti,170
+Cold Coffees,Iced Espresso Shots,Iced Espresso,https://globalassets.starbucks.com/assets/6a320073ec4b47e7bb9e6eb9e5e74e96.jpg,Solo,5,Quad,25
+Cold Coffees,Iced Flat Whites,Iced Almondmilk Honey Flat White,https://globalassets.starbucks.com/assets/278a67a4f04948748626b3e0a2582182.jpg,Tall,100,Venti,200
+Cold Coffees,Iced Flat Whites,Iced Almondmilk Honey Flat White with Blonde Espresso,https://globalassets.starbucks.com/assets/278a67a4f04948748626b3e0a2582182.jpg,Tall,80,Venti,180
+Cold Coffees,Iced Flat Whites,Iced Flat White,https://globalassets.starbucks.com/assets/ea360dd2ea0a4ab098fea38fc7e3752c.jpg,Tall,110,Venti,220
+Cold Coffees,Iced Flat Whites,Nitro Flat White,data/image/nitro-flat-white.jpg,Tall,180,Grande,230
+Cold Coffees,Iced Lattes,Iced Blonde Caffè Latte,https://globalassets.starbucks.com/assets/f9ad475efabb455887649f7dd453a90d.jpg,Tall,100,Venti,180
+Cold Coffees,Iced Lattes,Iced Blonde Smoked Butterscotch Latte,https://globalassets.starbucks.com/assets/58fe0d40a6be4262bf6b210eab6cd814.jpg,Tall,180,Venti,380
+Cold Coffees,Iced Lattes,Iced Blonde Vanilla Latte,https://globalassets.starbucks.com/assets/5cd1a64f00ed4f7ba5923cfa73a0e323.jpg,Tall,130,Venti,260
+Cold Coffees,Iced Lattes,Iced Caffè Latte,https://globalassets.starbucks.com/assets/f9ad475efabb455887649f7dd453a90d.jpg,Tall,100,Venti,180
+Cold Coffees,Iced Lattes,Iced Cinnamon Dolce Latte,https://globalassets.starbucks.com/assets/2a7651bc593044ba9043e90ddc20e3f1.jpg,Tall,240,Venti,420
+Cold Coffees,Iced Lattes,Iced Coconutmilk Latte,https://globalassets.starbucks.com/assets/85ed6da0c69e456cb0d28dae8dd42fa0.jpg,Tall,70,Venti,160
+Cold Coffees,Iced Lattes,Iced Coconutmilk Latte with Blonde Espresso,https://globalassets.starbucks.com/assets/85ed6da0c69e456cb0d28dae8dd42fa0.jpg,Tall,70,Venti,130
+Cold Coffees,Iced Lattes,Iced Oatmilk Honey Latte,https://globalassets.starbucks.com/assets/941fcbe6faed4a0f86804f10f650c572.jpg,Tall,160,Venti,300
+Cold Coffees,Iced Lattes,Iced Oatmilk Honey Latte with Blonde Espresso,https://globalassets.starbucks.com/assets/941fcbe6faed4a0f86804f10f650c572.jpg,Tall,140,Venti,280
+Cold Coffees,Iced Lattes,Iced Smoked Butterscotch Latte,https://globalassets.starbucks.com/assets/58fe0d40a6be4262bf6b210eab6cd814.jpg,Tall,220,Venti,420
+Cold Coffees,Iced Lattes,Reserve® Iced Hazelnut Bianco Latte,https://globalassets.starbucks.com/assets/1266dd4687e943e0a54c9da9269e95e3.jpg,Tall,210,Venti,390
