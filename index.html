@@ -176,6 +176,17 @@
         </ul>
     </div>
 
+    <div id='donut-container' class='section'>
+        <h2 class='main'>Where are those calories from?</h2>
+
+        <div class='plot'>
+            <svg id='donut-drinks-dots-svg'></svg>
+            <svg id='donut-drinks-donuts-svg'></svg>
+            <svg id='donut-food-dots-svg'></svg>
+            <svg id='donut-food-donuts-svg'></svg>
+        </div>
+    </div>
+
     <div id='temperature-container' class='section'>
 
         <!-- motivation -->
@@ -304,14 +315,14 @@
 
         </div>
 
-</div>
+    </div>
 
 
-<script src='js/main.js' type='module'></script>
-<!-- line and dots -->
+    <script src='js/main.js' type='module'></script>
+    <!-- line and dots -->
 
-<script type="module">
-    import {Runtime, Library, Inspector} from "./js/runtime.js";
+    <script type="module">
+        import {Runtime, Library, Inspector} from "./js/runtime.js";
     import define from "./js/index.js";
     const inspect = Inspector.into("#calories-sort-container");
     const runtime = new Runtime();

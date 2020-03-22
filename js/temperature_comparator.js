@@ -57,7 +57,7 @@ function setup() {
         .call(g => g.selectAll('.tick:not(:first-of-type) line')
             .attr('stroke-dasharray', '2,2'))
         .call(g => g.selectAll('.tick text')
-            .attr('class', 'temp-svg-axes-text-small')
+            .attr('class', 'legend-small')
             .attr('x', -4)
             .attr('dy', -4));
 
@@ -65,8 +65,8 @@ function setup() {
         .attr('transform', 'rotate(-90)')
         .attr('y', -plotMargin)
         .attr('x', -plotHeight / 2)
-        .attr('dy', '1rem')
-        .attr('class', 'temp-svg-axes-text')
+        .attr('dy', '0.5rem')
+        .attr('class', 'legend')
         .text('CALORIES');
 
     for (const i in CATEGORIES_1) {
@@ -75,7 +75,7 @@ function setup() {
         // x axis
         axesPlot.append('text')
             .attr('transform', `translate(${plotWidth * (1 + 2 * i) / 14}, ${plotHeight + 20})`)
-            .attr('class', 'temp-svg-axes-text-small')
+            .attr('class', 'legend-small')
             // don't display full name for Frappuccino
             .text(category1.indexOf('Frappuccino') !== -1 ? 'Frappuccino' : category1);
 
@@ -92,7 +92,7 @@ function setup() {
             .text(category1)
             .attr('x', legendHeight * 1.2)
             .attr('y', plotHeight - legendHeight * (7 - i) + legendHeight * 0.6)
-            .attr('class', 'temp-svg-axes-text-small')
+            .attr('class', 'legend-small')
             .style('text-anchor', 'start');
     }
 
@@ -106,12 +106,12 @@ function setup() {
 
     axesPlot.append('text')
         .attr('transform', `translate(${plotWidth / 14 * 3}, -10)`)
-        .attr('class', 'temp-svg-axes-text')
+        .attr('class', 'legend')
         .text('Hot');
 
     axesPlot.append('text')
         .attr('transform', `translate(${plotWidth / 7 * 5}, -10)`)
-        .attr('class', 'temp-svg-axes-text')
+        .attr('class', 'legend')
         .text('Cold');
 
     // text info

@@ -88,6 +88,18 @@ a:hover, a:active {
     margin: 5vh auto;
 }
 
+.legend {
+    font-size: 0.9rem;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.legend-small {
+    font-size: 0.7rem;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
 /* basic facts */
 #facts-container {
     font-family: Open Sans;
@@ -249,13 +261,6 @@ a:hover, a:active {
     margin-left: 20px;
 }
 
-/* legends */
-.scatter-legend {
-    dominant-baseline: middle;
-    font-size: 0.8rem;
-    text-anchor: middle;
-}
-
 /*bar indicating calories*/
 .calories-bar {
     margin: 0.75rem 0.5rem;
@@ -317,18 +322,6 @@ a:hover, a:active {
 .temp-svg-axes {
     stroke: black;
     stroke-opacity: 0.5;
-}
-
-.temp-svg-axes-text {
-    font-weight: lighter;
-    text-anchor: middle;
-    font-size: 0.9rem;
-}
-
-.temp-svg-axes-text-small {
-    font-weight: lighter;
-    font-size: 0.7rem;
-    text-anchor: middle;
 }
 
 /* side bar */
@@ -418,4 +411,32 @@ a:hover, a:active {
 
 #recommender-drink-size > .active {
     border-bottom-color: var(--warm-neutral);
+}
+
+/* donuts */
+
+#donut-drinks-donuts-svg, #donut-food-donuts-svg {
+    text-anchor: middle;
+}
+
+.donut-donut-calories-large {
+    font-weight: bold;
+}
+
+.donut-donut-calories-small {
+    font-size: 0.7rem;
+}
+
+#donut-container svg {
+    display: block;
+    margin: auto;
+}
+
+.donut-donut-name {
+    font-weight: bold;
+    font-size: 0.7rem;
+}
+
+.donut-donut-percentage {
+    font-size: 0.7rem;
 }

@@ -81,8 +81,8 @@ function setupByType(type) {
         legendPlotColor.append('text')
             .text('All Drinks')
             .attr('x', legendMargin + legendHeight * 1.2)
-            .attr('y', top + legendHeight * 0.6)
-            .attr('class', 'temp-svg-axes-text-small')
+            .attr('y', top + legendHeight * 0.5)
+            .attr('class', 'legend-small')
             .style('text-anchor', 'start');
 
         top += legendHeight + legendMargin;
@@ -99,8 +99,8 @@ function setupByType(type) {
         legendPlotColor.append('text')
             .text('Top Drinks')
             .attr('x', legendMargin + legendHeight * 1.2)
-            .attr('y', top + legendHeight * 0.6)
-            .attr('class', 'temp-svg-axes-text-small')
+            .attr('y', top + legendHeight * 0.5)
+            .attr('class', 'legend-small')
             .style('text-anchor', 'start');
 
     } else {
@@ -115,8 +115,8 @@ function setupByType(type) {
             legendPlotColor.append('text')
                 .text(i == 3 ? 'Frappuccino' : `${CATEGORIES_1[i]}, ${CATEGORIES_1[i + 4]}`)
                 .attr('x', legendMargin + legendHeight * 1.2)
-                .attr('y', top + legendHeight * 0.6)
-                .attr('class', 'temp-svg-axes-text-small')
+                .attr('y', top + legendHeight * 0.5)
+                .attr('class', 'legend-small')
                 .style('text-anchor', 'start');
 
             top += legendHeight + legendMargin;
@@ -138,9 +138,9 @@ function setupByType(type) {
 
         legendPlotSize.append('text')
             .text(i)
-            .attr('class', 'scatter-plot-legend')
+            .attr('class', 'legend-small')
             .attr('x', getDotWidthForAllDrinks(5) * 2 + legendWidth + legendMargin * 3)
-            .attr('y', top + lineHeight / 2 + 6);
+            .attr('y', top + lineHeight / 2);
         top += lineHeight + legendMargin;
     }
 
@@ -190,7 +190,7 @@ function plotAxes(type) {
 
     axesPlot.append('text')
         .attr('transform', `translate(${plotWidth / 2}, ${plotHeight + 35})`)
-        .style('text-anchor', 'middle')
+        .attr('class', 'legend')
         .text('CALORIES');
 
     axesPlot.append('text')
@@ -198,7 +198,7 @@ function plotAxes(type) {
         .attr('y', -plotMargin)
         .attr('x', -plotHeight / 2)
         .attr('dy', '1em')
-        .style('text-anchor', 'middle')
+        .attr('class', 'legend')
         .text(type == TOP_DRINKS ? 'SUGARS (g)' : 'CAFFEINE (mg)');
 }
 
