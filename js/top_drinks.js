@@ -13,7 +13,6 @@ let outerHeight = plotHeight + 2 * plotMargin;
 
 let legendMargin = 4;
 let legendHeight = 16;
-let legendWidth = 160;
 
 // scales
 
@@ -29,106 +28,126 @@ let yCaffeineScale = d3.scaleLinear()
     .domain([0, 400])
     .range([plotHeight, 0]);
 
-let yScale = ySugarsScale;
-
-let yEntry = 'sugars';
-
 // data
 
 var topDrinksSugarsData = [];
 var allDrinksSugarsData = [];
-var allDrinksSugarsDataByCategory = [];
-var topDrinksCaffeineData = [];
 var allDrinksCaffeineData = [];
-var allDrinksCaffeineDataByCategory = [];
 
-function setup(otherDrinksData) {
+const TOP_DRINKS = 'top-drinks';
+const CAFFEINE = 'caffeine';
 
+function setup() {
+    setupByType(TOP_DRINKS)
+    setupByType(CAFFEINE)
+}
+
+function setupByType(type) {
     // setups
 
-    d3.select('#top-drinks-svg')
+    d3.select(`#${type}-svg`)
         .attr('width', outerWidth)
         .attr('height', outerHeight);
 
-    d3.select('#top-drinks-svg-plot')
+    d3.select(`#${type}-svg-plot`)
         .attr('transform', `translate(${plotMargin}, ${plotMargin})`);
 
     // axes
 
-    plotAxes();
+    plotAxes(type);
 
-    let legendPlot = d3.select('#top-drinks-svg-legend')
+    // legend
+
+    let legendPlot = d3.select(`#${type}-svg-legend`)
         .attr('transform', `translate(${6 * legendMargin}, ${legendMargin})`);
-        let legendPlotColor = d3.select('#top-drinks-svg-legend-color');
-        let legendPlotSize = d3.select('#top-drinks-svg-legend-size');
+    let legendPlotColor = d3.select(`#${type}-svg-legend-color`);
+    let legendPlotSize = d3.select(`#${type}-svg-legend-size`);
 
-    // all drinks
+    // colors
 
-    legendPlotColor.append('text')
-        .text('All Drinks')
-        .attr('class', 'top-drink-legend')
-        .style('text-anchor', 'start')
-        .attr('x', legendMargin)
-        .attr('y', legendHeight / 2);
+    var top = legendMargin;
 
-    var top = legendHeight + 2 * legendMargin;
+    if (type == TOP_DRINKS) {
 
-    for (const i of [0, 1, 2, 3]) {
+        // all drinks
+
         legendPlotColor.append('rect')
             .attr('x', legendMargin)
             .attr('y', top)
             .attr('width', legendHeight * 0.8)
             .attr('height', legendHeight * 0.8)
-            .style('fill', CATEGORIES_COLORS_FOUR[CATEGORIES_1[i]]);
+            .style('fill', '#f2f0eb');
 
         legendPlotColor.append('text')
-            .text(i == 3 ? 'Frappuccino' : `${CATEGORIES_1[i]}, ${CATEGORIES_1[i + 4]}`)
+            .text('All Drinks')
             .attr('x', legendMargin + legendHeight * 1.2)
-            .attr('y', top + legendHeight * 0.6)
-            .attr('class', 'temp-svg-axes-text-small')
+            .attr('y', top + legendHeight * 0.5)
+            .attr('class', 'legend-small')
             .style('text-anchor', 'start');
 
         top += legendHeight + legendMargin;
+
+        // top drinks
+
+        legendPlotColor.append('rect')
+            .attr('x', legendMargin)
+            .attr('y', top)
+            .attr('width', legendHeight * 0.8)
+            .attr('height', legendHeight * 0.8)
+            .style('fill', '#006241');
+
+        legendPlotColor.append('text')
+            .text('Top Drinks')
+            .attr('x', legendMargin + legendHeight * 1.2)
+            .attr('y', top + legendHeight * 0.5)
+            .attr('class', 'legend-small')
+            .style('text-anchor', 'start');
+
+    } else {
+        for (const i of [0, 1, 2, 3]) {
+            legendPlotColor.append('rect')
+                .attr('x', legendMargin)
+                .attr('y', top)
+                .attr('width', legendHeight * 0.8)
+                .attr('height', legendHeight * 0.8)
+                .style('fill', CATEGORIES_COLORS_FOUR[CATEGORIES_1[i]]);
+
+            legendPlotColor.append('text')
+                .text(i == 3 ? 'Frappuccino' : `${CATEGORIES_1[i]}, ${CATEGORIES_1[i + 4]}`)
+                .attr('x', legendMargin + legendHeight * 1.2)
+                .attr('y', top + legendHeight * 0.5)
+                .attr('class', 'legend-small')
+                .style('text-anchor', 'start');
+
+            top += legendHeight + legendMargin;
+        }
     }
 
-    // top drinks
+    // sizes
 
-    legendPlotSize.append('text')
-        .text('Top Drinks')
-        .attr('class', 'top-drink-legend')
-        .style('text-anchor', 'start')
-        .attr('x', legendMargin + legendWidth)
-        .attr('y', legendHeight / 2);
-
-    top = legendHeight + legendMargin;
-    for (const i of [1, 2, 3, 4]) {
+    top = legendMargin;
+    let legendWidth = type == TOP_DRINKS ? 100 : 160;
+    for (const i of type == TOP_DRINKS ? [1, 2, 3, 4] : [1, 3, 5]) {
         let lineHeight = Math.max(legendHeight, getDotWidthForAllDrinks(i) * 2);
 
         legendPlotSize.append('circle')
             .style('fill', '#006241')
-            .attr('cx', getDotWidthForAllDrinks(4) + legendWidth + legendMargin)
+            .attr('cx', getDotWidthForAllDrinks(5) + legendWidth + legendMargin)
             .attr('cy', top + lineHeight / 2)
             .attr('r', getDotWidthForAllDrinks(i));
 
         legendPlotSize.append('text')
             .text(i)
-            .attr('class', 'top-drink-legend')
-            .attr('x', getDotWidthForAllDrinks(4) * 2 + legendWidth + legendMargin * 3)
+            .attr('class', 'legend-small')
+            .attr('x', getDotWidthForAllDrinks(5) * 2 + legendWidth + legendMargin * 3)
             .attr('y', top + lineHeight / 2);
         top += lineHeight + legendMargin;
     }
 
     // actions
 
-    d3.select('#top-drinks-checkbox').on('click', function() {
-        refreshLegends();
-        plotDots();
-    });
-
-    d3.selectAll(("input[name='top-drinks-y']")).on('change', function(){
-        yEntry = this.value;
-        plotAxes();
-        plotDots();
+    d3.select(`#${type}-checkbox`).on('click', function() {
+        plotDots(type);
     });
 }
 
@@ -143,44 +162,22 @@ function passData(grandeData) {
         .key(d => [d.SUGARS, d.CALORIES])
         .entries(grandeData);
 
-    allDrinksSugarsDataByCategory = d3.nest()
-        .key(d => [d.SUGARS, d.CALORIES, d.CATEGORY1])
-        .entries(grandeData);
-
-    topDrinksCaffeineData = d3.nest()
-        .key(d => [d.CAFFEINE, d.CALORIES])
-        .entries(topDrinksData);
-
     allDrinksCaffeineData = d3.nest()
-        .key(d => [d.CAFFEINE, d.CALORIES])
-        .entries(grandeData);
-
-    allDrinksCaffeineDataByCategory = d3.nest()
         .key(d => [d.CAFFEINE, d.CALORIES, d.CATEGORY1])
         .entries(grandeData);
 
-    refreshLegends();
-    plotDots();
+    plotDots(TOP_DRINKS);
+    plotDots(CAFFEINE);
 }
 
 function getDotWidthForAllDrinks(i) {
     return 2 + 2 * i;
 }
 
-function refreshLegends() {
-    if (document.getElementById('top-drinks-checkbox').checked) {
-        d3.select('#top-drinks-svg-legend-color').style('opacity', 0.5);
-        d3.select('#top-drinks-svg-legend-size').style('opacity', 1);
-    } else {
-        d3.select('#top-drinks-svg-legend-color').style('opacity', 1);
-        d3.select('#top-drinks-svg-legend-size').style('opacity', 0.5);
-    }
-}
+function plotAxes(type) {
+    let yScale = type == TOP_DRINKS ? ySugarsScale : yCaffeineScale;
 
-function plotAxes() {
-    yScale = yEntry === 'sugars' ? ySugarsScale : yCaffeineScale;
-
-    let axesPlot = d3.select('#top-drinks-svg-axes');
+    let axesPlot = d3.select(`#${type}-svg-axes`);
     axesPlot.selectAll('g').remove();
     axesPlot.selectAll('text').remove();
 
@@ -193,7 +190,7 @@ function plotAxes() {
 
     axesPlot.append('text')
         .attr('transform', `translate(${plotWidth / 2}, ${plotHeight + 35})`)
-        .style('text-anchor', 'middle')
+        .attr('class', 'legend')
         .text('CALORIES');
 
     axesPlot.append('text')
@@ -201,35 +198,32 @@ function plotAxes() {
         .attr('y', -plotMargin)
         .attr('x', -plotHeight / 2)
         .attr('dy', '1em')
-        .style('text-anchor', 'middle')
-        .text(yEntry === 'sugars' ? 'SUGARS (g)' : 'CAFFEINE (mg)');
+        .attr('class', 'legend')
+        .text(type == TOP_DRINKS ? 'SUGARS (g)' : 'CAFFEINE (mg)');
 }
 
 // plot
 
-function plotDots() {
-    plotAllDrinks();
-    plotTopDrinks();
+function plotDots(type) {
+    plotAllDrinks(type);
+    plotTopDrinks(type);
 }
 
-function plotAllDrinks() {
-    let color = !document.getElementById('top-drinks-checkbox').checked;
-    let otherPlot = d3.select('#top-drinks-svg-other');
+function plotAllDrinks(type) {
+    if (type == CAFFEINE) {
+        return;
+    }
+    let otherPlot = d3.select(`#${type}-svg-other`);
     otherPlot.selectAll('circle').remove();
 
-    let data;
-    if (yEntry === "sugars") {
-        data = color ? allDrinksSugarsDataByCategory : allDrinksSugarsData;
-    } else {
-        data = color ? allDrinksCaffeineDataByCategory : allDrinksCaffeineData;
-    }
+    let data = allDrinksSugarsData;
+    let yScale = ySugarsScale;
 
     otherPlot.selectAll('circle')
         .data(data)
         .enter()
         .append('circle')
-        .style('fill', d => color ? CATEGORIES_COLORS_FOUR[d.key.split(',')[2]] : '#f2f0eb')
-        .style('opacity', color ? 0.5 : 1)
+        .style('fill', '#f2f0eb')
         .attr('r', d => 2 + 2 * d.values.length)
         .attr('cx', d => xScale(d.key.split(',')[1]))
         .attr('cy', d => yScale(d.key.split(',')[0]))
@@ -237,21 +231,24 @@ function plotAllDrinks() {
         .remove();
 }
 
-function plotTopDrinks() {
-    let details = d3.select('#top-drinks-details');
-    let checkBox = document.getElementById('top-drinks-checkbox');
+function plotTopDrinks(type) {
+    let details = d3.select(`#${type}-details`);
+    let checkBox = document.getElementById(`${type}-checkbox`);
 
-    let data = yEntry === "sugars" ? topDrinksSugarsData : topDrinksCaffeineData;
+    let data = type == TOP_DRINKS ? topDrinksSugarsData : allDrinksCaffeineData;
+    let yScale = type == TOP_DRINKS ? ySugarsScale : yCaffeineScale;
 
-    let topPlot = d3.select('#top-drinks-svg-top');
+    let topPlot = d3.select(`#${type}-svg-top`);
     topPlot.selectAll('circle').remove();
 
-    if (checkBox.checked) {
+    if (type == CAFFEINE || checkBox.checked) {
         topPlot.selectAll('circle')
             .data(data)
             .enter()
             .append('circle')
-            .attr('class', 'top-drink-dots')
+            .attr('class', 'scatter-plot-dots')
+            .style('fill', d => type == TOP_DRINKS ? '#006241' : CATEGORIES_COLORS_FOUR[d.key.split(',')[2]])
+            .style('opacity', type == TOP_DRINKS ? 0.5 : 0.8)
             .attr('r', d => 1 + 2 * d.values.length)
             .attr('cx', d => xScale(d.key.split(',')[1]))
             .attr('cy', d => yScale(d.key.split(',')[0]))
@@ -265,10 +262,10 @@ function plotTopDrinks() {
                 for (const i in values) {
                     let container = details.append('div');
                     container.append('p')
-                        .attr('class', 'top-drinks-details-name')
+                        .attr('class', 'scatter-plot-details-name')
                         .text(`#${d.values[i].RANK} ${d.values[i].NAME}`);
                     container.append('p')
-                        .attr('class', 'top-drinks-details-others')
+                        .attr('class', 'scatter-plot-details-others')
                         .text(`Calories: ${d.values[i].CALORIES}, Sugars: ${d.values[i].SUGARS}`);
                 }
             })

@@ -28,20 +28,10 @@ let plotHeight = imgLarge + imgMedium * 2 + imgMargin * 4;
 // data
 var drinkData = []; // all drink data
 var drinkCurrent = []; // drink data for current category
-var foodAll = []; // all food data
+var foodData = []; // all food data
 var foodCurrent = []; // food data based on current drink
 
 function setup() {
-    d3.csv('data/starbucks-menu/food_manual.csv', d => {
-        var row = {};
-        for (const elem in columns) {
-            row[elem] = d[columns[elem]];
-        }
-        return row;
-    }).then(data => {
-        foodAll = data;
-    });
-
     let tabs = d3.select('#recommender-drink-category');
     tabs.selectAll('div').remove();
 
@@ -74,8 +64,9 @@ function setup() {
     }
 }
 
-function passData(allData) {
-    drinkData = allData;
+function passData(drinkAll, foodAll) {
+    drinkData = drinkAll;
+    foodData = foodAll;
     setDrinkData();
 }
 
@@ -95,7 +86,7 @@ function setDrinkData() {
 function setFoodData(drinkCalories = 0) {
     foodImageIdx = 2;
     foodIdx = 1;
-    foodCurrent = foodAll.filter(d => parseInt(d.CALORIES) + drinkCalories <= 500);
+    foodCurrent = foodData.filter(d => parseInt(d.CALORIES) + drinkCalories <= 500);
     setImages(0, false);
 }
 
@@ -215,9 +206,7 @@ function setImages(duration, isDrink) {
 function setDrinkSize() {
     let drinkCalories = drinkSize[drinkCurrent[drinkIdx].NAME][currentSize];
     d3.select('#recommender-drink-calories').html(drinkCalories);
-    if (foodAll != []) {
-        setFoodData(drinkCalories);
-    }
+    setFoodData(drinkCalories);
 }
 
 export default {
