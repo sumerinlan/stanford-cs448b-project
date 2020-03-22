@@ -338,16 +338,10 @@
     import define from "./js/index.js";
     const inspect = Inspector.into("#calories-sort-container");
     const runtime = new Runtime();
-    // runtime.module(define, name => (name === "viewof f1") && inspect());
+
     (new Runtime).module(define, name => (name === "viewof as") && inspect());
-    runtime.module(define, name => (name === "viewof sorting") && inspect());
-    // runtime.module(define, name => (name === "chart") && inspect());
-
-
-
+    // runtime.module(define, name => (name === "viewof sorting") && inspect());
     (new Runtime).module(define, name => (name === "chart") && inspect());
-
-    // const main = runtime.module(define, Inspector.into("#calories-sort-container"));
 
 </script>
 
