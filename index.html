@@ -39,10 +39,10 @@
 
         <!-- motivation -->
         <p>
-            Now that its classic holiday beverage lineup is long gone and a handful of new springtime drinks have arrived, Starbucks currently has 148 drinks on its ever-changing menu, and infinite ways to customize them. We leverage the nutrition information a lot when we order drinks, but it is tedious to go back and forth and check out each drink. Therefore, we started our exploration with the basic question: <span class='emphasize'>Is there a more convenient way to know detailed nutritional information based on drinks?</span>
+            A handful of springtime drinks have arrived and joined the holiday lineup. Starbucks currently has 148 drinks on its menu, and there are infinite ways to customize them. We leverage the nutrition information a lot when we order drinks, but it is tedious to go back and forth and check out each drink. Therefore, we started our exploration with the basic question: <span class='emphasize'>Is there a more convenient way to know detailed nutritional information based on drinks?</span>
         </p>
 
-        <h2>BASIC FACTS</h2>
+        <h2>Basic Facts of Drinks</h2>
 
         <!-- theorectical support -->
         <p>
@@ -65,7 +65,7 @@
         <!-- instruction -->
         <p class='instruction'>
             <span class='emphasize'>Hover</span> above the drinks to inspect detailed nutrition information.
-            <span class='emphasize'>Select</span> a tab to the change category.
+            <span class='emphasize'>Select</span> a tab to the change type.
             <span class='emphasize'>Type</span> in the search bar to filter drinks.
         </p>
 
@@ -137,11 +137,11 @@
 
         <!-- instruction -->
         <p class='instruction main'>
-            Instruction: <span class='emphasize'>Hover</span> above the lines to see the exact range.
+            <span class='emphasize'>Hover</span> above the lines to see the exact range.
             <span class='emphasize'>Type</span> in the search bar to filter drinks.
         </p>
 
-        <div id='calories-sort-container'></div>
+        <div id='calories-sort-container' class='plot' style='width: 1200px;'></div>
 
     </div>
 
@@ -149,22 +149,28 @@
 
         <!-- motivation -->
         <p class='main'>
-            I know Matcha Green Tea Latte is my favorite! But every time I still need to choose whether I want to have a hot or a cold one. I wonder if there is any difference between those two, and <span class='emphasize'>in general, does hot drinks
-                have higher calories than cold drinks?</span>
+            Sometimes when we have a specific drink in mind, we still need to choose whether to order a hot or a cold one. We start wondering if there is any difference between those two, and <span class='emphasize'>in general, does temperature matter in terms of calories?</span>
         </p>
 
-        <h2 class='main'>Calories of drinks under hot / cold categories</h2>
+        <h2 class='main'>Does temperature matter</h2>
 
         <!-- design rationale -->
         <p class='main'>
-            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. We used x-axis and colors to represent different categories. We highlighted the chosen (hovered / clicked) drink and its corresponding
-            hot / cold option, if there is any, by muting the colors of other drinks.
+            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. The vertical positions are twisted a little bit to avoid occlusion. We used the x-axis and colors to represent different types. We highlighted the chosen (hovered) drink and its corresponding hot/cold option, if there is any, by muting the colors of other drinks. The horizontal bars on the right indicate total calories.
+        </p>
+
+        <!-- finding -->
+        <p class='main'>
+            Each type of drink has distinct characteristics. For coffee, whether hot or cold, there are several beverages (americano, brew coffee, and espresso) concentrated in the low-calorie portion, and the rest is scattered between 100 and 450 calories. Overall, hot tea, cold tea, and cold drinks are low in calories, and hot drinks and Frappuccinos are high-calorie drinks.
+        </p>
+        <p class='main'>
+            In general, for drinks with hot and cold options, hot ones contain higher calories than cold drinks. The numbers are equal for some drinks with low calories already, like americano and espresso.
         </p>
 
         <!-- instruction -->
         <p class='main instruction'>
-            <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot / cold option. <span class='emphasize'>Click</span> the bar to view calories information. <span class='emphasize'>Click</span> any empty space
-            to set the graph.
+            <span class='emphasize'>Hover</span> highlight the current drink and its corresponding hot/cold option.
+            <span class='emphasize'>Hover</span> to any empty space to reset the graph.
         </p>
 
         <svg id='temp-svg' class='plot'>
@@ -194,64 +200,62 @@
                 <g id='temp-svg-axes'></g>
             </g>
         </svg>
-
-        <!-- finding -->
-        <p class='main'>
-            In general, hot drinks contain higher calories than cold drinks. They are equal for some drinks with low calories already, like americano and espresso.
-        </p>
     </div>
 
     <div id='top-drinks-container' class='section'>
 
         <!-- motivation -->
         <p class='main'>
-            What are the most popular drinks on Starbucks' ever-changing menu? <span class='emphasize'>Do people go for high calories drinks or healthy is their top concern?</span> With the ranking data from <a
-                href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu'>www.Thrillist.com</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar as above, the information are
-            of standard sizes.
+            Starbucks’ recipes are ever-changing, but some beverages have won the favor of customers and have always occupied a place on the menu. What are the characteristics of the most popular drinks? <span class='emphasize'>Do people go for high calories drinks or is health their top concern?</span>
         </p>
 
-        <h2 class='main'>TOP RANKED DRINKS</h2>
+        <h2 class='main'>Best Starbucks Drinks</h2>
 
         <!-- design rationale -->
         <p class='main'>
-            To better compare the calories and sugar data betweem top drinks and other drinks, we put all drinks in the plot in light-yellow dots. The green dots are top-ranked drinks. Users can toggle them on and off to better see the full data.
+            With the ranking data from <a href='https://www.thrillist.com/' target='_blank'>www.Thrillist.com</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar to the above, the information is of standard grande or doppio sizes.
         </p>
-
-        <!-- instruction -->
-        <p class='main instruction'>
-            <span class='emphasize'>Toggle</span> to show or hide top-ranked items. <span class='emphasize'>Hover</span> the green dots to see drinks and their nutrition information.
+        <p class='main'>
+            Top drinks are plotted in a scatter plot with calories as x-axis and sugars as y-axis, with size indicating the number of entries at that spot. To better compare the calories and sugar data between top drinks and drinks, we put all drinks in the plot in light-yellow dots as well. Users can toggle top drinks on and off to better see the full data.
         </p>
-
-        <form class='main'>
-            <input type='checkbox' id='top-drinks-checkbox' checked> Show top-ranked drinks
-        </form>
-
-        <div id='top-drinks'>
-            <svg id='top-drinks-svg'>
-                <g id='top-drinks-svg-plot'>
-                    <g id='top-drinks-svg-other'></g>
-                    <g id='top-drinks-svg-axes'></g>
-                    <g id='top-drinks-svg-legend'>
-                        <g id='top-drinks-svg-legend-color'></g>
-                        <g id='top-drinks-svg-legend-size'></g>
-                    </g>
-                    <g id='top-drinks-svg-top'></g>
-                </g>
-            </svg>
-            <div id='top-drinks-details'></div>
-        </div>
 
         <!-- finding -->
         <p class='main'>
-            From the chart we can see the positive correlation between calories and sugars. We guessed the most popular drinks are among those high-calorie high-sugar sections, but it turns out to be quite evenly distributed at the first glance.
-            There are three weak clusters from the chart, and we reason three patterns of people visiting Starbucks:
+            From the chart, we can see the positive correlation between calories and sugars. We suspected the most popular drinks are among those high-calorie and high-sugar sections, but the data points turn out to be quite evenly distributed at first glance. There are three weak clusters from the chart, from which we reason three patterns of people visiting Starbucks:
         </p>
 
         <ul class='main'>
-            <li>Some people are in favor of low-calorie and low-sugar products like cold brew, roast coffee and pure tea, for their healthy.</li>
-            <li>Some standard recipes including Caffe Latte and Flat White, around ~20g sugars and ~200 calories, are popular as well. People ordering them leverage the taste and healthiness of the drinks.</li>
-            <li>There are big fans of high-calories products such as Frappuccino, as shown in a cluster at the top-right corner.</li>
+            <li>There is a large cluster of low-calorie, sugar-free products, including brewed coffee and americanos, which are suitable for customers who care about their health.</li>
+            <li>Beverages are gathered at 150-calories 20g-sugars region, including classic coffee with milk, such as lattes and flat whites, as well as cold drinks. Customers who choose these products consider both taste and health.</li>
+            <li>High-calorie products, such as Frappuccinos and mochas, are also very popular, as shown in a cluster at the top-right corner.</li>
         </ul>
+
+        <!-- instruction -->
+        <p class='main instruction'>
+            <span class='emphasize'>Toggle</span> the checkbox to show or hide top-ranked drinks.
+            <span class='emphasize'>Hover</span> the green dots to see drinks and their nutrition information.
+        </p>
+
+        <div class='plot'>
+            <form class='main'>
+                <input type='checkbox' id='top-drinks-checkbox' checked> Show top-ranked drinks
+            </form>
+
+            <div id='top-drinks'>
+                <svg id='top-drinks-svg'>
+                    <g id='top-drinks-svg-plot'>
+                        <g id='top-drinks-svg-other'></g>
+                        <g id='top-drinks-svg-axes'></g>
+                        <g id='top-drinks-svg-legend'>
+                            <g id='top-drinks-svg-legend-color'></g>
+                            <g id='top-drinks-svg-legend-size'></g>
+                        </g>
+                        <g id='top-drinks-svg-top'></g>
+                    </g>
+                </svg>
+                <div id='top-drinks-details'></div>
+            </div>
+        </div>
     </div>
 
     <div id='donut-container' class='section'>

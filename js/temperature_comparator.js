@@ -91,7 +91,7 @@ function setup() {
         legendPlot.append('text')
             .text(category1)
             .attr('x', legendHeight * 1.2)
-            .attr('y', plotHeight - legendHeight * (7 - i) + legendHeight * 0.6)
+            .attr('y', plotHeight - legendHeight * (7 - i) + legendHeight * 0.5)
             .attr('class', 'legend-small')
             .style('text-anchor', 'start');
     }

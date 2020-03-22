@@ -105,7 +105,10 @@ export default function define(runtime, observer) {
                 let x = d3.event.pageX;
                 let y = d3.event.pageY;
 
-                line.attr("transform", `translate(${x} 0)`);
+                line
+                    .attr("x1", 0)
+                    .attr("x2", 0)
+                    .attr("transform", `translate(${d3.mouse(this)[0]} 0)`);
                 y -= 90;   //y += 20
                 if (x > width / 2) x -= 100;
 
@@ -146,6 +149,8 @@ export default function define(runtime, observer) {
 
         const line = svg.append("line")
             .attr("class", "extreme-value-axis")
+            .attr("x1", 0)
+            .attr("x2", 0)
             .attr("y1", margin.top - 10)
             .attr("y2", height - margin.bottom)
             .attr("stroke", "rgba(0,0,0,0.2)")
@@ -187,6 +192,11 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
     main.variable(observer("height")).define("height", ["filteredData", "singleHeight"], function(filteredData, singleHeight) {
         return (
             filteredData.length * singleHeight //original setting for 34 drinks: 700
+        )
+    });
+    main.variable(observer("width")).define("width", function() {
+        return (
+            1200
         )
     });
     main.variable(observer("y")).define("y", ["d3", "filteredData", "height", "margin"], function(d3, filteredData, height, margin) {
@@ -235,7 +245,7 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
                 const el = d3.select(this);
                 const sx = x(d.start);
                 const w = x(d.end) - x(d.start);
-                const isLabelRight = (sx > width / 2 ? sx + w < width : sx - w > 0);
+                const isLabelLeft = sx > width * 0.25;
 
                 el.style("cursor", "pointer")
 
@@ -250,13 +260,13 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
                 el
                     .append("text")
                     .text(d.Name)
-                    .attr("x", isLabelRight ? sx - 5 : sx + w + 5)
-                    .attr("y", 0)
+                    .attr("x", isLabelLeft ? sx - y.bandwidth()/2 - 5 : sx + w + 5)
+                    .attr("y", y.bandwidth()/4)
                     .attr("font-size", "11px")
                     .attr("font-weight", "regular")
                     .attr("fill", "black")
-                    .style("text-anchor", isLabelRight ? "end" : "start")
-                    .style("dominant-baseline", "hanging");
+                    .style("text-anchor", isLabelLeft ? "end" : "start")
+                    .style("dominant-baseline", "middle");
             }
         )
     });

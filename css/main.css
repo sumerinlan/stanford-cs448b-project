@@ -85,19 +85,20 @@ a:hover, a:active {
 }
 
 .plot {
-    margin: 5vh auto;
+    display: block;
+    margin: auto;
 }
 
 .legend {
     font-size: 0.9rem;
     text-anchor: middle;
-    dominant-baseline: central;
+    dominant-baseline: middle;
 }
 
 .legend-small {
     font-size: 0.7rem;
     text-anchor: middle;
-    dominant-baseline: central;
+    dominant-baseline: middle;
 }
 
 /* basic facts */
