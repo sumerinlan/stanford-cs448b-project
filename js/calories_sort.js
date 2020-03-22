@@ -8,7 +8,7 @@ export default function define(runtime, observer) {
     main.variable(observer("viewof as")).define("viewof as", ["autoSelect", "dataByCalories"], function(autoSelect, dataByCalories) {
         return (
             autoSelect({
-                title: 'Search from Category 1',
+                title: 'Search from Type',
                 options: dataByCalories.map(d => d.key),
                 placeholder: "Type..."
             })
@@ -23,6 +23,18 @@ export default function define(runtime, observer) {
         )
     });
 
+    // button to reset all data...
+    main.variable(observer("viewof b")).define("viewof b", ["button"], function(button) {
+        return (
+            button({value: "All Data"})
+        )
+    });
+    main.variable(observer("b")).define("b", ["Generators", "viewof b"], (G, _) => G.input(_));
+    main.variable(observer()).define(["b"], function(b) {
+        // b
+        return false;
+    });
+
     // sorting
     main.variable(observer("viewof sorting")).define("viewof sorting", ["select"], function(select) {
         return (
@@ -32,7 +44,7 @@ export default function define(runtime, observer) {
     main.variable(observer("sorting")).define("sorting", ["Generators", "viewof sorting"], (G, _) => G.input(_));
 
     // define chart
-    main.variable(observer("chart")).define("chart", ["sorting", "as", "dataByCategory", "dataByOutside", "data", "filteredData", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, dataByCategory, dataByOutside, data, filteredData, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
+    main.variable(observer("chart")).define("chart", ["sorting", "as", "b", "dataByCategory", "dataByOutside", "data", "filteredData", "d3", "color", "DOM", "width", "height", "margin", "createTooltip", "y", "getRect", "getTooltipContent", "axisTop", "axisBottom"], function(sorting, as, b, dataByCategory, dataByOutside, data, filteredData, d3, color, DOM, width, height, margin, createTooltip, y, getRect, getTooltipContent, axisTop, axisBottom) {
 
         // if (sorting !== "calories") {
         //     filteredData = [].concat.apply([], dataByCategory.map(d => d.values));
@@ -41,6 +53,10 @@ export default function define(runtime, observer) {
         // }
 
         let otherData = as === '' ? [] : data.filter(d => d.Category1 != as);
+
+        if(!b){
+            filteredData = data.selectAll();
+        }
 
         filteredData.forEach(d => d.color = d3.color(color(d.Category2)))
 
@@ -324,10 +340,12 @@ ${formatCalories(d.start)} - ${formatCalories(d.end)}
     });
     const child1 = runtime.module(define1);
     const child2 = runtime.module(define1);
+    const child3 = runtime.module(define1);
     main.import("checkbox", child1);
     main.import("select", child1);
     main.import("text", child2);
     main.import("autoSelect", child2);
+    main.import("button", child3);
     main.variable(observer()).define(["html"], function(html) {
         return (
             html `CSS<style> svg{font: 11px sans-serif;}</style>`

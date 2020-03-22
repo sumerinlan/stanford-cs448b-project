@@ -300,7 +300,38 @@
     </div>
 
     <div id='caffeine-container' class='section'>
-        <h2 class='main'>Caffeine</h2>
+        <h2 class='main'>The perfect efficiency drink? </h2>
+        <div class="main">
+            <p>
+                To a certain extent, people's addiction to coffee is also related to the caffeine contained in coffee.
+                The benefits of caffeine consumption include physical endurance, reduction of fatigue and enhancing mental alertness and concentration.
+                Therefore, under reasonable intake circumstances, caffeine has a positive effect on improving work efficiency and productivity.
+            </p>
+            <p>
+               But at the same time, we may want to consider calories as an indicator at the same time: for example, espresso with low calories and super high caffeine content will be the perfect key for many people to start a new day. We would like to see more of these drinks as we produced the following caffeine-calories graph: 
+            </p>
+            <p>
+                As can be seen from the scatter plot below, 
+            </p>
+            <ul>
+                <li>
+                    Most Starbucks coffee clusters between the 150-250mg level, while Frappuccino, tea and refreshers are generally clustered at &lt; 100mg level.
+                </li>
+                <li>
+                    If you would like to try some "efficiency drink" with high caffeine and low calories, cold brew series and blonde roast series are good options.
+                </li>
+                <li>
+                    Although tea is also considered to be able to provide sufficient caffeine thus bringing an invigorating effect, tea beverages at Starbucks are generally clustered in areas with low caffeine contained( &lt; 50mg).
+                </li>
+                <li>
+                    The popular Frappuccino series turns out to be the most “sleepy” option --- low caffeine and high calories make them not a good choice for efficiency drink, but potential risks that make people more sleepy. But it's not necessarily true, since the large proportion of ice contained may also have a refreshing effect:>
+                </li>
+            </ul>
+            
+        </div>
+
+        
+
         <div id='caffeine'>
             <svg id='caffeine-svg'>
                 <g id='caffeine-svg-plot'>
@@ -350,6 +381,7 @@
     const runtime = new Runtime();
 
     (new Runtime).module(define, name => (name === "viewof as") && inspect());
+    (new Runtime).module(define, name => (name === "viewof b") && inspect());
     // runtime.module(define, name => (name === "viewof sorting") && inspect());
     (new Runtime).module(define, name => (name === "chart") && inspect());
 
