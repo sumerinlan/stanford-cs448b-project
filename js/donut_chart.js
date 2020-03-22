@@ -242,7 +242,7 @@ function plotDonuts(item) {
     var filter = defs.append("filter")
         .attr("id","dropshadow")
         .attr("x", "-20%")
-        .attr("y", "-20%")
+        .attr("y", "-50%")
         .attr("width", "120%")
         .attr("height", "120%")
         .attr("filterUnits", "userSpaceOnUse");
