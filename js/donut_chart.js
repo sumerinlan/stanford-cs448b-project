@@ -89,6 +89,7 @@ function plotDots(item) {
             .append('circle')
             .attr('class', d => `donut-dots-${item}-rank-${d.RANK}`)
             .style('opacity', 0.3)
+            // .style('filter', `url(#dropshadow)`)
             .style('fill', '#006241')
             .attr('r', dotRadius)
             .attr('cx', d => xScale(data[i].key))
@@ -158,9 +159,15 @@ function plotDonuts(item) {
         let piePlot = plot.append('g')
         .on('mouseover', d => {
             dot.style('opacity', 1);
+            dot.style('filter', `url(#dropshadow)`);
+            piePlot.selectAll('path').style('filter', `url(#dropshadow)`);
+            piePlot.selectAll('text').style('fill', 'grey');
         })
         .on('mouseleave', d => {
             dot.style('opacity', 0.3);
+            dot.style('filter', null);
+            piePlot.selectAll('path').style('filter', null);
+            piePlot.selectAll('text').style('fill', 'black');
         });
 
         piePlot.append('circle')
@@ -226,6 +233,36 @@ function plotDonuts(item) {
                 .text(pieData[i][j].name.split(' ')[2]);
         }
     }
+
+    // adding drop shadow for dots
+    // Container for the gradients
+    var defs = d3.select('#donut-drinks-dots-svg').append("defs");
+
+    // Filter for the outside glow
+    var filter = defs.append("filter")
+        .attr("id","dropshadow")
+        .attr("x", "-20%")
+        .attr("y", "-20%")
+        .attr("width", "120%")
+        .attr("height", "120%")
+        .attr("filterUnits", "userSpaceOnUse");
+    filter.append("feGaussianBlur")
+        // .attr("in", "SourceAlpha")
+        .attr("stdDeviation","2")
+        .attr("result", "coloredBlur");
+    // filter.append("feOffset")
+    //     .attr("dx", "5")
+    //     .attr("dy", "5")
+    //     .attr("result","offsetblur");
+    // filter.append("feOffset")
+    //     .attr("dx", "-5")
+    //     .attr("dy", "-5")
+    //     .attr("result","offsetblur");
+    var feMerge = filter.append("feMerge");
+    feMerge.append("feMergeNode")
+        .attr("in","coloredBlur");
+    feMerge.append("feMergeNode")
+        .attr("in","SourceGraphic");
 }
 
 export default {
