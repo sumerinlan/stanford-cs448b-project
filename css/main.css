@@ -196,8 +196,9 @@ a:hover, a:active {
 
 #facts-search {
     flex-grow: 2;
-    max-width: 150px;
+    max-width: 120px;
     margin-left: 3px;
+    border-bottom: 2px solid #616161;
 }
 
 /* calories */

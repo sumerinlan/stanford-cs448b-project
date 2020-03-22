@@ -1,5 +1,5 @@
 // https://observablehq.com/@pridemusvaire/world-history-timeline@822
-import define1 from "./timeline-ref.js";
+import define1 from "./timeline_ref.js";
 
 export default function define(runtime, observer) {
     const main = runtime.module();
