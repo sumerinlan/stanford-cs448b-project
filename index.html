@@ -15,58 +15,58 @@
         <h1>You Don't Know About Starbucks</h1>
 
         <p>
-            Americans consume <b>400 million</b> cups of coffee per day, making the United States the leading consumer of coffee in the world. On average, <b>250 Cups</b> of espresso and coffee drinks are sold per day at almost any espresso drive-thru business with a great visible location. <a href='http://www.e-importz.com/coffee-statistics.php' target='_blank'>Coffee Statistics</a> show that among coffee drinkers the average consumption in the United States is <b>3 cups</b> of coffee per day. 
+            Americans consume <b>400 million</b> cups of coffee per day, making the United States the leading consumer of coffee in the world. On average, <b>250 cups</b> of espresso and coffee drinks are sold per day at almost any espresso drive-thru business with a great visible location. <a href='http://www.e-importz.com/coffee-statistics.php' target='_blank'>Coffee Statistics</a> show that among coffee drinkers the average consumption in the United States is <b>3 cups</b> of coffee per day.
         </p>
         <p>
-            Founded in 1971, the largest coffeehouse chain around the globe - Starbucks Corporation (Starbucks) has successfully made itself one of the symbols of modern American lifestyle. For quite a few people, Starbucks is their routine. They get up, get dressed, leave for work, and go to Starbucks before anything else gets done that day. 
+            Founded in 1971, the largest coffeehouse chain around the globe - Starbucks has successfully made itself one of the symbols of the modern American lifestyle. For quite a few people, Starbucks is their routine. They get up, get dressed, leave for work, and go to Starbucks before anything else gets done that day.
         </p>
         <p>
-            Of course, they care about the <b>nutrition facts</b> of the drinks and food produced by Starbucks, which are available on its official website or mobile app. However, since not designed especially for inspecting nutrition facts, the menu seems inefficient when it comes to some demands: <br> <b>Firstly,</b>  it is difficult to search for a specific item as well as its nutritional indicators under different preparations, especially on the app; <br> <b>Secondly,</b> it is time-consuming to browse the nutritional information, given that the website and app require clicking and jumping to another page to read the content. <br> <b>Last but not least,</b> it is infeasible to make efficient comparisons between 2 or more products, as users have to switch items back and forth and memorize the numbers.
+            Of course, they care about the <b>nutrition facts</b> of the drinks and food produced by Starbucks, which are available on its <a href='https://www.starbucks.com/menu' target='_blank'>official website</a> or mobile app. However, since not designed especially for inspecting nutrition facts, the menu is inefficient when it comes to some demands:
         </p>
         <p>
-            In order to better demonstrate and analyze the nutritional information of Starbucks' drinks as well as to discover the hidden patterns behind those info, we have pulled out and analyzed <b>all the data of the current Starbucks menu</b>  on the table. The dataset contains <b>148 unique drinks,</b> each with various size options and nutritional information, e.g., calories, sugars, fat, caffeine, etc.
+            It is difficult to search for a specific item as well as its nutritional indicators under different preparations, for example, different sizes, especially on the app. It is time-consuming to browse the nutritional information, given that the website and app require clicking and jumping to another page to read the content. On top of that, it is infeasible to make efficient comparisons between two or more products, as users have to switch items back and forth and memorize the numbers.
         </p>
-        <!-- <p>
-            People love Starbucks. Highly ranked in drink industry, it has became part of our daily life.
-        </p>
-
         <p>
-            Nutrition facts of Starbucks' products are available in its <a href='https://www.starbucks.com/menu' target='_blank'>official website</a> or mobile app. The menu is organized by Starbucks' official categories, which makes it hard to
-            search for a specific item. It is also time-consuming to browse the nutrition information because the website and mobile app also require users to click the drink to read the content. Moreover, it is hard to do comparisons between
-            different products, as you have to switch drinks back and forth and memorize the numberes.
+            In order to better demonstrate and analyze the nutritional information of Starbucks' drinks as well as to discover the hidden patterns behind the statistics, we have pulled out and analyzed <b>all the data of the current Starbucks menu</b> on the table. The dataset contains <b>148 unique drinks,</b> each with various size options and nutritional information, such as calories, sugars, fat, caffeine, etc.
         </p>
-
-        <p>
-            To better display and analyze Starbucks' drinks, we have pulled out all the menu data on the table, which contains 148 unique drinks, each coming various sizes and nutrition information.
-        </p> -->
     </div>
 
     <div class='main section'>
-        <h1>Calories & Sugars</h1>
+        <h1>All about calories</h1>
     </div>
 
     <div id='facts-container' class='main section'>
 
         <!-- motivation -->
         <p>
-            We leverage the nutrition information a lot when we order drinks, so we started our exploration with the basic question: <span class='emphasize'>Can I explore information based on drinks?</span>
+            Now that its classic holiday beverage lineup is long gone and a handful of new springtime drinks have arrived, Starbucks currently has 148 drinks on its ever-changing menu, and infinite ways to customize them. We leverage the nutrition information a lot when we order drinks, but it is tedious to go back and forth and check out each drink. Therefore, we started our exploration with the basic question: <span class='emphasize'>Is there a more convenient way to know detailed nutritional information based on drinks?</span>
         </p>
 
         <h2>BASIC FACTS</h2>
 
+        <!-- theorectical support -->
         <p>
-            Here we displayed the full menu using an image-based visualizer, where you can easily hover to see a drink's calories and sugars data.
+            According to the FDA, for an average person, buying meals away from home once per week will gain you about 2 extra pounds per year. Labeling calories data on the menus help customers make healthier decisions about foods and drinks. Aimed to unveil the most valuable information with limited space, we selected two indicators that we think people care most about when they order a drink: calories and sugars.
         </p>
 
         <!-- design rationale -->
         <p>
-            Drinks are categorized based on the menu to help people better find drinks. We selected those that we think people care most: calories and sugars. It is calculated based on the standard receipes: grande size for most drinks or doppio size
-            (for espresso), and default milk for the specific drinks. We added a search bar to aid searching functionality. The full menu is long, so we created tabs to divide the list.
+            Here we displayed the full menu using an image-based visualizer, where you can easily hover a drink to see its calories and sugars data without being redirected to another page. The numbers are calculated based on the standard recipes: grande size (for most drinks) or doppio size (for espresso), and the default milk indicated in the app. These numbers are displayed in colored bars, with wider bars indicating larger amounts, for better visualization.
+        </p>
+        <p>
+            Drinks are categorized based on the menu to help people better find drinks. To aid searching and filtering functionality, we have added a search bar to allow users to search for drinks by keywords. The full menu is long, so we also created tabs to divide the list.
+        </p>
+
+        <!-- findings -->
+        <p>
+            Many drinks among a sub-category share a similar trend. For example, under "Hot Coffees", americanos are low-calories, while mochas contain more calories and sugars. Also, when a drink is high in calories, the sugars contents are high.
         </p>
 
         <!-- instruction -->
         <p class='instruction'>
-            <span class='emphasize'>Hover</span> drinks to see detailed information. <span class='emphasize'>Select</span> a tab or <span class='emphasize'>type</span> in the search bar to filter drinks.
+            <span class='emphasize'>Hover</span> above the drinks to inspect detailed nutrition information.
+            <span class='emphasize'>Select</span> a tab to the change category.
+            <span class='emphasize'>Type</span> in the search bar to filter drinks.
         </p>
 
         <div class='plot'>
@@ -116,23 +116,89 @@
 
         <!-- motivation -->
         <p class='main'>
-            Now it is much easier to browse the information, but still, it takes time if I want to see which drinks contain higher calories so that I can avoid. <span class='emphasize'>Can I acquire this information based on calories?</span>
+            It is much easier to browse the information now, but only when we have a specific drink in mind. It still takes time if we want to see what type of drinks contain higher calories to avoid, and comparisons still take effort. Also, it provides no information about customized drinks. <span class='emphasize'>Can we acquire all calorie data at a single glance?</span>
         </p>
 
         <h2 class='main'>Calories of drinks with different sizes</h2>
 
         <!-- design rationale -->
+        <p class='main'>
+            In the following visualization, each drink occupies a single line, with the start and end points indicating the range of calories customers can get the drink in various sizes. The exact data points are visible upon hovering. The drinks are sorted by the maximum calories value, so it is easy to see which drinks contain lower or higher calories in general. Lines are colored based on the drinks’ sub-categories, and the categorizing and comparisons are more obvious if you type in the search bar and filter the drinks by their types.
+        </p>
 
         <!-- finding -->
         <p class='main'>
-            We can easily see general trend for type of drinks. Coffees like Espresso and Americano and tea have low calories, and Frappuccinos are high-calorie drinks. The widths, ranges of calories based on different sizes,
-            vary from drinks to drinks. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti or even trente size, but if I care about my weight, I can have a healthier
-            choice with the same flavor. However, this is not true for other drinks.
-            <!-- 这个最终图还没出来所以很多感觉还说不清楚 -->
+            We can easily see the calories details for each type of drink. For coffees, espresso and americano contain low calories while mochas are high-calorie drinks. Teas are low-calories in general unless milks or lemonade is added. Frappuccinos are high-calorie drinks.
+        </p>
+
+        <p class='main'>
+            The ranges of calories vary from drinks to drinks. The general trend is that the higher maximum calories goes, the wider the bar is. This quite makes sense: if cold brews have lower calories for their maximum size, it has less room to decrease if the size is reduced. A drink with a wider range of choices can satisfy different customer needs. If I don't care about calories, I can order a venti or even trente size, but if I care about my weight, I can have a healthier choice with the same flavor.
+        </p>
+
+        <!-- instruction -->
+        <p class='instruction main'>
+            Instruction: <span class='emphasize'>Hover</span> above the lines to see the exact range.
+            <span class='emphasize'>Type</span> in the search bar to filter drinks.
         </p>
 
         <div id='calories-sort-container'></div>
 
+    </div>
+
+    <div id='temperature-container' class='section'>
+
+        <!-- motivation -->
+        <p class='main'>
+            I know Matcha Green Tea Latte is my favorite! But every time I still need to choose whether I want to have a hot or a cold one. I wonder if there is any difference between those two, and <span class='emphasize'>in general, does hot drinks
+                have higher calories than cold drinks?</span>
+        </p>
+
+        <h2 class='main'>Calories of drinks under hot / cold categories</h2>
+
+        <!-- design rationale -->
+        <p class='main'>
+            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. We used x-axis and colors to represent different categories. We highlighted the chosen (hovered / clicked) drink and its corresponding
+            hot / cold option, if there is any, by muting the colors of other drinks.
+        </p>
+
+        <!-- instruction -->
+        <p class='main instruction'>
+            <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot / cold option. <span class='emphasize'>Click</span> the bar to view calories information. <span class='emphasize'>Click</span> any empty space
+            to set the graph.
+        </p>
+
+        <svg id='temp-svg' class='plot'>
+
+            <g id='temp-svg-side'>
+                <!-- name -->
+                <text class='temp-svg-text' id='temp-svg-text-this'></text>
+                <!-- calories bar -->
+                <rect id='temp-svg-rect-this'></rect>
+                <!-- calories data -->
+                <text class='temp-svg-text-small' id='temp-svg-text-small-this'></text>
+
+                <!-- name -->
+                <text class='temp-svg-text-small' id='temp-svg-text-other'></text>
+                <!-- calories bar -->
+                <rect id='temp-svg-rect-other'></rect>
+                <!-- calories data -->
+                <text class='temp-svg-text-small' id='temp-svg-text-small-other'></text>
+
+                <!-- legend -->
+                <g id='temp-svg-legend'></g>
+            </g>
+
+            <g id='temp-svg-plot'>
+                <g id='temp-svg-bg'></g>
+                <g id='temp-svg-main'></g>
+                <g id='temp-svg-axes'></g>
+            </g>
+        </svg>
+
+        <!-- finding -->
+        <p class='main'>
+            In general, hot drinks contain higher calories than cold drinks. They are equal for some drinks with low calories already, like americano and espresso.
+        </p>
     </div>
 
     <div id='top-drinks-container' class='section'>
@@ -197,62 +263,6 @@
             <svg id='donut-food-dots-svg'></svg>
             <svg id='donut-food-donuts-svg'></svg>
         </div>
-    </div>
-
-    <div id='temperature-container' class='section'>
-
-        <!-- motivation -->
-        <p class='main'>
-            I know Matcha Green Tea Latte is my favorite! But every time I still need to choose whether I want to have a hot or a cold one. I wonder if there is any difference between those two, and <span class='emphasize'>in general, does hot drinks
-                have higher calories than cold drinks?</span>
-        </p>
-
-        <h2 class='main'>Calories of drinks under hot / cold categories</h2>
-
-        <!-- design rationale -->
-        <p class='main'>
-            We categorized the drinks based on temperature first for better comparison between hot and cold drinks. We used x-axis and colors to represent different categories. We highlighted the chosen (hovered / clicked) drink and its corresponding
-            hot / cold option, if there is any, by muting the colors of other drinks.
-        </p>
-
-        <!-- instruction -->
-        <p class='main instruction'>
-            <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot / cold option. <span class='emphasize'>Click</span> the bar to view calories information. <span class='emphasize'>Click</span> any empty space
-            to set the graph.
-        </p>
-
-        <svg id='temp-svg' class='plot'>
-
-            <g id='temp-svg-side'>
-                <!-- name -->
-                <text class='temp-svg-text' id='temp-svg-text-this'></text>
-                <!-- calories bar -->
-                <rect id='temp-svg-rect-this'></rect>
-                <!-- calories data -->
-                <text class='temp-svg-text-small' id='temp-svg-text-small-this'></text>
-
-                <!-- name -->
-                <text class='temp-svg-text-small' id='temp-svg-text-other'></text>
-                <!-- calories bar -->
-                <rect id='temp-svg-rect-other'></rect>
-                <!-- calories data -->
-                <text class='temp-svg-text-small' id='temp-svg-text-small-other'></text>
-
-                <!-- legend -->
-                <g id='temp-svg-legend'></g>
-            </g>
-
-            <g id='temp-svg-plot'>
-                <g id='temp-svg-bg'></g>
-                <g id='temp-svg-main'></g>
-                <g id='temp-svg-axes'></g>
-            </g>
-        </svg>
-
-        <!-- finding -->
-        <p class='main'>
-            In general, hot drinks contain higher calories than cold drinks. They are equal for some drinks with low calories already, like americano and espresso.
-        </p>
     </div>
 
     <div id='food-recommender' class='section'>

@@ -266,7 +266,7 @@ function plotTopDrinks(type) {
                         .text(`#${d.values[i].RANK} ${d.values[i].NAME}`);
                     container.append('p')
                         .attr('class', 'scatter-plot-details-others')
-                        .text(`Calories: ${d.values[i].CALORIES}, Sugars: ${d.values[i].SUGARS}`);
+                        .text(`Calories: ${d.values[i].CALORIES}, ${type === TOP_DRINKS ? `Sugars: ${d.values[i].SUGARS} g` : `Caffeine: ${d.values[i].CAFFEINE} mg`}`);
                 }
             })
             .on('mouseleave', d => {
