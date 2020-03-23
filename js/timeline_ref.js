@@ -175,45 +175,42 @@ button({value: "Click me", description: "We use a reference to the button below 
 //*******************
 //modified button def
 //*******************
-
-
-//   main.variable(observer("button")).define("button", ["input", "html"], function(input, html){return(
-// function button(config = {}) {
-//   const {
-//     value = "Ok", title, description, disabled
-//   } = typeof config === "string" ? {value: config} : config;
-//   const form = input({
-//     type: "button", title, description,
-//     attributes: {disabled, value},
-//     form: html`
-//       <form>
-//         <input style="margin: 10px; font-family: Open Sans; background-color: lightgrey; border: none;"
-//       </form>
-//     `
-
-//   });
-//   form.output.remove();
-//   return form;
-// }
-// )});
-
-
-//*******************
-//original button def
-//*******************
-  main.variable(observer("button")).define("button", ["input"], function(input){return(
+  main.variable(observer("button")).define("button", ["input", "html"], function(input, html){return(
 function button(config = {}) {
   const {
     value = "Ok", title, description, disabled
   } = typeof config === "string" ? {value: config} : config;
   const form = input({
     type: "button", title, description,
-    attributes: {disabled, value}
+    attributes: {disabled, value},
+    form: html`
+      <form>
+        <input name="input" type="button" style="margin: 10px; font-family: Open Sans; background-color: lightgrey; border: none;"/>
+      </form>
+    `
+
   });
   form.output.remove();
   return form;
 }
 )});
+
+//*******************
+//original button def
+//*******************
+//   main.variable(observer("button")).define("button", ["input"], function(input){return(
+// function button(config = {}) {
+//   const {
+//     value = "Ok", title, description, disabled
+//   } = typeof config === "string" ? {value: config} : config;
+//   const form = input({
+//     type: "button", title, description,
+//     attributes: {disabled, value}
+//   });
+//   form.output.remove();
+//   return form;
+// }
+// )});
 
 
   main.variable(observer("selectDemo")).define("selectDemo", ["md"], function(md){return(
