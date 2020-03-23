@@ -171,6 +171,36 @@ button({value: "Click me", description: "We use a reference to the button below 
   return new Date(Date.now()).toUTCString()
 }
 );
+
+//*******************
+//modified button def
+//*******************
+
+
+//   main.variable(observer("button")).define("button", ["input", "html"], function(input, html){return(
+// function button(config = {}) {
+//   const {
+//     value = "Ok", title, description, disabled
+//   } = typeof config === "string" ? {value: config} : config;
+//   const form = input({
+//     type: "button", title, description,
+//     attributes: {disabled, value},
+//     form: html`
+//       <form>
+//         <input style="margin: 10px; font-family: Open Sans; background-color: lightgrey; border: none;"
+//       </form>
+//     `
+
+//   });
+//   form.output.remove();
+//   return form;
+// }
+// )});
+
+
+//*******************
+//original button def
+//*******************
   main.variable(observer("button")).define("button", ["input"], function(input){return(
 function button(config = {}) {
   const {
@@ -184,6 +214,8 @@ function button(config = {}) {
   return form;
 }
 )});
+
+
   main.variable(observer("selectDemo")).define("selectDemo", ["md"], function(md){return(
 md`---
 ## Dropdown Menus and Multiselects
@@ -310,6 +342,10 @@ autoSelect({
   main.variable(observer()).define(["as"], function(as){return(
 as
 )});
+
+//*******************
+//modified form input
+//*******************
   main.variable(observer("autoSelect")).define("autoSelect", ["input","html"], function(input,html){return(
 function autoSelect(config = {}) {
   const {
@@ -340,10 +376,10 @@ function autoSelect(config = {}) {
       };
     },
     form: html`
-      <form>
+      <form style="border-bottom: 2px solid #616161; display: flex; max-width: 160px; margin: 10px;">
          <input name="input" type="text" autocomplete="off" 
           placeholder="${placeholder ||
-            ""}" style="font-size: 1em;" list=${list}>
+            ""}" style="font-size: 1em; border: none;" list=${list}>
           <datalist id="${list}">
               ${options.map(d =>
                 Object.assign(html`<option>`, {

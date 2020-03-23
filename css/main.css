@@ -167,6 +167,10 @@ a:hover, a:active {
     font-size: 1.2rem;
 }
 
+#facts-info p {
+    font-size: 0.85rem;
+}
+
 /* basic facts: nav */
 #facts-nav {
     display: flex;

@@ -8,9 +8,9 @@ export default function define(runtime, observer) {
     main.variable(observer("viewof as")).define("viewof as", ["autoSelect", "dataByCalories"], function(autoSelect, dataByCalories) {
         return (
             autoSelect({
-                title: 'Search from Type',
+                // title: 'Search from Type',
                 options: dataByCalories.map(d => d.key),
-                placeholder: "Type..."
+                placeholder: "Type to search..."
             })
         )
     });
@@ -26,7 +26,7 @@ export default function define(runtime, observer) {
     // button to reset all data...
     main.variable(observer("viewof b")).define("viewof b", ["button"], function(button) {
         return (
-            button({value: "All Data"})
+            button({value: "Restore All Data"})
         )
     });
     main.variable(observer("b")).define("b", ["Generators", "viewof b"], (G, _) => G.input(_));
