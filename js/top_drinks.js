@@ -263,7 +263,7 @@ function plotTopDrinks(type) {
                     let container = details.append('div');
                     container.append('p')
                         .attr('class', 'scatter-plot-details-name')
-                        .text(`#${d.values[i].RANK} ${d.values[i].NAME}`);
+                        .text((type === TOP_DRINKS ? `#${d.values[i].RANK} ` : '') + `${d.values[i].NAME}`);
                     container.append('p')
                         .attr('class', 'scatter-plot-details-others')
                         .text(`Calories: ${d.values[i].CALORIES}, ${type === TOP_DRINKS ? `Sugars: ${d.values[i].SUGARS} g` : `Caffeine: ${d.values[i].CAFFEINE} mg`}`);

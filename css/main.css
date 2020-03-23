@@ -379,12 +379,33 @@ a:hover, a:active {
 }
 
 #recommender-drink-center {
+    color: var(--warm-neutral);
     flex-grow: 2;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+#recommender-drink-center > div {
+    margin: 10px 0px;
+}
+
+#recommender-total-container {
+    text-align: center;
+}
+
+#recommender-total {
+    font-weight: bold;
+}
+
+#recommender-info-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2
 }
 
 .recommender-single-info {
-    color: var(--warm-neutral);
     display: flex;
     justify-content: center;
     align-items: center;
