@@ -165,6 +165,7 @@ function plotDonuts(item) {
         })
         .on('mouseleave', d => {
             dot.style('opacity', 0.3);
+            // dot.style('fill', 'salmon'); //test design
             dot.style('filter', null);
             piePlot.selectAll('path').style('filter', null);
             piePlot.selectAll('text').style('fill', 'black');
