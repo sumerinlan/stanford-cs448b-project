@@ -22,6 +22,10 @@ body {
     font-family: Open Sans;
 }
 
+p {
+    line-height: 1.5;
+}
+
 /* typeface: Open Sans */
 @font-face {
     font-family: Open Sans;
@@ -55,6 +59,9 @@ body {
 h1, h2 {
     text-transform: uppercase;
     font-weight: 800;
+}
+
+h2 {
     margin-top: 5vh;
 }
 
@@ -260,7 +267,7 @@ a:hover, a:active {
 }
 
 .scatter-plot-dots:hover {
-    opacity: 0.3;
+    opacity: 0.3 !important;
 }
 
 #top-drinks-container ul {
@@ -407,7 +414,7 @@ a:hover, a:active {
 
 #recommender-drink-center > div {
     margin: 10px 0px;
-    
+
 }
 
 #recommender-total-container {
@@ -460,6 +467,11 @@ a:hover, a:active {
 }
 
 /* donuts */
+
+.donus-title {
+    text-align: center;
+    font-weight: bold;
+}
 
 #donut-drinks-donuts-svg, #donut-food-donuts-svg {
     text-anchor: middle;

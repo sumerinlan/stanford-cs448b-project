@@ -105,7 +105,7 @@ export default function define(runtime, observer) {
                 let x = d3.event.pageX;
                 let y = d3.event.pageY;
 
-                line
+                d3.select("#extreme-value-line")
                     .attr("x1", 0)
                     .attr("x2", 0)
                     .attr("transform", `translate(${d3.mouse(this)[0]} 0)`);
@@ -148,6 +148,7 @@ export default function define(runtime, observer) {
         svg.selectAll(".extreme-value-axis").remove();
 
         const line = svg.append("line")
+            .attr("id", "extreme-value-line")
             .attr("class", "extreme-value-axis")
             .attr("x1", 0)
             .attr("x2", 0)

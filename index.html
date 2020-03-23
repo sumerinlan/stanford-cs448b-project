@@ -15,7 +15,7 @@
         <h1>You Don't Know About Starbucks</h1>
 
         <p>
-            Americans consume <span class='emphasize'>400 million</span> cups of coffee per day, making the United States the leading consumer of coffee in the world. On average, <span class='emphasize'>250 cups</span> of espresso and coffee drinks are sold per day at almost any espresso drive-thru business with a great visible location. <a href='http://www.e-importz.com/coffee-statistics.php' target='_blank'>Coffee Statistics</a> show that among coffee drinkers the average consumption in the United States is <span class='emphasize'>3 cups</span> of coffee per day.
+            Americans consume <span class='emphasize'>400 million</span> cups of coffee per day, making the United States the leading consumer of coffee in the world. On average, <span class='emphasize'>250 cups</span> of espresso and coffee drinks are sold per day at almost any espresso drive-thru business with a great visible location. <a href='http://www.e-importz.com/coffee-statistics.php' target='_blank'>Coffee Statistics</a> shows that among coffee drinkers, the average consumption in the United States is <span class='emphasize'>3 cups</span> of coffee per day.
         </p>
         <p>
             Founded in 1971, the largest coffeehouse chain around the globe - Starbucks has successfully made itself one of the symbols of the modern American lifestyle. For quite a few people, Starbucks is their routine. They get up, get dressed, leave for work, and go to Starbucks before anything else gets done that day.
@@ -23,28 +23,26 @@
         <p>
             Of course, they care about the <span class='emphasize'>nutrition facts</span> of the drinks and food produced by Starbucks, which are available on its <a href='https://www.starbucks.com/menu' target='_blank'>official website</a> or mobile app. However, since not designed especially for inspecting nutrition facts, the menu is inefficient when it comes to some demands:
         </p>
+        <ul>
+            <li>
+                It is difficult to search for a specific item as well as its nutritional indicators under different preparations, for example, different sizes, especially on the app.
+            </li>
+            <li>
+                It is time-consuming to browse the nutritional information, given that the website and app require clicking and jumping to another page to read the content.
+            </li>
+            <li>
+                On top of that, it is infeasible to make efficient comparisons between two or more products, as users have to switch items back and forth and memorize the numbers.
+            </li>
+        </ul>
         <p>
-            <ul>
-                <li>
-                    It is difficult to search for a specific item as well as its nutritional indicators under different preparations, for example, different sizes, especially on the app.
-                </li>
-                <li>
-                    It is time-consuming to browse the nutritional information, given that the website and app require clicking and jumping to another page to read the content.
-                </li>
-                <li>
-                    On top of that, it is infeasible to make efficient comparisons between two or more products, as users have to switch items back and forth and memorize the numbers.
-                </li>
-            </ul>
-              
-        </p>
-        <p>
-            In order to better demonstrate and analyze the nutritional information of Starbucks' drinks as well as to discover the hidden patterns behind the statistics, we have pulled out and analyzed <span class='emphasize'>all the data of the current Starbucks menu</span> on the table. The dataset contains <span class='emphasize'>148 unique drinks,</span> each with various size options and nutritional information, such as calories, sugars, fat, caffeine, etc.
+            To better demonstrate and analyze the nutritional information of Starbucks' drinks, as well as to discover the hidden patterns behind the statistics, we have pulled out and analyzed <span class='emphasize'>all the data of the current Starbucks menu</span> on the table. The dataset contains <span class='emphasize'>148 unique drinks</span>, each with various size options and nutritional information, such as calories, sugars, fat, caffeine, etc.
         </p>
     </div>
 
     <div class='main section'>
         <h1>All about calories</h1>
 
+        <!-- motivation -->
         <p>
             A handful of springtime drinks have arrived and joined the holiday lineup. Starbucks currently has 148 drinks on its menu, and there are infinite ways to customize them. We leverage the nutrition information a lot when we order drinks, but it is tedious to go back and forth and check out each drink. Therefore, we started our exploration with the basic question: <span class='emphasize'>Is there a more convenient way to know detailed nutritional information based on drinks?</span>
         </p>
@@ -52,19 +50,16 @@
 
     <div id='facts-container' class='main section'>
 
-        <!-- motivation -->
-        
-
         <h2>Basic Facts of Drinks</h2>
 
         <!-- theorectical support -->
         <p>
-            According to the FDA, for an average person, buying meals away from home once per week will gain you about 2 extra pounds per year. Labeling calorie data on the menus help customers make healthier decisions about foods and drinks. Aimed to unveil the most valuable information with limited space, we selected two indicators that we think people care most about when they order a drink: calories and sugars. 
+            According to the FDA, for an average person, buying meals away from home once per week will gain you about 2 extra pounds per year. Labeling calorie data on the menus help customers make healthier decisions about foods and drinks. Aimed to unveil the most valuable information with limited space, we selected two indicators that we think people care most about when they order a drink: <span class='emphasize'>calories and sugars</span>.
         </p>
 
         <!-- design rationale -->
         <p>
-            Here we displayed the full menu using an image-based visualizer, where you can easily hover on a drink to see its calories and sugars data without being redirected to another page. The numbers are calculated based on the standard recipes: grande size (for most drinks) or doppio size (for espresso), and the default milk indicated in the app. These numbers are displayed in colored bars, with longer bars indicating larger amounts.
+            Here we displayed the full menu using an image-based visualizer, where you can easily hover on a drink to see its calories and sugars data without being redirected to another page. The numbers are calculated based on the standard recipes: grande size (for most drinks) or doppio size (for espresso), and the default milk choice indicated in the app. These numbers are represented in colored bars, with longer bars indicating larger amounts.
         </p>
         <p>
             Drinks are categorized based on the menu to help people better find drinks. To support searching and filtering functionalities, we have added a search bar to allow users to search for drinks by keywords. The full menu is long, so we also created tabs to divide the list.
@@ -72,12 +67,12 @@
 
         <!-- findings -->
         <p>
-            By discovering we can find that many drinks among a sub-category share a similar trend. For example, under "Hot Coffees", americanos are low-calories, while mochas contain more calories and sugars. Also, when a drink is high in calories, the sugars contents are often simultaneously high.
+            By discovering we can find that many drinks among a sub-category share a similar trend. For example, under "Hot Coffees", <span class='emphasize'>americanos</span> are low-calories, while <span class='emphasize'>mochas contain more calories and sugars. Also, when a drink is high in calories, the sugars contents are often simultaneously high.
         </p>
 
         <!-- instruction -->
         <p class='instruction'>
-            <b>How to play &#127861;:</b> 
+            <b>How to play &#127861;:</b>
             <span class='emphasize'>Hover</span> above the drinks to inspect detailed nutrition information.
             <span class='emphasize'>Select</span> a tab to the change type.
             <span class='emphasize'>Type</span> in the search bar to filter drinks.
@@ -130,29 +125,28 @@
 
         <!-- motivation -->
         <p class='main'>
-            It is much easier to browse the information now, but only when we have a specific drink in mind. It still takes time if we want to see what type of drinks contain higher calories to avoid, and comparisons still take effort. Also, it provides no information about customized drinks. <span class='emphasize'>Can we acquire all the calories data at a single glance? </span>
+            It is much easier to browse the information now, but that's only when we have a specific drink in mind. It still takes time if we want to see what type of drinks contains higher calories in general, and making these comparisons still takes effort. Meanwhile, there is no information about customized drinks. <span class='emphasize'>Can we acquire all the calorie data at a single glance?</span>
         </p>
 
         <h2 class='main'>Calories of drinks with different sizes</h2>
 
         <!-- design rationale -->
         <p class='main'>
-            In the following visualization, each drink occupies a single line, with the start and end points indicating the range of calories customers can get in various sizes. The exact data points are visible upon hovering. The drinks are sorted by the maximum calories value, so it is easy to see which drinks contain lower or higher calories in general. Lines are colored based on the drinks' sub-categories, and the categorizing and comparisons are more obvious if you type in the search bar and filter the drinks by their types.
+            In the following visualization, each drink occupies a single line, with the start and end points indicating the range of calories customers can get in various sizes. The exact data points are visible upon hovering. The drinks are sorted by the maximum calorie value, so it is easy to see which drinks contain lower or higher calories in general. Lines are colored based on the drinks' sub-categories, and the categorizing and comparisons are more obvious if you type in the search bar and filter the drinks by their types.
         </p>
 
         <!-- finding -->
         <p class='main'>
-            We can easily see the detailed calories for each type of drink. For example coffees, espresso and americano contain low calories while mochas are high-calorie drinks. Teas are low-calorie in general except for milk or lemonade-added options. Frappuccinos are high-calorie drinks. 
+            We can easily see the detailed calories for each type of drink. For example, <span class='emphasize'>coffees</span>, <span class='emphasize'>espresso</span>, and <span class='emphasize'>americanos</span> contain low calories while mochas are high-calorie drinks. <span class='emphasize'>Teas</span> are low-calorie in general except for milk or lemonade-added options. <span class='emphasize'>Frappuccinos</span> are high-calorie drinks.
         </p>
 
         <p class='main'>
-            The ranges of calories vary from drink to drink. The general trend is that the higher maximum calories goes, the longer the bar is. This quite makes sense: if cold brews have lower calories for their maximum size, it has less room to decrease if the size is reduced. A drink with a wider range of choices can satisfy different customer needs, i.e., if I don't care about calories, I can order a venti or even trenta size, but if I care about my weight, I can have a healthier choice with a small size, but that's still the same flavor that I want.
-
+            The ranges of calories vary from drink to drink. The general trend is that the higher the maximum calories go, the longer the bar is. This quite makes sense: if cold brews have lower calories for their maximum size, it has less room to decrease for reduced sizes. A drink with a wider range of choices can satisfy different customer needs; for example, if I don't care about calories, I can order a Venti or even Trenta size, but if I care about my weight, I can have a healthier choice with a small size, but that's still the same flavor that I want.
         </p>
 
         <!-- instruction -->
         <p class='instruction main'>
-            <b>How to play &#127861;:</b> 
+            <b>How to play &#127861;:</b>
             <span class='emphasize'>Hover</span> above the lines to see the exact range.
             <span class='emphasize'>Type</span> in the search bar to filter drinks.
         </p>
@@ -165,19 +159,19 @@
 
         <!-- motivation -->
         <p class='main'>
-            Sometimes when we have a specific drink in mind, we still need to choose whether to order a hot or a cold one. We start wondering if there is any difference between those two, and <span class='emphasize'>in general, does temperature matter in terms of calories?</span>
+            Even when we have a specific drink in mind, sometimes we still need to choose whether to order a hot or a cold one. We then start wondering if there is any difference between those two options, and <span class='emphasize'>in general, does temperature matter in terms of calories?</span>
         </p>
 
         <h2 class='main'>Does temperature matter?</h2>
 
         <!-- design rationale -->
         <p class='main'>
-            We categorized the drinks based on temperature first for better comparisons between hot and cold drinks. The vertical positions are twisted a little bit to avoid overlapping. We used the x-axis and colors to represent different types of drinks. We highlighted the chosen (hovered) drink and its corresponding hot/cold option by muting the colors of other drinks, if such option is available. The horizontal bars on the right indicate total calories.
+            We categorized the drinks based on temperature first for better comparisons between hot and cold drinks. The vertical positions are twisted a little bit to avoid overlapping. We used the x-axis and colors to represent different types of drinks. We highlighted the chosen (hovered) drink and its corresponding hot/cold option by muting the colors of other drinks if such an option is available. The horizontal bars on the right indicate total calories.
         </p>
 
         <!-- finding -->
         <p class='main'>
-            Each type of drink has distinct characteristics. Take Coffee as an example, whether hot or cold, there are several beverages (americano, brew coffee, and espresso) clustered in the low-calorie area, with the rest scattered between 100 and 450 calories. Overall, hot tea, cold tea, and cold drinks are low in calories, and hot drinks and Frappuccinos are high-calorie drinks.
+            Each type of drink has distinct characteristics. Take coffees as an example. Whether hot or cold, there are several beverages (<span class='emphasize'>americanos, brew coffees, and espressos</span>) clustered in the low-calorie area, with the rest scattered between 100 and 450 calories. Overall, <span class='emphasize'>hot teas, cold teas, and cold drinks</span> are low in calories, and hot drinks and <span class='emphasize'>Frappuccinos</span> are high-calorie drinks.
         </p>
         <p class='main'>
             Generally speaking, for drinks with hot and cold options, hot ones contain higher calories than cold drinks. At the same time, the numbers are equal for some drinks with low calories already, such as americano and espresso.
@@ -185,7 +179,7 @@
 
         <!-- instruction -->
         <p class='main instruction'>
-            <b>How to play &#127861;:</b> 
+            <b>How to play &#127861;:</b>
             <span class='emphasize'>Hover</span> to highlight the current drink and its corresponding hot/cold option.
             <span class='emphasize'>Hover</span> on any empty space to reset the graph.
         </p>
@@ -230,10 +224,10 @@
 
         <!-- design rationale -->
         <p class='main'>
-            With the ranking data from <a href='https://www.thrillist.com/' target='_blank'>www.Thrillist.com</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar to the above sections, the information is based on standard grande or doppio sizes.
+            With the ranking data from <a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu' target='_blank'>Thrillist</a>, we are interested to see how these top-ranked items are distributed by calories and sugars. Similar to the above sections, the information is based on standard grande or doppio sizes.
         </p>
         <p class='main'>
-            Top drinks are plotted in a scatter plot with calories as x-axis and sugars as y-axis, with size indicating the number of entries at that spot. To better compare the calories and sugar data between top drinks and the rest of drinks, we put all drinks in the plot in light-yellow dots as well. Users can toggle top drinks on and off to better see the full data.
+            Top drinks are plotted in a scatter plot with calories as x-axis and sugars as y-axis, with size indicating the number of entries at that spot. To better compare the calories and sugar data between top drinks and the rest of the drinks, we put all drinks in the plot in light-yellow dots as well. Users can toggle top drinks on and off to better see the full data.
         </p>
 
         <!-- finding -->
@@ -241,18 +235,17 @@
             From the chart, we can see the positive correlation between calories and sugars. However, while we initially supposed that the most popular drinks are among those high-calorie and high-sugar sections, the data points turn out to be quite evenly distributed at first glance. There are still three weak clusters from the chart, from which we infer three patterns of people visiting Starbucks:
         </p>
 
-
         <ul class='main'>
-            <li>There is a large cluster of low-calorie, sugar-free products, including brewed coffee and americanos, which are suitable for customers who care about those indicators in their drinks intake. </li>
-            <li>Beverages are gathered at 150-calories 20g-sugars region, including classic coffee with milk, such as lattes and flat whites, as well as cold drinks. Customers who choose these products may leverage both flavor and health. </li>
-            <li>High-calorie products, such as Frappuccinos and mochas, are also very popular, as shown in a cluster at the top-right corner. </li>
+            <li>There is a large cluster of low-calorie, sugar-free products, including <span class='emphasize'>brewed coffees</span> and <span class='emphasize'>americanos</span>, which are suitable for customers who care about those indicators in their drinks intake. </li>
+            <li>Beverages are gathered at 150-calories 20g-sugars region, including classic coffee with milk, such as <span class='emphasize'>lattes</span> and <span class='emphasize'>flat whites</span>, as well as cold drinks. Customers who choose these products may leverage both flavor and health. </li>
+            <li>High-calorie products, such as <span class='emphasize'>Frappuccinos</span> and <span class='emphasize'>mochas</span>, are also very popular, as shown in a cluster at the top-right corner. </li>
         </ul>
 
         <!-- instruction -->
         <p class='main instruction'>
-            <b>How to play &#127861;:</b> 
+            <b>How to play &#127861;:</b>
             <span class='emphasize'>Toggle</span> on or off the checkbox to show or hide top-ranked drinks.
-            <span class='emphasize'>Hover</span> on the green dots to see drinks and their nutritional information.
+            <span class='emphasize'>Hover</span> on the green dots to see top drinks and their nutritional information.
         </p>
 
         <div class='plot'>
@@ -278,73 +271,73 @@
     </div>
 
     <div id='donut-container' class='section'>
-        
 
         <div class="main">
+            <!-- theorectical support -->
             <p>
-                With such a wide range of drinks provided at Starbucks, the chain has also realized that an aspiring customer cannot subsist on flat whites and caramel alone. These days, the mermaid emporium has just about as many food items as it does drinks, ranging from hot sandwiches to cold parfaits. Undoubtedly, we are also curious about the best items on the  <a href='https://www.thrillist.com/eat/nation/every-starbucks-food-item-ranked-starbucks-food-menu' target='_blank'>ever-expanding Starbucks menu</a>.
+                With such a wide range of drinks provided at Starbucks, the chain has also realized that an aspiring customer cannot subsist on flat whites and caramel alone. These days, the mermaid emporium has just about as many food items as it does drinks, ranging from hot sandwiches to cold parfaits. Undoubtedly, we are also curious about the best items on the <a href='https://www.thrillist.com/eat/nation/every-starbucks-food-item-ranked-starbucks-food-menu' target='_blank'>ever-expanding Starbucks menu</a>.
             </p>
             <p>
                 Often, the total constitution of calories that a nutritionist recommends for daily intake is as follows:
             </p>
             <ul>
-                <li>50%-55% comes from <span class="emphasize">carbohydrates</span>, and there are 4 calories per gram of carbohydrate, which is the main energy source of the human body under normal conditions;</li>
                 <li>
-                    20%-35% comes from <span class="emphasize">protein</span>, and there are 4 calories per gram of protein;
+                    50%-55% comes from <span class="emphasize">carbohydrates</span>, and there are 4 calories per gram of carbohydrate, which is the main energy source of the human body under normal conditions
                 </li>
                 <li>
-                    35% or less comes from <span class="emphasize">fat</span>, and there are 9 calories per gram of fat;
+                    20%-35% comes from <span class="emphasize">protein</span>, and there are 4 calories per gram of protein
                 </li>
                 <li>
-                    Daily calories from saturated fat should be less than 10%.
+                    35% or less comes from <span class="emphasize">fat</span>, and there are 9 calories per gram of fat
+                </li>
+                <li>
+                    Daily calories from saturated fat should be less than 10%
                 </li>
             </ul>
             <p>
-                From the perspective of fitness and reasonable nutrition intake, a diet ratio of <span class="emphasize">40% (carbohydrate): 40% (protein): 20% (fat)</span> is recommended.
+                From the perspective of fitness and reasonable nutrition intake, a diet ratio of <span class="emphasize">40% (carbohydrate) : 40% (protein) : 20% (fat)</span> is recommended.
             </p>
-            
         </div>
 
         <h2 class='main'>Where are those calories from?</h2>
 
         <div class="main">
             <p>
-                As a result, we visualized these three important indicators: calories from carbohydrates, calories from protein, and calories from fat, for both the top drinks and food leaderboards of Starbucks. Results show that top food options usually contain a much higher calories than compared with drinks (300-500 cal). But in general, calories from carbohydrates and from fat constitute a great proportion, both in drinks and in food.
+                As a result, we visualized these three important indicators: calories from carbohydrates, calories from protein, and calories from fat, for both the top drinks and food leaderboards of Starbucks. Results show that top food options usually contain much higher calories than compared with drinks (300-500 cal). But in general, calories from carbohydrates and fat constitute a great proportion, both in drinks and in food.
             </p>
             <p>
-                Moreover, when focusing on the distribution among these 3 indicators, you may would like to consider something like <span class="emphasize">Caffe Latte </span> to drink and <span class="emphasize">Spinach, Feta &Cage-Free Egg White Wrap</span> to eat, since they both have a relatively balanced distribution compared with the other options.
+                Moreover, when focusing on the distribution among these three indicators, you may like to consider something like <span class="emphasize">Caff&egrave; Latte </span> to drink and <span class="emphasize">Spinach, Feta & Cage-Free Egg White Wrap</span> to eat, since they both have a relatively balanced distribution compared with the other options.
             </p>
             <p class="instruction">
-                <b>How to play &#127861;:</b> The axis and dots represent the calories distribution of the top items, respectively. You can always <span class="emphasize">hover</span> on the following donut graph to see the position of a specific item on the calories axis.
+                <b>How to play &#127861;:</b> The axis and dots represent the calories distribution of the top items, respectively. <span class="emphasize">Hover</span> on the following donut graph to see the position of a specific item on the calories axis.
             </p>
         </div>
 
-        
-
         <div class='plot'>
+            <div class='donus-title main'>
+                Top 10 Drinks
+            </div>
             <svg id='donut-drinks-dots-svg'></svg>
             <svg id='donut-drinks-donuts-svg'></svg>
+            <div class='donus-title main'>
+                Top 10 Food
+            </div>
             <svg id='donut-food-dots-svg'></svg>
             <svg id='donut-food-donuts-svg'></svg>
         </div>
-
-        <p class='main'>
-            Now we know what to drink. We then start to wonder: <span class='emphasize'>What food can I choose to keep the total calories intaked below 500 calories?</span>
-        </p>
     </div>
 
     <div id='food-recommender' class='section'>
-        
 
         <h2 class='main'>Food Recommender</h2>
 
         <p class="main">
-            Keeping one meal of the day under 500 calories is considered one of the regular options for fitness people. Many people also choose to make up their own options (food + drink) directly at Starbucks. Here, we have provided a food recommender, where the calories of the drink is provided based on your choice for the item and its size, meanwhile it helps you screen out a list of food you can choose from, so as to limit the total calories within 500.
+            Keeping one meal of the day under 500 calories is considered one of the regular options for fitness people. Many people also choose to make up their options (food + drink) directly at Starbucks. Here, we have provided a food recommender, where the calories of the drink are provided based on your choice for the item and its size; meanwhile, it helps you screen out a list of food you can choose from, to limit the total calories within 500.
         </p>
 
         <!-- instruction -->
         <p class="main instruction">
-            <b>How to play &#127861;:</b> The navigator on the very left can guide you through the types of drink options at Starbucks. You can always <span class="emphasize"> click</span> on the sorted drinks directly, as well as the size options. We would automatically provide you with a list of food on the right from which you can choose from, at the meantime maintaining the overall calories under 500.
+            <b>How to play &#127861;:</b> The navigator on the very left can guide you through the types of drink options at Starbucks. cClick</span> on the sorted drinks directly, as well as the size options. We would automatically provide you with a list of food on the right from which you can choose from, in the meantime maintaining the overall calories under 500.
         </p>
 
         <div class='plot'>
@@ -380,48 +373,45 @@
     </div>
 
     <div class='main section'>
-        <h1>Calories & Caffeine</h1>
+        <h1>And Caffeine</h1>
     </div>
 
-    <div id='caffeine-container' class='section'>
-        <h2 class='main'>The perfect efficiency drink? </h2>
+    <div id='caffeine-container' class='section' style='padding-top: 0;'>
+
+        <h2 class='main'>The perfect efficient drink?</h2>
+
         <div class="main">
             <p>
-                To a certain extent, people's addiction to coffee is also related to the caffeine contained in coffee.
-                The benefits of caffeine consumption include physical endurance, reduction of fatigue and enhancing mental alertness and concentration.
-                Therefore, under reasonable intake circumstances, caffeine has a positive effect on improving work efficiency and productivity.
+                To a certain extent, people's addiction to coffee is also related to the caffeine contained in coffee. The benefits of caffeine consumption include physical endurance, reduction of fatigue and enhancing mental alertness and concentration. Therefore, under reasonable intake circumstances, caffeine has a positive effect on improving work efficiency and productivity.
             </p>
             <p>
-               But at the same time, we may want to consider calories as an indicator at the same time: for example, espresso with low calories and super high caffeine content will be the perfect key for many people to start a new day. We would like to see more of these drinks as we produced the following caffeine-calories graph: 
+                But at the same time, we may want to consider calories as an indicator: for example, espresso with low calories and super high caffeine content will be the perfect key for many people to start a new day. We would like to see more of these drinks as we produced the following caffeine-calories graph.
             </p>
             <p>
-                As can be seen from the scatter plot below, 
+                As can be seen from the scatter plot,
             </p>
             <ul>
                 <li>
-                    Most Starbucks coffee clusters between the 150-250mg level, while Frappuccino, tea and refreshers are generally clustered at &lt; 100mg level.
+                    Most Starbucks coffee clusters between the 150-250mg level, while <span class="emphasize">Frappuccinos</span>, <span class="emphasize">tea</span> and <span class="emphasize">refreshers</span> are generally clustered at < 100mg level.
                 </li>
                 <li>
-                    If you would like to try some "efficiency drink" with high caffeine and low calories, cold brew series and blonde roast series are good options.
+                    If you would like to try some "efficient drink" with high caffeine and low calories, <span class="emphasize">cold brew series</span> and <span class="emphasize">blonde roast series</span> are good options.
                 </li>
                 <li>
-                    Although tea is also considered to be able to provide sufficient caffeine thus bringing an invigorating effect, tea beverages at Starbucks are generally clustered in areas with low caffeine contained( &lt; 50mg).
+                    Although tea is also considered to be able to provide sufficient caffeine thus bringing an invigorating effect, <span class="emphasize">tea beverages</span> at Starbucks are generally clustered in areas with low caffeine contained ( < 50mg).
                 </li>
                 <li>
-                    The popular Frappuccino series turns out to be the most "sleepy" option --- low caffeine and high calories make them not a good choice for efficiency drink, but potential risks that make people more sleepy. But it's not necessarily true, since the large proportion of ice contained may also have a refreshing effect:>
+                    The popular <span class="emphasize">Frappuccinos</span> series turns out to be the most "sleepy" option --- low caffeine and high calories make them not a good choice for efficiency drink, but potential risks that make people more sleepy. But it's not necessarily true, since the large proportion of ice contained may also have a refreshing effect :)
                 </li>
             </ul>
 
             <!-- instruction -->
             <p class='instruction'>
-                <b>How to play &#127861;:</b> 
-                <span class='emphasize'>Toggle</span> on or off the checkbox to show or hide top-ranked drinks.
-                <span class='emphasize'>Hover</span> on the green dots to see drinks and their information on calories and caffeine.
+                <b>How to play &#127861;:</b>
+                <span class='emphasize'>Hover</span> on the colored dots to see drinks and their information on calories and caffeine.
             </p>
-            
-        </div>
 
-        
+        </div>
 
         <div id='caffeine'>
             <svg id='caffeine-svg'>
@@ -437,6 +427,32 @@
             </svg>
             <div id='caffeine-details'></div>
         </div>
+    </div>
+
+    <div class='main section'>
+        <h1>Reference</h1>
+        <p>
+            Our data mainly came from <span class='emphasize'>Starbucks' official website</span>. We also referred to <span class='emphasize'>Thrillist.com</span> for its drinks' and food's rankings.
+        </p>
+        <ul>
+            <li><a href='https://www.starbucks.com/menu' target='_blank'>https://www.starbucks.com/menu</a></li>
+            <li><a href='https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu' target='_blank'>https://www.thrillist.com/drink/nation/best-coffee-drinks-starbucks-menu</a></li>
+            <li><a href='https://www.thrillist.com/eat/nation/every-starbucks-food-item-ranked-starbucks-food-menu' target='_blank'>https://www.thrillist.com/eat/nation/every-starbucks-food-item-ranked-starbucks-food-menu</a></li>
+        </ul>
+
+        <p>
+            Our visual design is inspired by two posts in <span class='emphasize'>The Pudding</span>.
+        </p>
+        <ul>
+            <li><a href='https://pudding.cool/2017/03/elections/' target='_blank'>https://pudding.cool/2017/03/elections/</a></li>
+            <li><a href='https://pudding.cool/2017/03/miles/index.html' target='_blank'>https://pudding.cool/2017/03/miles/index.html</a></li>
+        </ul>
+    </div>
+
+    <div class='main section'>
+        <p>
+            Designed and created by Qile Zhi & Zhixiu Liu, Mar 2020.
+        </p>
     </div>
 
     <div id="calories-widget-main" style="position: absolute; padding: 5px; width: 240px; background-color: #f2f0eb; font-family: Helvetica; font-weight: 200; display: none;">
