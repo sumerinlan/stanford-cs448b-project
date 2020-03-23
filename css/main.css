@@ -345,12 +345,24 @@ a:hover, a:active {
 }
 
 /* food recommender */
+#food-recommender {
+    font-family: Open Sans;
+    min-width: 300px;
+    background-color: var(--house-green);
+    color: white;
+}
+
+
 #food-recommender .plot {
     background-color: var(--house-green);
     display: flex;
     width: 80%;
     padding: 0 10%;
     flex-direction: row;
+}
+
+#food-recommender .emphasize {
+    color: var(--light-green);
 }
 
 #recommender-drink-category {
