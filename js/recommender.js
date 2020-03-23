@@ -200,6 +200,7 @@ function setImages(duration, isDrink) {
         setDrinkSize();
     } else {
         d3.select('#recommender-food-calories').html(current[idx].CALORIES);
+        d3.select('#recommender-total').html(parseInt(current[idx].CALORIES) + drinkSize[drinkCurrent[drinkIdx].NAME][currentSize]);
     }
 }
 

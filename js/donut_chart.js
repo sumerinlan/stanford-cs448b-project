@@ -37,13 +37,16 @@ const FOOD = 'food';
 
 function passData(drinksAll, foodAll) {
 
+    drinksAll.forEach(d => d.RANK = d.RANK === '' ? 1000 : d.RANK);
+    foodAll.forEach(d => d.RANK = d.RANK === '' ? 1000 : d.RANK);
+
     drinksData = d3.nest().key(d => d.CALORIES).entries(drinksAll);
     foodData = d3.nest().key(d => d.CALORIES).entries(foodAll);
 
-    drinksTopTen = drinksAll.filter(d => d.RANK != '' && 1 <= parseInt(d.RANK) && parseInt(d.RANK) <= 10);
+    drinksTopTen = drinksAll.filter(d => 1 <= parseInt(d.RANK) && parseInt(d.RANK) <= 10);
     drinksTopTen.sort((a, b) => d3.ascending(parseInt(a.RANK), parseInt(b.RANK)));
 
-    foodTopTen = foodAll.filter(d => d.RANK != '' && 1 <= parseInt(d.RANK) && parseInt(d.RANK) <= 10);
+    foodTopTen = foodAll.filter(d => 1 <= parseInt(d.RANK) && parseInt(d.RANK) <= 10);
     foodTopTen.sort((a, b) => d3.ascending(parseInt(a.RANK), parseInt(b.RANK)));
 
     plotDots(DRINKS);
@@ -82,15 +85,17 @@ function plotDots(item) {
 
     let data = item === DRINKS ? drinksData : foodData;
     for (const i in data) {
+        var values = [...data[i].values];
+        values.sort((a, b) => d3.ascending(parseInt(a.RANK), parseInt(b.RANK)));
         plot.append('g')
             .selectAll('circle')
-            .data(data[i].values)
+            .data(values)
             .enter()
             .append('circle')
             .attr('class', d => `donut-dots-${item}-rank-${d.RANK}`)
-            .style('opacity', 0.3)
+            .style('opacity', d => 1 <= parseInt(d.RANK) && parseInt(d.RANK) <= 10 ? 0.7 : 0.3)
             // .style('filter', `url(#dropshadow)`)
-            .style('fill', '#006241')
+            .style('fill', d => 1 <= parseInt(d.RANK) && parseInt(d.RANK) <= 10 ? '#d3705a' : '#006241')
             .attr('r', dotRadius)
             .attr('cx', d => xScale(data[i].key))
             .attr('cy', (d, i) => height - (i + 0.5) * dotHeight)
@@ -158,13 +163,15 @@ function plotDonuts(item) {
 
         let piePlot = plot.append('g')
         .on('mouseover', d => {
-            dot.style('opacity', 1);
+            dot.style('opacity', 1)
+                .style('fill', '#006241');
             dot.style('filter', `url(#dropshadow)`);
             piePlot.selectAll('path').style('filter', `url(#dropshadow)`);
             piePlot.selectAll('text').style('fill', 'grey');
         })
         .on('mouseleave', d => {
-            dot.style('opacity', 0.3);
+            dot.style('opacity', 0.7)
+                .style('fill', '#d3705a');
             // dot.style('fill', 'salmon'); //test design
             dot.style('filter', null);
             piePlot.selectAll('path').style('filter', null);
